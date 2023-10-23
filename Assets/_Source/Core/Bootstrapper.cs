@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using InputSystem;
+using PlayerSystem;
+using UnitSystem.TowerSystem;
+using UISystem;
 using UnityEngine;
 
-public class Bootstrapper : MonoBehaviour
+namespace Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Bootstrapper : MonoBehaviour
     {
+        [SerializeField] private InputListener inputListener;
+        [SerializeField] private UnitInspector unitInspector;
+        private PlayerInvoker _playerInvoker;
+        private PlayerUnitSpawner _playerUnitSpawner;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            _playerUnitSpawner = new PlayerUnitSpawner();
+            _playerInvoker = new PlayerInvoker(_playerUnitSpawner, unitInspector);
+            inputListener.Construct(_playerInvoker);
+        }
     }
 }
