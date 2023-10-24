@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnitSystem.TowerSystem
+namespace TowerSystem
 {
     public class PlayerUnitSpawner
     {

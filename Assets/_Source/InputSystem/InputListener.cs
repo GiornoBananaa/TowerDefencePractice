@@ -1,12 +1,13 @@
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace InputSystem
 {
     public class InputListener : MonoBehaviour
     {
-        [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private LayerMask towerLayer;
+        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _towerLayer;
         
         private Camera _camera;
         private PlayerInvoker _playerInvoker;
@@ -31,25 +32,26 @@ namespace InputSystem
             
             if (Physics.Raycast(ray, out hit))
             {
-                ReadBuildTower(hit);
-                ReadInspectTower(hit);
+                ReadMoveToPoint(hit);
             }
         }
         
         private void ReadBuildTower(RaycastHit hit)
         {
-            if (groundLayer != (groundLayer | (1 << hit.collider.gameObject.layer)))
-                return;
-
             _playerInvoker.SpawnUnit(hit);
         }
         
         private void ReadInspectTower(RaycastHit hit)
         {
-            if (groundLayer != (towerLayer | (1 << hit.collider.gameObject.layer)))
+            _playerInvoker.InspectUnit(hit);
+        }
+        
+        private void ReadMoveToPoint(RaycastHit hit)
+        {
+            if (_groundLayer != (_groundLayer | (1 << hit.collider.gameObject.layer)))
                 return;
 
-            _playerInvoker.InspectUnit(hit);
+            _playerInvoker.SetNewPlayerPosition(hit);
         }
     }
 }
