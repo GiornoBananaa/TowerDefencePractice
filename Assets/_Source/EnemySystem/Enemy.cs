@@ -37,7 +37,7 @@ namespace EnemySystem
         private void Update()
         {
             _enemyInvoker.UpdateCooldown();
-            _navMeshAgent.SetDestination(Vector3.zero);
+            _enemyInvoker.SetNewEnemyTarget(Vector3.zero);
         }
 
         private void OnDestroy()

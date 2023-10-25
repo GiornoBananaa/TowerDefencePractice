@@ -31,7 +31,7 @@ namespace Core
             _towerSpawner = new TowerSpawner();
             _playerInvoker = new PlayerInvoker(_playerMovement, _towerSpawner, _unitInspector);
             _inputListener.Construct(_playerInvoker);
-            _enemyPool = new EnemyPool(new [] { EnemyTypes.Cube}, _enemyPrefabs,_baseHealth);
+            _enemyPool = new EnemyPool(new [] { EnemyTypes.Cube,EnemyTypes.Circle}, _enemyPrefabs,_baseHealth);
             _enemySpawner.Construct(_enemyPool);
         }
     }
