@@ -30,14 +30,17 @@ namespace EnemySystem
             _enemyCombat = new EnemyCombat(_baseHealth, this);
             _navMeshAgent.speed = Speed;
             _enemyInvoker = new EnemyInvoker(new EnemyMovement(_navMeshAgent),_enemyCombat);
-            _enemyInvoker.SetNewEnemyTarget(Vector3.zero);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
         }
 
+        private void Start()
+        {
+            _enemyInvoker.SetNewEnemyTarget(Vector3.zero);
+        }
+        
         private void Update()
         {
             _enemyInvoker.UpdateCooldown();
-            _enemyInvoker.SetNewEnemyTarget(Vector3.zero);
         }
 
         private void OnDestroy()
