@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TowerSystem
 {
-    public class PlayerUnitSpawner
+    public class TowerSpawner
     {
         public void SpawnUnit(RaycastHit hit)
         {

@@ -1,3 +1,4 @@
+using BaseSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -7,9 +8,10 @@ namespace EnemySystem
         private readonly EnemyMovement _enemyMovement;
         private readonly EnemyCombat _enemyCombat;
         
-        public EnemyInvoker(EnemyMovement enemyMovement)
+        public EnemyInvoker(EnemyMovement enemyMovement,EnemyCombat enemyCombat)
         {
             _enemyMovement = enemyMovement;
+            _enemyCombat = enemyCombat;
         }
         
         public void SetNewEnemyTarget(Vector3 target)
@@ -17,10 +19,15 @@ namespace EnemySystem
             _enemyMovement.SetNewTargetPosition(target);
         }
         
-        public void AttackBase()
+        public void StartBaseAttack()
         {
-            _enemyCombat.AttackBase();
+            _enemyCombat.StartBaseAttack();
         }
+        public void UpdateCooldown()
+        {
+            _enemyCombat.UpdateCooldown();
+        }
+        
         public void StopBaseAttack()
         {
             _enemyCombat.StopBaseAttack();

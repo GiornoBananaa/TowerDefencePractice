@@ -1,24 +1,34 @@
 using Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BaseSystem
 {
     public class BaseHealth : MonoBehaviour
     {
-        [SerializeField] private TMP_Text hpText;
+        [SerializeField] private int _maxHp;
+        [SerializeField] private TMP_Text _hpText;
         private Game _game;
-        private int _maxHp;
         private int _currentHp;
+
+        public void Construct(Game game)
+        {
+            _game = game;
+            _currentHp = 100;
+        }
         
         public void TakeDamage(int damage)
         {
-            _maxHp -= damage;
-            if (_maxHp <= 0)
+            _currentHp -= damage;
+            if (_currentHp <= 0)
             {
                 _game.Lose();
             }
 
+            if (_currentHp < 0)
+                _currentHp = 0;
+            
             UpdateUi();
         }
         
@@ -31,7 +41,7 @@ namespace BaseSystem
 
         private void UpdateUi()
         {
-            hpText.text = _currentHp.ToString();
+            _hpText.text = _currentHp.ToString();
         }
     }
 }

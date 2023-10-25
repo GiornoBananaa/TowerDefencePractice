@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using PlayerSystem;
+using BaseSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -11,11 +11,13 @@ namespace EnemySystem
             private GameObject[] _enemiesPrefab;
             private int _count;
             private int _typesCount;
+            private BaseHealth _baseHealth;
             private EnemyTypes[] _availableTypes;
 
 
-            public EnemyPool(EnemyTypes[] availableTypes,GameObject[] enemiesPrefab)
+            public EnemyPool(EnemyTypes[] availableTypes,GameObject[] enemiesPrefab,BaseHealth baseHealth)
             {
+                _baseHealth = baseHealth;
                 _enemiesPrefab = enemiesPrefab;
                 _availableTypes = availableTypes;
                 _typesCount = (int)EnemyTypes.NumberOfTypes;
@@ -68,6 +70,7 @@ namespace EnemySystem
                 GameObject enemyInstance = Object.Instantiate(_enemiesPrefab[(int)enemyType], position, rotation);
                 if (enemyInstance.TryGetComponent(out Enemy enemy))
                 {
+                    enemy.Construct(_baseHealth);
                     enemy.OnLifeEnd += () => ReturnToPool(enemy);
                     enemy.OnEnemyDestroy += () => _count--;
                     ReturnToPool(enemy);

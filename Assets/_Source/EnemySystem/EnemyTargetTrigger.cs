@@ -1,3 +1,5 @@
+using System;
+using BaseSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -12,12 +14,12 @@ namespace EnemySystem
             _enemyInvoker = enemyInvoker;
             _baseLayer = baseLayer;
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == _baseLayer)
             {
-                _enemyInvoker.AttackBase();
+                _enemyInvoker.StartBaseAttack();
             }
         }
         
