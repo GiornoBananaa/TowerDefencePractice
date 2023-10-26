@@ -4,9 +4,21 @@ namespace TowerSystem
 {
     public class TowerSpawner
     {
-        public void SpawnUnit(RaycastHit hit)
+        private GameObject[] _towersPrefabs;
+
+        public TowerSpawner(GameObject[] towersPrefabs)
         {
-            
+            _towersPrefabs = towersPrefabs;
+        }
+        
+        public void SpawnUnit(TowerType type, Vector3 position)
+        {
+            switch (type)
+            {
+                case TowerType.Basic:
+                    Object.Instantiate(_towersPrefabs[(int)type],position,Quaternion.identity);
+                    break;
+            }
         }
     }
 }

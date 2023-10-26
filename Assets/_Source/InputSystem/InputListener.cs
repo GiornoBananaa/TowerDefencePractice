@@ -21,6 +21,7 @@ namespace InputSystem
         private void Update()
         {
             ClickRaycast();
+            ReadBuildTower();
         }
 
         private void ClickRaycast()
@@ -36,9 +37,10 @@ namespace InputSystem
             }
         }
         
-        private void ReadBuildTower(RaycastHit hit)
+        private void ReadBuildTower()
         {
-            _playerInvoker.SpawnUnit(hit);
+            if(Input.GetKeyDown(KeyCode.F))
+                _playerInvoker.SpawnUnit();
         }
         
         private void ReadInspectTower(RaycastHit hit)

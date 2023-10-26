@@ -10,18 +10,21 @@ namespace PlayerSystem
         private readonly TowerSpawner _towerSpawner;
         private readonly UnitInspector _unitInspector;
         private readonly PlayerInventory _playerInventory;
+        private readonly TowerPlacer _towerPlacer;
 
-        public PlayerInvoker(PlayerMovement playerMovement,TowerSpawner towerSpawner,UnitInspector unitInspector,PlayerInventory playerInventory)
+        public PlayerInvoker(PlayerMovement playerMovement,TowerSpawner towerSpawner,UnitInspector unitInspector,PlayerInventory playerInventory,TowerPlacer towerPlacer)
         {
+            _towerPlacer = towerPlacer;
             _playerInventory = playerInventory;
             _playerMovement = playerMovement;
             _towerSpawner = towerSpawner;
             _unitInspector = unitInspector;
         }
         
-        public void SpawnUnit(RaycastHit hit)
+        public void SpawnUnit()
         {
-            _towerSpawner.SpawnUnit(hit);
+            if(SpendCoins(5) && _towerPlacer.TryGetPlacerPosition(out Vector3 position))
+                _towerSpawner.SpawnUnit(TowerType.Basic,position);
         }
         
         public void InspectUnit(RaycastHit hit)
