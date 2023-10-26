@@ -9,9 +9,11 @@ namespace PlayerSystem
         private readonly PlayerMovement _playerMovement;
         private readonly TowerSpawner _towerSpawner;
         private readonly UnitInspector _unitInspector;
+        private readonly PlayerInventory _playerInventory;
 
-        public PlayerInvoker(PlayerMovement playerMovement,TowerSpawner towerSpawner,UnitInspector unitInspector)
+        public PlayerInvoker(PlayerMovement playerMovement,TowerSpawner towerSpawner,UnitInspector unitInspector,PlayerInventory playerInventory)
         {
+            _playerInventory = playerInventory;
             _playerMovement = playerMovement;
             _towerSpawner = towerSpawner;
             _unitInspector = unitInspector;
@@ -30,6 +32,11 @@ namespace PlayerSystem
         public void SetNewPlayerPosition(RaycastHit hitInfo)
         {
             _playerMovement.SetNewPosition(hitInfo);
+        }
+        
+        public bool SpendCoins(int count)
+        {
+            return _playerInventory.SpendCoins(count);
         }
     }
 }

@@ -1,5 +1,4 @@
-using Core;
-using TMPro;
+using System;
 using UnityEngine;
 
 namespace BaseSystem
@@ -7,40 +6,35 @@ namespace BaseSystem
     public class BaseHealth : MonoBehaviour
     {
         [SerializeField] private int _maxHp;
-        [SerializeField] private TMP_Text _hpText;
-        private Game _game;
-        private int _currentHp;
+        private int _currentHp = 100;
 
-        public void Construct(Game game)
-        {
-            _game = game;
-            _currentHp = 100;
-        }
+        public Action<int> OnBaseHealthChange;
+        public Action OnBaseDestroy;
         
+        private void Awake()
+        {
+            _currentHp = _maxHp;
+        }
+
         public void TakeDamage(int damage)
         {
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                _game.Lose();
+                OnBaseDestroy();
             }
 
             if (_currentHp < 0)
                 _currentHp = 0;
             
-            UpdateUi();
+            OnBaseHealthChange(_currentHp);
         }
         
         public void Heal(int hp)
         {
             _currentHp = _currentHp + hp > _maxHp ?
                 _maxHp : _currentHp + hp;
-            UpdateUi();
-        }
-
-        private void UpdateUi()
-        {
-            _hpText.text = _currentHp.ToString();
+            OnBaseHealthChange(_currentHp);
         }
     }
 }

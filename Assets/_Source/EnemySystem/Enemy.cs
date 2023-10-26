@@ -1,6 +1,5 @@
 using System;
 using BaseSystem;
-using PlayerSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +10,7 @@ namespace EnemySystem
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private EnemyTargetTrigger _enemyTargetTrigger;
         [SerializeField] private int _baseLayer;
+        [SerializeField] private GameObject _coinPrefab;
         
         private EnemyInvoker _enemyInvoker;
         
@@ -19,6 +19,7 @@ namespace EnemySystem
         [field: SerializeField] public int Attack{ get; private set; }
         [field: SerializeField] public int AttackCooldown{ get; private set; }
         [field: SerializeField] public int Hp{ get; private set; }
+        [field: SerializeField] public int Coins{ get; private set; }
         
         public Action OnLifeEnd;
         public Action OnEnemyDestroy;
@@ -32,7 +33,8 @@ namespace EnemySystem
             _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
 
-            OnLifeEnd += () => _enemyInvoker.ResetEnemy();
+            OnLifeEnd += _enemyInvoker.ResetEnemy;
+            OnLifeEnd += DropCoins;
         }
 
         private void OnEnable()
@@ -59,6 +61,14 @@ namespace EnemySystem
         public void TakeDamage(int damage)
         {
             _enemyInvoker.TakeDamage(damage);
+        }
+        
+        private void DropCoins()
+        {
+            for (int i =0; i < Coins; i++)
+            {
+                Instantiate(_coinPrefab,transform.position,transform.rotation);
+            }
         }
     }
 }

@@ -48,9 +48,6 @@ namespace InputSystem
         
         private void ReadMoveToPoint(RaycastHit hit)
         {
-            if (_groundLayer != (_groundLayer | (1 << hit.collider.gameObject.layer)))
-                return;
-
             _playerInvoker.SetNewPlayerPosition(hit);
         }
     }

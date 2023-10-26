@@ -23,20 +23,12 @@ namespace EnemySystem
 
             if (_currentHp < 0)
                 _currentHp = 0;
-
-            UpdateUi();
         }
         
         public void Heal(int hp)
         {
             _currentHp = _currentHp + hp > _maxHp ?
                 _maxHp : _currentHp + hp;
-            UpdateUi();
-        }
-        
-        private void UpdateUi()
-        {
-            
         }
     }
 }
