@@ -48,7 +48,10 @@ namespace EnemySystem
                 }
 
                 _releasedEnemies[enemyTypeInt].Add(enemyInstance);
+                enemyInstance.transform.position = position;
+                enemyInstance.transform.rotation = rotation;
                 enemyInstance.SetActive(true);
+                
                 return true;
             }
 

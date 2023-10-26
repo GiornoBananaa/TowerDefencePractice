@@ -5,25 +5,30 @@ namespace EnemySystem
 {
     public class EnemyInvoker
     {
+        private readonly Enemy _enemy;
         private readonly EnemyMovement _enemyMovement;
         private readonly EnemyCombat _enemyCombat;
+        private readonly EnemyHealth _enemyHealth;
         
-        public EnemyInvoker(EnemyMovement enemyMovement,EnemyCombat enemyCombat)
+        public EnemyInvoker(Enemy enemy,EnemyMovement enemyMovement,EnemyCombat enemyCombat,EnemyHealth enemyHealth)
         {
+            _enemy = enemy;
             _enemyMovement = enemyMovement;
             _enemyCombat = enemyCombat;
+            _enemyHealth = enemyHealth;
         }
         
-        public void SetNewEnemyTarget(Vector3 target)
+        public void TakeDamage(int damage)
         {
-            _enemyMovement.SetNewTargetPosition(target);
+            _enemyHealth.TakeDamage(damage);
         }
         
         public void StartBaseAttack()
         {
             _enemyCombat.StartBaseAttack();
         }
-        public void UpdateCooldown()
+        
+        public void UpdateAttackCooldown()
         {
             _enemyCombat.UpdateCooldown();
         }
@@ -31,6 +36,12 @@ namespace EnemySystem
         public void StopBaseAttack()
         {
             _enemyCombat.StopBaseAttack();
+        }
+
+        public void ResetEnemy()
+        {
+            _enemyHealth.Heal(100);
+            _enemyMovement.SetNewTargetPosition(Vector3.zero);
         }
     }
 }

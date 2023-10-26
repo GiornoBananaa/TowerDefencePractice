@@ -1,5 +1,3 @@
-using System;
-using BaseSystem;
 using UnityEngine;
 
 namespace EnemySystem

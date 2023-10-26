@@ -1,5 +1,6 @@
 using System;
 using BaseSystem;
+using PlayerSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,8 +13,6 @@ namespace EnemySystem
         [SerializeField] private int _baseLayer;
         
         private EnemyInvoker _enemyInvoker;
-        private EnemyCombat _enemyCombat;
-        private BaseHealth _baseHealth;
         
         [field: SerializeField] public EnemyTypes EnemyType{ get; private set; }
         [field: SerializeField] public float Speed{ get; private set; }
@@ -26,26 +25,40 @@ namespace EnemySystem
 
         public void Construct(BaseHealth baseHealth)
         {
-            _baseHealth = baseHealth;
-            _enemyCombat = new EnemyCombat(_baseHealth, this);
             _navMeshAgent.speed = Speed;
-            _enemyInvoker = new EnemyInvoker(new EnemyMovement(_navMeshAgent),_enemyCombat);
+            EnemyCombat enemyCombat = new EnemyCombat(baseHealth, this);
+            EnemyMovement enemyMovement = new EnemyMovement(_navMeshAgent);
+            EnemyHealth enemyHealth= new EnemyHealth(Hp,this);
+            _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
+
+            OnLifeEnd += () => _enemyInvoker.ResetEnemy();
+        }
+
+        private void OnEnable()
+        {
+            if(_enemyInvoker!=null)
+                _enemyInvoker.ResetEnemy();
         }
 
         private void Start()
         {
-            _enemyInvoker.SetNewEnemyTarget(Vector3.zero);
+            _enemyInvoker.ResetEnemy();
         }
-        
+
         private void Update()
         {
-            _enemyInvoker.UpdateCooldown();
+            _enemyInvoker.UpdateAttackCooldown();
         }
 
         private void OnDestroy()
         {
             OnEnemyDestroy.Invoke();
+        }
+        
+        public void TakeDamage(int damage)
+        {
+            _enemyInvoker.TakeDamage(damage);
         }
     }
 }

@@ -1,20 +1,16 @@
-using Core;
-using TMPro;
-using UnityEngine;
-
-namespace BaseSystem
+namespace EnemySystem
 {
-    public class BaseHealth : MonoBehaviour
+    public class EnemyHealth
     {
-        [SerializeField] private int _maxHp;
-        [SerializeField] private TMP_Text _hpText;
-        private Game _game;
+        private readonly Enemy _enemy;
+        private readonly int _maxHp;
         private int _currentHp;
-
-        public void Construct(Game game)
+        
+        public EnemyHealth(int maxHp, Enemy enemy)
         {
-            _game = game;
-            _currentHp = 100;
+            _maxHp = maxHp;
+            _currentHp = maxHp;
+            _enemy = enemy;
         }
         
         public void TakeDamage(int damage)
@@ -22,12 +18,12 @@ namespace BaseSystem
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                _game.Lose();
+                _enemy.OnLifeEnd.Invoke();
             }
 
             if (_currentHp < 0)
                 _currentHp = 0;
-            
+
             UpdateUi();
         }
         
@@ -37,10 +33,10 @@ namespace BaseSystem
                 _maxHp : _currentHp + hp;
             UpdateUi();
         }
-
+        
         private void UpdateUi()
         {
-            _hpText.text = _currentHp.ToString();
+            
         }
     }
 }
