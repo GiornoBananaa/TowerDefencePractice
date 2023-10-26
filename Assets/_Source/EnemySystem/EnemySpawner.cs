@@ -22,7 +22,17 @@ namespace EnemySystem
         {
             CheckCooldown();
         }
-
+        
+        public void StartSpawning()
+        {
+            enabled = true;
+        }
+        
+        public void StopSpawning()
+        {
+            enabled = false;
+        }
+        
         private void CheckCooldown()
         {
             _spawnTimeElapsed += Time.deltaTime;
@@ -32,7 +42,7 @@ namespace EnemySystem
                 SpawnRandomEnemy();
             }
         }
-
+        
         private void SpawnRandomEnemy()
         {
             Transform spawnpoint = _spawnPoints[Random.Range(0,_spawnPoints.Length)];

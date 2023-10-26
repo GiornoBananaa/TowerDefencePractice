@@ -13,6 +13,8 @@ namespace EnemySystem
         [SerializeField] private GameObject _coinPrefab;
         
         private EnemyInvoker _enemyInvoker;
+        private Vector3 _destination;
+        private Vector3 _spawnPoint;
         
         [field: SerializeField] public EnemyTypes EnemyType{ get; private set; }
         [field: SerializeField] public float Speed{ get; private set; }
@@ -33,14 +35,17 @@ namespace EnemySystem
             _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
 
+            _spawnPoint = transform.position;
+            
             OnLifeEnd += _enemyInvoker.ResetEnemy;
             OnLifeEnd += DropCoins;
         }
 
         private void OnEnable()
         {
-            if(_enemyInvoker!=null)
-                _enemyInvoker.ResetEnemy();
+            if (_enemyInvoker == null) return;
+            _enemyInvoker.ResetEnemy();
+            _enemyInvoker.SetNewTargetPosition(_destination);
         }
 
         private void Start()
@@ -61,6 +66,20 @@ namespace EnemySystem
         public void TakeDamage(int damage)
         {
             _enemyInvoker.TakeDamage(damage);
+        }
+        
+        public void GoBackToSpawn()
+        {
+            if(gameObject.activeInHierarchy)
+                _enemyInvoker.SetNewTargetPosition(_spawnPoint);
+            _destination = _spawnPoint;
+        }
+        
+        public void GoAttackBase()
+        {
+            if(gameObject.activeInHierarchy)
+                _enemyInvoker.SetNewTargetPosition(Vector3.zero);
+            _destination = Vector3.zero;
         }
         
         private void DropCoins()

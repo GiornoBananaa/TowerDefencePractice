@@ -18,6 +18,7 @@ namespace Core
         [SerializeField] private Player _player;
         [SerializeField] private PlayerItemCollector _playerItemCollector;
         [SerializeField] private TowerPlacer _towerPlacer;
+        [SerializeField] private DayAndNightCycle _dayAndNightCycle;
         [SerializeField] private GameObject[] _enemyPrefabs;
         [SerializeField] private GameObject[] _towerPrefabs;
         private PlayerInvoker _playerInvoker;
@@ -42,6 +43,10 @@ namespace Core
             _inputListener.Construct(_playerInvoker);
             _enemyPool = new EnemyPool(new [] { EnemyTypes.Cube,EnemyTypes.Circle}, _enemyPrefabs,_baseHealth);
             _enemySpawner.Construct(_enemyPool);
+            _dayAndNightCycle.OnNightStarted += _enemySpawner.StopSpawning;
+            _dayAndNightCycle.OnDayStarted += _enemySpawner.StartSpawning;
+            _dayAndNightCycle.OnDayStarted += () => _enemyPool.OnGoAttackBase?.Invoke();
+            _dayAndNightCycle.OnNightStarted += () => _enemyPool.OnReturnToSpawnPoint?.Invoke();
         }
     }
 }

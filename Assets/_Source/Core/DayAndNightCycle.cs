@@ -34,17 +34,19 @@ namespace Core
                 _isDay = !_isDay;
                 if (_isDay)
                 {
+                    OnDayStarted();
                     _currentDuration = _dayDuration;
                     _currentLightIntensity = 1;
                     _currentLightAngle = 180;
-                    _currentLightRotationSpeed = 360 / _dayDuration;
+                    _currentLightRotationSpeed = 180 / _dayDuration;
                 }
                 else
                 {
+                    OnNightStarted();
                     _currentDuration = _nightDuration;
                     _currentLightIntensity = 0;
                     _currentLightAngle = 0;
-                    _currentLightRotationSpeed = -360 / _nightDuration;
+                    _currentLightRotationSpeed = 180 / _nightDuration;
                 }
             }
         }
@@ -64,5 +66,6 @@ namespace Core
                 _currentLightAngle,
                 Time.deltaTime);
         }
+        
     }
 }

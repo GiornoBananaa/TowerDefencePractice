@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311554, g: 0.38073874, b: 0.3587339, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -396,6 +396,7 @@ MonoBehaviour:
   _player: {fileID: 1498666671}
   _playerItemCollector: {fileID: 476168473}
   _towerPlacer: {fileID: 166336626}
+  _dayAndNightCycle: {fileID: 1190367381}
   _enemyPrefabs:
   - {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}
   - {fileID: 3073385137046030694, guid: 47744cd95556a1748822d6cb74fd7cc7, type: 3}
@@ -850,13 +851,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1190367382}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!1 &715333619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d780a3c9def82f64faeaf3a51c4e305a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDuration: 10
+  _dayDuration: 12
   _nightDuration: 5
   _light: {fileID: 705507994}
 --- !u!4 &1190367382

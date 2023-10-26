@@ -36,11 +36,15 @@ namespace EnemySystem
         {
             _enemyCombat.StopBaseAttack();
         }
-
+        
+        public void SetNewTargetPosition(Vector3 target)
+        {
+            _enemyMovement.SetNewTargetPosition(target);
+        }
+        
         public void ResetEnemy()
         {
             _enemyHealth.Heal(100);
-            _enemyMovement.SetNewTargetPosition(Vector3.zero);
         }
     }
 }
