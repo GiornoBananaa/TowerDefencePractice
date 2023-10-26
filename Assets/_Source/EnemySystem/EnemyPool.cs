@@ -68,6 +68,8 @@ namespace EnemySystem
                 _availableTypes = availableTypesCount;
             }
             
+            
+            
             private void CreateEnemy(EnemyTypes enemyType, Vector3 position, Quaternion rotation)
             {
                 GameObject enemyInstance = Object.Instantiate(_enemiesPrefab[(int)enemyType], position, rotation);
