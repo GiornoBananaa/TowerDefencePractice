@@ -23,7 +23,7 @@ namespace PlayerSystem
         
         public void SpawnUnit()
         {
-            if(SpendCoins(5) && _towerPlacer.TryGetPlacerPosition(out Vector3 position))
+            if(_towerPlacer.TryGetPlacerPosition(out Vector3 position) && SpendCoins(5))
                 _towerSpawner.SpawnUnit(TowerType.Basic,position);
         }
         

@@ -1520,8 +1520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d780a3c9def82f64faeaf3a51c4e305a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDuration: 12
-  _nightDuration: 5
+  _dayDuration: 60
+  _nightDuration: 20
   _light: {fileID: 705507994}
 --- !u!4 &1190367382
 Transform:
