@@ -17,16 +17,10 @@ namespace EnemySystem
             _enemyHealth = enemyHealth;
         }
         
-        public void TakeDamage(int damage)
-        {
-            _enemyHealth.TakeDamage(damage);
-        }
-        
-        public void StartBaseAttack()
-        {
-            _enemyCombat.StartBaseAttack();
-        }
-        
+        public void TakeDamage(int damage) => _enemyHealth.TakeDamage(damage);
+
+        public void StartBaseAttack() => _enemyCombat.StartBaseAttack();
+
         public void UpdateAttackCooldown()
         {
             _enemyCombat.UpdateCooldown();

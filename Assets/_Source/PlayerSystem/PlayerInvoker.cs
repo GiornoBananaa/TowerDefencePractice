@@ -1,3 +1,4 @@
+using System;
 using TowerSystem;
 using UISystem;
 using UnityEngine;
@@ -6,25 +7,39 @@ namespace PlayerSystem
 {
     public class PlayerInvoker
     {
-        private readonly PlayerMovement _playerMovement;
+        private readonly CameraController _cameraController;
         private readonly TowerSpawner _towerSpawner;
         private readonly UnitInspector _unitInspector;
         private readonly PlayerInventory _playerInventory;
-        private readonly TowerPlacer _towerPlacer;
+        private readonly ObjectsSelector _objectSelector;
 
-        public PlayerInvoker(PlayerMovement playerMovement,TowerSpawner towerSpawner,UnitInspector unitInspector,PlayerInventory playerInventory,TowerPlacer towerPlacer)
+        public Action OnTowerCellSelect;
+        
+        public PlayerInvoker(TowerSpawner towerSpawner,UnitInspector unitInspector,
+            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController)
         {
-            _towerPlacer = towerPlacer;
             _playerInventory = playerInventory;
-            _playerMovement = playerMovement;
             _towerSpawner = towerSpawner;
             _unitInspector = unitInspector;
+            _objectSelector = objectSelector;
+            _cameraController = cameraController;
         }
         
-        public void SpawnUnit()
+        public bool SpawnUnit(TowerType towerType)
         {
-            if(_towerPlacer.TryGetPlacerPosition(out Vector3 position) && SpendCoins(5))
-                _towerSpawner.SpawnUnit(TowerType.Basic,position);
+            if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(5))
+            {
+                Transform towerTransform = _objectSelector.SelectedCell.GetTowerPlaceAndDisable();
+                _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation);
+                return true;
+            }
+
+            return false;
+        }
+        
+        public void MoveCamera(Vector3 direction)
+        {
+            _cameraController.MoveCamera(direction);
         }
         
         public void InspectUnit(RaycastHit hit)
@@ -32,9 +47,25 @@ namespace PlayerSystem
             _unitInspector.InspectUnit(hit);
         }
         
-        public void SetNewPlayerPosition(RaycastHit hitInfo)
+        public void SelectBranch(RaycastHit hitInfo)
         {
-            _playerMovement.SetNewPosition(hitInfo);
+            _objectSelector.SelectBranch(hitInfo);
+        }
+        
+        public void SelectCell(RaycastHit hitInfo)
+        {
+            _objectSelector.SelectCell(hitInfo);
+            OnTowerCellSelect.Invoke();
+        }
+
+        public void UnselectAll(RaycastHit hitInfo)
+        {
+            _objectSelector.UnselectAll();
+        }
+        
+        public void SelectTree(RaycastHit hitInfo)
+        {
+            _objectSelector.SelectTree(hitInfo);
         }
         
         public bool SpendCoins(int count)

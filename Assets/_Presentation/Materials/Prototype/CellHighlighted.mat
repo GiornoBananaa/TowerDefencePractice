@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TowerProjector
+  m_Name: CellHighlighted
   m_Shader: {fileID: 4800000, guid: 60ce2c9686b85af4b9bd3e5f63842b71, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -83,6 +83,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.5788608, b: 0.8679245, a: 1}
+    - _Color: {r: 0.0085439505, g: 0.40275326, b: 0.6037736, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

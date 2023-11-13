@@ -11,12 +11,12 @@ namespace TowerSystem
             _towersPrefabs = towersPrefabs;
         }
         
-        public void SpawnUnit(TowerType type, Vector3 position)
+        public void SpawnUnit(TowerType type, Vector3 position, Quaternion rotation)
         {
             switch (type)
             {
                 case TowerType.Basic:
-                    Object.Instantiate(_towersPrefabs[(int)type],position,Quaternion.identity);
+                    Object.Instantiate(_towersPrefabs[(int)type],position,rotation);
                     break;
             }
         }
