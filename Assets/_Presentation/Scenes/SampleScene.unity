@@ -448,10 +448,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virtualCamera: {fileID: 168784228}
-  _cameraState: 0
   _treeTransform: {fileID: 1660063088}
-  _player: {fileID: 0}
   _moveSpeed: 0.1
+  _deafultHeight: 0
+  _transitionDuration: 0.3
   _borderXmax: 30
   _borderXmin: -30
   _borderZmax: 30

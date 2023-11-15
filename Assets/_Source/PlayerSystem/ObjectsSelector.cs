@@ -73,14 +73,14 @@ namespace PlayerSystem
         {
             SelectedBranch = null;
             SelectedCell = null;
-            _cameraController.SetCameraState(CameraState.FocusOnTree);
+            _cameraController.FocusOnObject(hitInfo.collider.transform, false);
         }
         
         public void UnselectAll()
         {
             SelectedBranch = null;
             SelectedCell = null;
-            _cameraController.SetCameraState(CameraState.FreeCamera);
+            _cameraController.FocusOnObject(null, false);
         }
         
         public void SelectBranch(RaycastHit hitInfo)
@@ -92,7 +92,7 @@ namespace PlayerSystem
                 if (branch.branch.gameObject == selected)
                 {
                     SelectedBranch = branch;
-                    _cameraController.SetSelectedObject(_selectedBranch.branch.transform);
+                    _cameraController.FocusOnObject(hitInfo.collider.transform, false);
                     return;
                 }
             }

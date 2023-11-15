@@ -61,6 +61,7 @@ namespace PlayerSystem
         public void UnselectAll(RaycastHit hitInfo)
         {
             _objectSelector.UnselectAll();
+            _cameraController.FocusOnObject(null,true);
         }
         
         public void SelectTree(RaycastHit hitInfo)
