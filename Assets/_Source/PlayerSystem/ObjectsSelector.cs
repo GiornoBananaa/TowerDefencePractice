@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using TowerSystem;
+using UISystem;
 using UnityEngine;
 
 namespace PlayerSystem
@@ -13,11 +15,12 @@ namespace PlayerSystem
     
     public class ObjectsSelector : MonoBehaviour
     {
-        [SerializeField] private CameraController _cameraController;
-        [SerializeField] private Branch[] _branches;
-        
         private Branch _selectedBranch;
         private TowerCell _selectedCell;
+        
+        [SerializeField] private CameraController _cameraController;
+        [SerializeField] private ObjectOutlineControl _treeOutline;
+        [SerializeField] private Branch[] _branches;
 
         public Branch SelectedBranch
         {
@@ -38,12 +41,12 @@ namespace PlayerSystem
                 }
                 
                 _selectedBranch = value;
-
+                
                 _selectedCell = null;
                 
                 if (_selectedBranch != null)
                 {
-                    
+                    _treeOutline.EnableOutline(true);
                     foreach (var towerCell in _selectedBranch.towerCells)
                     {
                         towerCell.gameObject.SetActive(true);
@@ -62,15 +65,20 @@ namespace PlayerSystem
             set
             {
                 if(_selectedCell != null)
+                {
                     _selectedCell.SelectCell(false);
+                }
                 _selectedCell = value;
                 if(_selectedCell != null)
+                {
                     _selectedCell.SelectCell(true);
+                }
             }
         }
 
         public void SelectTree(RaycastHit hitInfo)
         {
+            _treeOutline.EnableOutline(false);
             SelectedBranch = null;
             SelectedCell = null;
             _cameraController.FocusOnObject(hitInfo.collider.transform, false);
@@ -78,6 +86,7 @@ namespace PlayerSystem
         
         public void UnselectAll()
         {
+            _treeOutline.EnableOutline(true);
             SelectedBranch = null;
             SelectedCell = null;
             _cameraController.FocusOnObject(null, false);
