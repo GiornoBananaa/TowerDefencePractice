@@ -5,22 +5,35 @@ namespace PlayerSystem
     public class PlayerInventory
     {
         private int _coins;
-
+        
         public Action<int> OnCoinsCountChange;
+
+        public int Coins
+        {
+            get => _coins;
+            private set
+            {
+                _coins = value;
+                OnCoinsCountChange?.Invoke(_coins);
+            }
+        }
+        
+        public PlayerInventory()
+        {
+            Coins = 5;
+        }
         
         public void AddCoins(int count)
         {
-            _coins+=count;
-            OnCoinsCountChange.Invoke(_coins);
+            Coins+=count;
         }
         
         public bool SpendCoins(int count)
         {
-            if (_coins < count)
+            if (Coins < count)
                 return false;
             
-            _coins-=count;
-            OnCoinsCountChange.Invoke(_coins);
+            Coins-=count;
             return true;
         }
     }

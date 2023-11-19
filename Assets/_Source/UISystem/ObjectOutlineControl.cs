@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace UISystem
@@ -8,7 +9,6 @@ namespace UISystem
     {
         [SerializeField] private Outline _outline;
         
-        private bool _outlineEnabled;
         private bool _outlineViewed;
         private float _defaultWidth;
         
@@ -18,12 +18,10 @@ namespace UISystem
             _outline.OutlineWidth = 0;
             _outlineViewed = false;
         }
-        
+
         private void OnMouseEnter()
         {
             _outlineViewed = true;
-            
-            if (!_outlineEnabled) return;
             
             _outline.OutlineWidth = _defaultWidth;
         }
@@ -32,14 +30,20 @@ namespace UISystem
         {
             _outlineViewed = false;
             
-            if (!_outlineEnabled) return;
             _outline.OutlineWidth = 0;
         }
         
         public void EnableOutline(bool enable)
         {
-            _outlineEnabled = enable;
-            _outline.OutlineWidth = _outlineViewed && enable ? _defaultWidth : 0;
+            StartCoroutine(OutlineEnable(enable));
         }
+        
+        // This coroutine fixes graphic bug where outline is showed for one frame when it's disabled
+        private IEnumerator OutlineEnable(bool enable)
+        {
+            _outline.OutlineWidth = _outlineViewed && enable ? _defaultWidth : 0;
+            yield return new WaitForEndOfFrame();
+            _outline.enabled = enable;
+        } 
     }
 }

@@ -8,6 +8,7 @@ namespace TowerSystem
         [SerializeField] private Projector _projector;
         [SerializeField] private Collider _collider;
         [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private Transform _attackRangePoint;
         [SerializeField] private Material _deafultMaterial;
         [SerializeField] private Material _highlightingMaterial;
         [SerializeField] private Material _selectionMaterial;
@@ -56,11 +57,12 @@ namespace TowerSystem
             }
         }
         
-        public Transform GetTowerPlaceAndDisable()
+        public Transform GetTowerPlaceAndDisable(out Vector3 attackRangePoint)
         {
             _collider.enabled = false;
             _projector.enabled = false;
             _isOccupied = true;
+            attackRangePoint = _attackRangePoint.position;
             return _spawnPoint;
         }
     }

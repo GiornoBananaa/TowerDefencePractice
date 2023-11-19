@@ -48,7 +48,7 @@ namespace TowerSystem
             if (_bulletPool.TryGetFromPool(out Bullet bullet))
             {
                 while (!_enemiesInRange[0].gameObject.activeSelf
-                       || Vector3.Distance(_firePoint.position, _enemiesInRange[0].transform.position) > Radius * 1.5f)
+                       || Vector3.Distance( transform.TransformPoint(_enemyTrigger.center), _enemiesInRange[0].transform.position) > Radius * 1.5f)
                 {
                     _enemiesInRange.RemoveAt(0);
                     if(_enemiesInRange.Count == 0)
@@ -73,6 +73,11 @@ namespace TowerSystem
             {
                 _enemiesInRange.Remove(enemy);
             }
+        }
+
+        public void SetRangePoint(Vector3 position)
+        {
+            _enemyTrigger.center = transform.InverseTransformPoint(position);
         }
     }
 }

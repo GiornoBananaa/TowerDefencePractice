@@ -29,8 +29,8 @@ namespace PlayerSystem
         {
             if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(5))
             {
-                Transform towerTransform = _objectSelector.SelectedCell.GetTowerPlaceAndDisable();
-                _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation);
+                Transform towerTransform = _objectSelector.SelectedCell.GetTowerPlaceAndDisable(out Vector3 attackRangePoint);
+                _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation, attackRangePoint);
                 return true;
             }
 

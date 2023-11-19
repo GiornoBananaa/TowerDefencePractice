@@ -46,7 +46,6 @@ namespace PlayerSystem
                 
                 if (_selectedBranch != null)
                 {
-                    _treeOutline.EnableOutline(true);
                     foreach (var towerCell in _selectedBranch.towerCells)
                     {
                         towerCell.gameObject.SetActive(true);
