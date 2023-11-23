@@ -1,7 +1,9 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System;
 using System.Collections.Generic;
 using TowerSystem;
 using UISystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PlayerSystem
@@ -11,6 +13,7 @@ namespace PlayerSystem
     {
         public GameObject branch;
         public TowerCell[] towerCells;
+        public ObjectOutlineControl outline;
     }
     
     public class ObjectsSelector : MonoBehaviour
@@ -34,6 +37,7 @@ namespace PlayerSystem
                 
                 if (_selectedBranch != null)
                 {
+                    _selectedBranch.outline.EnableOutline(true);
                     foreach (var towerCell in _selectedBranch.towerCells)
                     {
                         towerCell.gameObject.SetActive(false);
@@ -46,6 +50,8 @@ namespace PlayerSystem
                 
                 if (_selectedBranch != null)
                 {
+                    _treeOutline.EnableOutline(true);
+                    _selectedBranch.outline.EnableOutline(false);
                     foreach (var towerCell in _selectedBranch.towerCells)
                     {
                         towerCell.gameObject.SetActive(true);
@@ -81,6 +87,10 @@ namespace PlayerSystem
             SelectedBranch = null;
             SelectedCell = null;
             _cameraController.FocusOnObject(hitInfo.collider.transform, false);
+            foreach (var branch in _branches)
+            {
+                branch.outline.EnableOutline(true);
+            }
         }
         
         public void UnselectAll()
@@ -89,6 +99,10 @@ namespace PlayerSystem
             SelectedBranch = null;
             SelectedCell = null;
             _cameraController.FocusOnObject(null, false);
+            foreach (var branch in _branches)
+            {
+                branch.outline.EnableOutline(false);
+            }
         }
         
         public void SelectBranch(RaycastHit hitInfo)

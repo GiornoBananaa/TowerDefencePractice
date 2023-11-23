@@ -17,6 +17,7 @@ namespace UISystem
             _defaultWidth = _outline.OutlineWidth;
             _outline.OutlineWidth = 0;
             _outlineViewed = false;
+            EnableOutline(false);
         }
 
         private void OnMouseEnter()
@@ -38,7 +39,7 @@ namespace UISystem
             StartCoroutine(OutlineEnable(enable));
         }
         
-        // This coroutine fixes graphic bug where outline is showed for one frame when it's disabled
+        // This coroutine fixes graphic bug where outline is showed for one frame when it's enabling
         private IEnumerator OutlineEnable(bool enable)
         {
             _outline.OutlineWidth = _outlineViewed && enable ? _defaultWidth : 0;
