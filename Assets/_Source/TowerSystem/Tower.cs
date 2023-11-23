@@ -6,15 +6,15 @@ namespace TowerSystem
 {
     public class Tower : MonoBehaviour
     {
-        [SerializeField] private GameObject _bulletPrefab;
-        [SerializeField] private Transform _firePoint;
-        [SerializeField] private SphereCollider _enemyTrigger;
-        
         [field: SerializeField] public int Attack { get; private set; }
         [field: SerializeField] public int BulletSpeed { get; private set; }
         [field: SerializeField] public float AttackCooldown { get; private set; }
         [field: SerializeField] public float Radius { get; private set; }
 
+        [SerializeField] private GameObject _bulletPrefab;
+        [SerializeField] private Transform _firePoint;
+        [SerializeField] private SphereCollider _enemyTrigger;
+        
         private BulletPool _bulletPool;
         private List<Enemy> _enemiesInRange;
         private float _timeElapsed;
