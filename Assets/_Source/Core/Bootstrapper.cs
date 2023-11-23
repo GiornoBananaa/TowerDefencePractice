@@ -29,11 +29,13 @@ namespace Core
         private TowerSpawner _towerSpawner;
         private EnemyPool _enemyPool;
         private Game _game;
+        private LevelSetter _levelSetter;
         
         //TODO give data through scriptable object
         private void Awake()
         {
-            _game = new Game();
+            _levelSetter = new LevelSetter();
+            _game = new Game(_levelSetter);
             _baseHealth.OnBaseDestroy += _game.Lose;
             _baseHealth.OnBaseHealthChange += _hudUpdater.BaseHealthUpdate;
             _towerSpawner = new TowerSpawner(_towerPrefabs);
