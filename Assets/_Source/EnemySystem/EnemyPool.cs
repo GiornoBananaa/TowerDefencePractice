@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BaseSystem;
+using LevelSystem;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -9,26 +10,24 @@ namespace EnemySystem
 {
     public class EnemyPool
     {
-            private Queue<Enemy>[] _enemies;
-            private List<Enemy>[] _releasedEnemies;
-            private GameObject[] _enemiesPrefab;
             private int _count;
             private int _typesCount;
+            private int _chancesSum;
+            private Queue<Enemy>[] _enemies;
+            private List<Enemy>[] _releasedEnemies;
             private BaseHealth _baseHealth;
-            private EnemyTypes[] _availableTypes;
+            private EnemySpawnData[] _enemySpawnDatas;
 
             public Action OnReturnToSpawnPoint;
             public Action OnGoAttackBase;
 
-            public EnemyPool(EnemyTypes[] availableTypes,GameObject[] enemiesPrefab,BaseHealth baseHealth)
+            public EnemyPool(BaseHealth baseHealth)
             {
                 _baseHealth = baseHealth;
-                _enemiesPrefab = enemiesPrefab;
-                _availableTypes = availableTypes;
                 _typesCount = (int)EnemyTypes.NumberOfTypes;
-                _releasedEnemies = new List<Enemy>[availableTypes.Length];
-                _enemies = new Queue<Enemy>[availableTypes.Length];
-                for (int i = 0; i < availableTypes.Length;i++)
+                _releasedEnemies = new List<Enemy>[_typesCount];
+                _enemies = new Queue<Enemy>[_typesCount];
+                for (int i = 0; i < _typesCount;i++)
                 {
                     _enemies[i] = new Queue<Enemy>();
                     _releasedEnemies[i] = new List<Enemy>();
@@ -37,13 +36,30 @@ namespace EnemySystem
             
             public bool GetFromPool(out GameObject enemyInstance,Vector3 position, Quaternion rotation)
             {
-                EnemyTypes enemyType = _availableTypes[Random.Range(0, _availableTypes.Length)];
+                Debug.Log("1");
+                enemyInstance = null;
+                int random = Random.Range(0, _chancesSum);
+                int pastChancesSum = 0;
+                int enemyTypeInt = 0;
+                GameObject prefab = null;
                 
-                int enemyTypeInt = (int)enemyType;
-                
+                foreach (var enemySpawnData in _enemySpawnDatas)
+                {
+                    if (random < pastChancesSum + enemySpawnData.SpawnChance && random > pastChancesSum)
+                    {
+                        enemyTypeInt = (int)enemySpawnData.EnemyType;
+                        prefab = enemySpawnData.Prefab;
+                        break;
+                    }
+                    pastChancesSum += enemySpawnData.SpawnChance;
+                }
+
+                if (prefab == null)
+                    return false;
+                Debug.Log("2");
                 if (_enemies[enemyTypeInt].Count == 0)
                 {
-                    CreateEnemy(enemyType,position, rotation);
+                    CreateEnemy(prefab,position, rotation);
                 }
                 
                 Enemy enemy = null;
@@ -51,7 +67,7 @@ namespace EnemySystem
                 {
                     enemy = _enemies[enemyTypeInt].Dequeue();
                     if (_enemies.Length == 0)
-                        CreateEnemy(enemyType, position, rotation);
+                        CreateEnemy(prefab, position, rotation);
                 }
                 
                 enemyInstance = enemy.gameObject;
@@ -60,7 +76,7 @@ namespace EnemySystem
                 enemyInstance.transform.position = position;
                 enemyInstance.transform.rotation = rotation;
                 enemyInstance.SetActive(true);
-                
+
                 return true;
             }
 
@@ -71,17 +87,22 @@ namespace EnemySystem
                 _enemies[enemyType].Enqueue(enemy);
                 enemy.gameObject.SetActive(false);
             }
-
-            public void SetAvailableTypesCount(EnemyTypes[] availableTypesCount)
+            
+            public void OnLevelChange(LevelData levelData)
             {
-                _availableTypes = availableTypesCount;
+                _enemySpawnDatas = levelData.EnemySpawnData;
+                foreach (var enemySpawnData in levelData.EnemySpawnData)
+                {
+                    _chancesSum += enemySpawnData.SpawnChance;
+                }
             }
             
-            private void CreateEnemy(EnemyTypes enemyType, Vector3 position, Quaternion rotation)
+            private void CreateEnemy(GameObject prefab, Vector3 position, Quaternion rotation)
             {
-                GameObject enemyInstance = Object.Instantiate(_enemiesPrefab[(int)enemyType], position, rotation);
+                GameObject enemyInstance = Object.Instantiate(prefab, position, rotation);
                 if (enemyInstance.TryGetComponent(out Enemy enemy))
                 {
+                    Debug.Log("3");
                     enemy.Construct(_baseHealth);
                     enemy.OnLifeEnd += () => ReturnToPool(enemy);
                     enemy.OnEnemyDestroy += () => _count--;
@@ -90,6 +111,15 @@ namespace EnemySystem
                     OnGoAttackBase += enemy.GoAttackBase;
                     OnReturnToSpawnPoint += enemy.GoBackToSpawn;
                 }
+            }
+
+            public void GoAttackBase()
+            {
+                OnGoAttackBase?.Invoke();
+            }
+            public void ReturnToSpawnPoint()
+            {
+                OnReturnToSpawnPoint?.Invoke();
             }
     }
 }

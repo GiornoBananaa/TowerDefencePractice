@@ -1,23 +1,26 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class LevelData
+namespace LevelSystem
 {
-    [field: SerializeField] public float LevelDuration { get; private set; }
-    [field: SerializeField] public GameObject[] EnemiesPrefabs { get; private set; }
-}
-
-public class LevelSetter
-{
-    public Action<LevelData> OnLevelChange;
-
-    [SerializeField] private LevelData[] _levelDatas;
-    private int _level;
-
-    public void NextLevel()
+    public class LevelSetter
     {
-        _level++;
-        OnLevelChange?.Invoke(_levelDatas[_level]);
+        public Action<LevelData> OnLevelChange;
+        private LevelData[] _levelsData;
+        private int _level;
+
+        public LevelSetter(LevelData[] levelsData)
+        {
+            _level = -1;
+            _levelsData = levelsData;
+        }
+        
+        public void NextLevel()
+        {
+            if (_levelsData.Length <= _level+1) return;
+            
+            _level++;
+            OnLevelChange?.Invoke(_levelsData[_level]);
+        }
     }
 }

@@ -1,5 +1,4 @@
-
-using System;
+using LevelSystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +8,7 @@ namespace EnemySystem
     {
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private float _spawnRadius;
-        [SerializeField] private float _spawnCooldown;
+        private float _spawnCooldown;
         private float _spawnTimeElapsed;
         private EnemyPool _enemyPool;
 
@@ -21,6 +20,11 @@ namespace EnemySystem
         private void Update()
         {
             CheckCooldown();
+        }
+
+        public void OnLevelChange(LevelData levelData)
+        {
+            _spawnCooldown = levelData.EnemiesSpawnCooldown;
         }
         
         public void StartSpawning()

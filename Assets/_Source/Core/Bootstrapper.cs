@@ -1,6 +1,8 @@
+using System;
 using BaseSystem;
 using EnemySystem;
 using InputSystem;
+using LevelSystem;
 using PlayerSystem;
 using TowerSystem;
 using UISystem;
@@ -11,6 +13,8 @@ namespace Core
 {
     public class Bootstrapper : MonoBehaviour
     {
+        [SerializeField] private LevelsDataSO _levelsData;
+        [SerializeField] private LevelTimer _levelTimer;
         [SerializeField] private InputListener _inputListener;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private HUDUpdater _hudUpdater;
@@ -34,7 +38,7 @@ namespace Core
         //TODO give data through scriptable object
         private void Awake()
         {
-            _levelSetter = new LevelSetter();
+            _levelSetter = new LevelSetter(_levelsData.LevelsData);
             _game = new Game(_levelSetter);
             _baseHealth.OnBaseDestroy += _game.Lose;
             _baseHealth.OnBaseHealthChange += _hudUpdater.BaseHealthUpdate;
@@ -46,12 +50,35 @@ namespace Core
             _playerInvoker = new PlayerInvoker(_towerSpawner, _unitInspector, _playerInventory,_objectSelector,_cameraController);
             _inputListener.Construct(_playerInvoker);
             _towerOptionsUI.Construct(_playerInvoker);
-            _enemyPool = new EnemyPool(new [] { EnemyTypes.Cube,EnemyTypes.Circle}, _enemyPrefabs,_baseHealth);
+            _enemyPool = new EnemyPool(_baseHealth);
+            _levelSetter.OnLevelChange += _enemyPool.OnLevelChange;
             _enemySpawner.Construct(_enemyPool);
+            _levelSetter.OnLevelChange += _enemySpawner.OnLevelChange;
+            _levelSetter.OnLevelChange += _levelTimer.OnLevelChange;
+            _levelSetter.NextLevel();
+            _levelTimer.OnTimerEnd += _enemySpawner.StopSpawning;
+            _levelTimer.OnTimerEnd += _levelSetter.NextLevel;
+            _levelTimer.OnTimerEnd += _enemyPool.ReturnToSpawnPoint;
+            _levelTimer.OnTimerStart += _enemySpawner.StartSpawning;
+            _levelTimer.OnTimerStart += _enemyPool.GoAttackBase;
+            _levelTimer.EnableTimer(true);
+            /*   DAY AND NIGHT CYCLE MIGHT BE REMOVED
             _dayAndNightCycle.OnNightStarted += _enemySpawner.StopSpawning;
             _dayAndNightCycle.OnDayStarted += _enemySpawner.StartSpawning;
-            _dayAndNightCycle.OnDayStarted += () => _enemyPool.OnGoAttackBase?.Invoke();
-            _dayAndNightCycle.OnNightStarted += () => _enemyPool.OnReturnToSpawnPoint?.Invoke();
+            _dayAndNightCycle.OnDayStarted += _enemyPool.GoAttackBase;
+            _dayAndNightCycle.OnNightStarted += _enemyPool.ReturnToSpawnPoint;
+            */
+        }
+
+        private void OnDestroy()
+        {
+            _levelSetter.OnLevelChange -= _enemyPool.OnLevelChange;
+            _levelSetter.OnLevelChange -= _enemySpawner.OnLevelChange;
+            _levelTimer.OnTimerEnd -= _enemySpawner.StopSpawning;
+            _levelTimer.OnTimerEnd -= _levelSetter.NextLevel;
+            _levelTimer.OnTimerEnd -= _enemyPool.ReturnToSpawnPoint;
+            _levelTimer.OnTimerStart -= _enemySpawner.StartSpawning;
+            _levelTimer.OnTimerStart -= _enemyPool.GoAttackBase;
         }
     }
 }
