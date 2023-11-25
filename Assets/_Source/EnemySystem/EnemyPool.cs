@@ -36,7 +36,6 @@ namespace EnemySystem
             
             public bool GetFromPool(out GameObject enemyInstance,Vector3 position, Quaternion rotation)
             {
-                Debug.Log("1");
                 enemyInstance = null;
                 int random = Random.Range(0, _chancesSum);
                 int pastChancesSum = 0;
@@ -56,7 +55,7 @@ namespace EnemySystem
 
                 if (prefab == null)
                     return false;
-                Debug.Log("2");
+                
                 if (_enemies[enemyTypeInt].Count == 0)
                 {
                     CreateEnemy(prefab,position, rotation);
@@ -102,7 +101,6 @@ namespace EnemySystem
                 GameObject enemyInstance = Object.Instantiate(prefab, position, rotation);
                 if (enemyInstance.TryGetComponent(out Enemy enemy))
                 {
-                    Debug.Log("3");
                     enemy.Construct(_baseHealth);
                     enemy.OnLifeEnd += () => ReturnToPool(enemy);
                     enemy.OnEnemyDestroy += () => _count--;

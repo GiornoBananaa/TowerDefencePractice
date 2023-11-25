@@ -8,6 +8,7 @@ namespace LevelSystem
     public class LevelData
     {
         [field: SerializeField] public float LevelDuration { get; private set; }
+        [field: SerializeField] public float PreparationDuration { get; private set; }
         [field: SerializeField] public float EnemiesSpawnCooldown { get; private set; }
         [field: SerializeField] public EnemySpawnData[] EnemySpawnData { get; private set; }
     }

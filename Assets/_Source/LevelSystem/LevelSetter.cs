@@ -17,7 +17,7 @@ namespace LevelSystem
         
         public void NextLevel()
         {
-            if (_levelsData.Length <= _level+1) return;
+            if (_level+1 >= _levelsData.Length) return;
             
             _level++;
             OnLevelChange?.Invoke(_levelsData[_level]);

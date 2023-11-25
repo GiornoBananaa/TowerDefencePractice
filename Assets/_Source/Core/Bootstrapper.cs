@@ -56,12 +56,11 @@ namespace Core
             _levelSetter.OnLevelChange += _enemySpawner.OnLevelChange;
             _levelSetter.OnLevelChange += _levelTimer.OnLevelChange;
             _levelSetter.NextLevel();
-            _levelTimer.OnTimerEnd += _enemySpawner.StopSpawning;
-            _levelTimer.OnTimerEnd += _levelSetter.NextLevel;
-            _levelTimer.OnTimerEnd += _enemyPool.ReturnToSpawnPoint;
-            _levelTimer.OnTimerStart += _enemySpawner.StartSpawning;
-            _levelTimer.OnTimerStart += _enemyPool.GoAttackBase;
-            _levelTimer.EnableTimer(true);
+            _levelTimer.OnAttackEnd += _enemySpawner.StopSpawning;
+            _levelTimer.OnAttackEnd += _levelSetter.NextLevel;
+            _levelTimer.OnAttackEnd += _enemyPool.ReturnToSpawnPoint;
+            _levelTimer.OnAttackStart += _enemySpawner.StartSpawning;
+            _levelTimer.OnAttackStart += _enemyPool.GoAttackBase;
             /*   DAY AND NIGHT CYCLE MIGHT BE REMOVED
             _dayAndNightCycle.OnNightStarted += _enemySpawner.StopSpawning;
             _dayAndNightCycle.OnDayStarted += _enemySpawner.StartSpawning;
@@ -74,11 +73,11 @@ namespace Core
         {
             _levelSetter.OnLevelChange -= _enemyPool.OnLevelChange;
             _levelSetter.OnLevelChange -= _enemySpawner.OnLevelChange;
-            _levelTimer.OnTimerEnd -= _enemySpawner.StopSpawning;
-            _levelTimer.OnTimerEnd -= _levelSetter.NextLevel;
-            _levelTimer.OnTimerEnd -= _enemyPool.ReturnToSpawnPoint;
-            _levelTimer.OnTimerStart -= _enemySpawner.StartSpawning;
-            _levelTimer.OnTimerStart -= _enemyPool.GoAttackBase;
+            _levelTimer.OnAttackEnd -= _enemySpawner.StopSpawning;
+            _levelTimer.OnAttackEnd -= _levelSetter.NextLevel;
+            _levelTimer.OnAttackEnd -= _enemyPool.ReturnToSpawnPoint;
+            _levelTimer.OnAttackStart -= _enemySpawner.StartSpawning;
+            _levelTimer.OnAttackStart -= _enemyPool.GoAttackBase;
         }
     }
 }
