@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace EnemySystem
@@ -12,9 +13,10 @@ namespace EnemySystem
             _enemyInvoker = enemyInvoker;
             _enemyDeadlyLayer = enemyDeadlyLayerMask;
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
+            
             if (other.gameObject.layer == _enemyDeadlyLayer)
             {
                 _enemyInvoker.ReturnToPool();

@@ -42,7 +42,7 @@ namespace EnemySystem
             
             OnReturnToPool += _enemyInvoker.ResetEnemy;
             OnLifeEnd += DropCoins;
-            OnLifeEnd += OnReturnToPool;
+            OnLifeEnd += _enemyInvoker.ReturnToPool;
         }
 
         private void OnEnable()
@@ -65,6 +65,9 @@ namespace EnemySystem
         private void OnDestroy()
         {
             OnEnemyDestroy.Invoke();
+            OnReturnToPool -= _enemyInvoker.ResetEnemy;
+            OnLifeEnd -= DropCoins;
+            OnLifeEnd -= OnReturnToPool;
         }
         
         public void TakeDamage(int damage)
@@ -93,5 +96,6 @@ namespace EnemySystem
                 Instantiate(_coinPrefab,transform.position,transform.rotation);
             }
         }
+        
     }
 }
