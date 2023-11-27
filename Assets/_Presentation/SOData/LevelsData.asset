@@ -13,17 +13,14 @@ MonoBehaviour:
   m_Name: LevelsData
   m_EditorClassIdentifier: 
   <LevelsData>k__BackingField:
-  - <LevelDuration>k__BackingField: 4
+  - <LevelDuration>k__BackingField: 60
     <PreparationDuration>k__BackingField: 3
     <EnemiesSpawnCooldown>k__BackingField: 1
     <EnemySpawnData>k__BackingField:
     - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}
       <EnemyType>k__BackingField: 0
       <SpawnChance>k__BackingField: 70
-    - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: 47744cd95556a1748822d6cb74fd7cc7, type: 3}
-      <EnemyType>k__BackingField: 1
-      <SpawnChance>k__BackingField: 30
-  - <LevelDuration>k__BackingField: 4
+  - <LevelDuration>k__BackingField: 20
     <PreparationDuration>k__BackingField: 3
     <EnemiesSpawnCooldown>k__BackingField: 1
     <EnemySpawnData>k__BackingField:
