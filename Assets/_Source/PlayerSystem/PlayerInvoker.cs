@@ -64,9 +64,9 @@ namespace PlayerSystem
             _cameraController.FocusOnObject(null,true);
         }
         
-        public void SelectTree(RaycastHit hitInfo)
+        public void SelectTree()
         {
-            _objectSelector.SelectTree(hitInfo);
+            _objectSelector.SelectTree();
         }
         
         public bool SpendCoins(int count)

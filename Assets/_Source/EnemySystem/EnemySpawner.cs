@@ -30,11 +30,19 @@ namespace EnemySystem
         public void StartSpawning()
         {
             enabled = true;
+            foreach (var spawnPoint in _spawnPoints)
+            {
+                spawnPoint.gameObject.SetActive(false);
+            }
         }
         
         public void StopSpawning()
         {
             enabled = false;
+            foreach (var spawnPoint in _spawnPoints)
+            {
+                spawnPoint.gameObject.SetActive(true);
+            }
         }
         
         private void CheckCooldown()

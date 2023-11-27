@@ -28,6 +28,7 @@ namespace Core
         [SerializeField] private GameObject[] _towerPrefabs;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;
+        [SerializeField] private BuildingModeButton _buildingModeButton;
         private PlayerInvoker _playerInvoker;
         private PlayerInventory _playerInventory;
         private TowerSpawner _towerSpawner;
@@ -48,6 +49,10 @@ namespace Core
             _playerInventory.AddCoins(0);
             _playerItemCollector.Construct(_playerInventory);
             _playerInvoker = new PlayerInvoker(_towerSpawner, _unitInspector, _playerInventory,_objectSelector,_cameraController);
+            _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
+            _buildingModeButton.OnBuildModeDisable += _objectSelector.UnselectAll;
+            _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;
+            _objectSelector.OnBuildModeDisable += _buildingModeButton.DisableBuildView;
             _inputListener.Construct(_playerInvoker);
             _towerOptionsUI.Construct(_playerInvoker);
             _enemyPool = new EnemyPool(_baseHealth);
@@ -71,6 +76,10 @@ namespace Core
 
         private void OnDestroy()
         {
+            _buildingModeButton.OnBuildModeEnable -= _objectSelector.SelectTree;
+            _buildingModeButton.OnBuildModeDisable -= _objectSelector.UnselectAll;
+            _objectSelector.OnBuildModeEnable -= _buildingModeButton.EnableBuildView;
+            _objectSelector.OnBuildModeDisable -= _buildingModeButton.DisableBuildView;
             _levelSetter.OnLevelChange -= _enemyPool.OnLevelChange;
             _levelSetter.OnLevelChange -= _enemySpawner.OnLevelChange;
             _levelTimer.OnAttackEnd -= _enemySpawner.StopSpawning;

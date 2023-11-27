@@ -102,7 +102,7 @@ namespace EnemySystem
                 if (enemyInstance.TryGetComponent(out Enemy enemy))
                 {
                     enemy.Construct(_baseHealth);
-                    enemy.OnLifeEnd += () => ReturnToPool(enemy);
+                    enemy.OnReturnToPool += () => ReturnToPool(enemy);
                     enemy.OnEnemyDestroy += () => _count--;
                     ReturnToPool(enemy);
                     _count++;

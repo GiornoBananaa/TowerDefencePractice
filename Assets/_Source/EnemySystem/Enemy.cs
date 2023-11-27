@@ -9,7 +9,9 @@ namespace EnemySystem
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private EnemyTargetTrigger _enemyTargetTrigger;
+        [SerializeField] private EnemyCollisionDetector _enemyCollisionDetector;
         [SerializeField] private int _baseLayer;
+        [SerializeField] private int _deadlyForEnemyLayer;
         [SerializeField] private GameObject _coinPrefab;
         
         private EnemyInvoker _enemyInvoker;
@@ -24,6 +26,7 @@ namespace EnemySystem
         [field: SerializeField] public int Coins{ get; private set; }
         
         public Action OnLifeEnd;
+        public Action OnReturnToPool;
         public Action OnEnemyDestroy;
 
         public void Construct(BaseHealth baseHealth)
@@ -34,11 +37,12 @@ namespace EnemySystem
             EnemyHealth enemyHealth= new EnemyHealth(Hp,this);
             _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
-
+            _enemyCollisionDetector.Construct(_enemyInvoker,_deadlyForEnemyLayer);
             _spawnPoint = transform.position;
             
-            OnLifeEnd += _enemyInvoker.ResetEnemy;
+            OnReturnToPool += _enemyInvoker.ResetEnemy;
             OnLifeEnd += DropCoins;
+            OnLifeEnd += OnReturnToPool;
         }
 
         private void OnEnable()

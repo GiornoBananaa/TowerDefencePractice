@@ -40,5 +40,10 @@ namespace EnemySystem
         {
             _enemyHealth.Heal(100);
         }
+        
+        public void ReturnToPool()
+        {
+            _enemy.OnReturnToPool?.Invoke();
+        }
     }
 }

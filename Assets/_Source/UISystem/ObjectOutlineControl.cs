@@ -8,30 +8,30 @@ namespace UISystem
     public class ObjectOutlineControl : MonoBehaviour
     {
         [SerializeField] private Outline _outline;
+        [SerializeField] float _defaultWidth;
+        [SerializeField] float _highlightedWidth;
         
-        private bool _outlineViewed;
-        private float _defaultWidth;
+        private bool _outlineHighlighted;
         
         private void Awake()
         {
-            _defaultWidth = _outline.OutlineWidth;
-            _outline.OutlineWidth = 0;
-            _outlineViewed = false;
+            _outline.OutlineWidth = _defaultWidth;
+            _outlineHighlighted = false;
             EnableOutline(false);
         }
 
         private void OnMouseEnter()
         {
-            _outlineViewed = true;
+            _outlineHighlighted = true;
             
-            _outline.OutlineWidth = _defaultWidth;
+            _outline.OutlineWidth = _highlightedWidth;
         }
         
         private void OnMouseExit()
         {
-            _outlineViewed = false;
+            _outlineHighlighted = false;
             
-            _outline.OutlineWidth = 0;
+            _outline.OutlineWidth = _defaultWidth;
         }
         
         public void EnableOutline(bool enable)
@@ -42,7 +42,7 @@ namespace UISystem
         // This coroutine fixes graphic bug where outline is showed for one frame when it's enabling
         private IEnumerator OutlineEnable(bool enable)
         {
-            _outline.OutlineWidth = _outlineViewed && enable ? _defaultWidth : 0;
+            _outline.OutlineWidth = _outlineHighlighted ? _highlightedWidth : _defaultWidth;
             yield return new WaitForEndOfFrame();
             _outline.enabled = enable;
         } 

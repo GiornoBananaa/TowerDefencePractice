@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127572587051395899}
   - component: {fileID: 1344294456027974820}
+  - component: {fileID: 7991543268336878472}
   - component: {fileID: 6118019879962970533}
   - component: {fileID: 2065332571792609850}
   - component: {fileID: 6150013013844296508}
@@ -51,7 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 6118019879962970533}
   _enemyTargetTrigger: {fileID: 8066345967498542750}
+  _enemyCollisionDetector: {fileID: 7991543268336878472}
   _baseLayer: 7
+  _deadlyForEnemyLayer: 13
   _coinPrefab: {fileID: 542574092261891432, guid: 72ad47347be1eb4419687ac6d8cb2b27, type: 3}
   <EnemyType>k__BackingField: 1
   <Speed>k__BackingField: 6
@@ -59,6 +62,18 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 1
   <Hp>k__BackingField: 14
   <Coins>k__BackingField: 1
+--- !u!114 &7991543268336878472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073385137046030694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0367aa1d34ee6e54093283898d93bacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &6118019879962970533
 NavMeshAgent:
   m_ObjectHideFlags: 0

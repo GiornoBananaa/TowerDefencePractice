@@ -39,8 +39,8 @@ namespace InputSystem
             
             ReadSelectTowerCell(_raycastHit,hitLayerBite);
             ReadSelectBranch(_raycastHit,hitLayerBite);
-            ReadSelectFreeView(_raycastHit,hitLayerBite);
-            ReadSelectTree(_raycastHit,hitLayerBite);
+            //ReadSelectFreeView(_raycastHit,hitLayerBite);
+            ReadSelectTree(hitLayerBite);
         }
 
         private void ReadMoveCamera()
@@ -92,10 +92,10 @@ namespace InputSystem
                 _playerInvoker.SelectCell(hit);
         }
         
-        private void ReadSelectTree(RaycastHit hit,int hitLayerBite)
+        private void ReadSelectTree(int hitLayerBite)
         {
             if( _treeLayer == (_treeLayer | hitLayerBite))
-                _playerInvoker.SelectTree(hit);
+                _playerInvoker.SelectTree();
         }
     }
 }
