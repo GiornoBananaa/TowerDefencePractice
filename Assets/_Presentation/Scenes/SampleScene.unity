@@ -5729,7 +5729,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1396948138740575510, guid: f1bc2022878d624408015058fe5e9846, type: 3}
       propertyPath: m_Name
-      value: Enviroment
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 7724510642180188214, guid: f1bc2022878d624408015058fe5e9846, type: 3}
       propertyPath: m_LocalPosition.x
