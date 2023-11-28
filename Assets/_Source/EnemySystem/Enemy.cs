@@ -21,7 +21,7 @@ namespace EnemySystem
         [field: SerializeField] public EnemyTypes EnemyType{ get; private set; }
         [field: SerializeField] public float Speed{ get; private set; }
         [field: SerializeField] public int Attack{ get; private set; }
-        [field: SerializeField] public int AttackCooldown{ get; private set; }
+        [field: SerializeField] public float AttackCooldown{ get; private set; }
         [field: SerializeField] public int Hp{ get; private set; }
         [field: SerializeField] public int Coins{ get; private set; }
         

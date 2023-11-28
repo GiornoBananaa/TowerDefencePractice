@@ -1,31 +1,76 @@
-using EnemySystem;
+using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new EnemyData", menuName = "SO/EnemyData")]
-public class EnemyDataSO : ScriptableObject
+namespace EnemySystem
 {
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private EnemyTypes EnemyType;
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private float Speed;
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private int Attack;
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private int AttackCooldown;
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private int Hp;
-    [SerializeField][OnChangedCall("OnSerializedPropertyChange")] private int Coins;
-    [SerializeField] private GameObject Prefab;
-    [SerializeField] private bool ApplyChanges;
-
-    public void OnSerializedPropertyChange()
+    [CreateAssetMenu(fileName = "new EnemyData", menuName = "SO/EnemyData")]
+    public class EnemyDataSO : ScriptableObject
     {
-        if (!ApplyChanges) return;
+        [SerializeField] private EnemyTypes EnemyType;
+        [SerializeField] private float Speed;
+        [SerializeField] private int Attack;
+        [SerializeField] private float AttackCooldown;
+        [SerializeField] private int Hp;
+        [SerializeField] private int Coins;
+        [SerializeField] private GameObject Prefab;
 
-        SerializedObject serialized = new SerializedObject(Prefab.GetComponent<Enemy>());
-        serialized.Update();
-        serialized.FindProperty("<EnemyType>k__BackingField").enumValueIndex = (int)EnemyType;
-        serialized.FindProperty("<Speed>k__BackingField").floatValue = Speed;
-        serialized.FindProperty("<Attack>k__BackingField").intValue = Attack;
-        serialized.FindProperty("<AttackCooldown>k__BackingField").intValue = AttackCooldown;
-        serialized.FindProperty("<Hp>k__BackingField").intValue = Hp;
-        serialized.FindProperty("<Coins>k__BackingField").intValue = Coins;
-        serialized.ApplyModifiedProperties();
+        public void OnEnable()
+        {
+            SerializedObject serialized = new SerializedObject(Prefab.GetComponent<Enemy>());
+            serialized.FindProperty("<EnemyType>k__BackingField").enumValueIndex = (int)EnemyType;
+            serialized.FindProperty("<Speed>k__BackingField").floatValue = Speed;
+            serialized.FindProperty("<Attack>k__BackingField").intValue = Attack;
+            serialized.FindProperty("<AttackCooldown>k__BackingField").floatValue = AttackCooldown;
+            serialized.FindProperty("<Hp>k__BackingField").intValue = Hp;
+            serialized.FindProperty("<Coins>k__BackingField").intValue = Coins;
+        }
+    }
+
+    [CustomEditor(typeof(EnemyDataSO))]
+    [CanEditMultipleObjects]
+    public class AudioSettingsCustomEditor : Editor
+    {
+        private SerializedProperty EnemyType;
+        private SerializedProperty Speed;
+        private SerializedProperty Attack;
+        private SerializedProperty AttackCooldown;
+        private SerializedProperty Hp;
+        private SerializedProperty Coins; 
+        private SerializedProperty Prefab;
+
+        private void OnEnable()
+        {
+            EnemyType = serializedObject.FindProperty("EnemyType");
+            Speed = serializedObject.FindProperty("Speed");
+            Attack = serializedObject.FindProperty("Attack");
+            AttackCooldown = serializedObject.FindProperty("AttackCooldown");
+            Hp = serializedObject.FindProperty("Hp");
+            Coins = serializedObject.FindProperty("Coins");
+            Prefab = serializedObject.FindProperty("Prefab");
+        }
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+            DrawDefaultInspector();
+            GUILayout.Space(8);
+            if (GUILayout.Button("Apply data"))
+            {
+                Enemy enemy = Prefab.objectReferenceValue.GetComponent<Enemy>();
+                SerializedObject serialized = new SerializedObject(enemy);
+                serialized.Update();
+                serialized.FindProperty("<EnemyType>k__BackingField").enumValueIndex = EnemyType.enumValueIndex;
+                serialized.FindProperty("<Speed>k__BackingField").floatValue = Speed.floatValue;
+                serialized.FindProperty("<Attack>k__BackingField").intValue = Attack.intValue;
+                serialized.FindProperty("<AttackCooldown>k__BackingField").floatValue = AttackCooldown.floatValue;
+                serialized.FindProperty("<Hp>k__BackingField").intValue = Hp.intValue;
+                serialized.FindProperty("<Coins>k__BackingField").intValue = Coins.intValue;
+                serialized.ApplyModifiedProperties();
+            }
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }
