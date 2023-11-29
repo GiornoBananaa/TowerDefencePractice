@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TowerSystem;
 using UISystem;
 using UnityEngine;
@@ -7,27 +8,33 @@ namespace PlayerSystem
 {
     public class PlayerInvoker
     {
+        
+        //TODO create another invoker for build mode
+        //TODO load enemy and tower data from resources
+        
         private readonly CameraController _cameraController;
         private readonly TowerSpawner _towerSpawner;
         private readonly UnitInspector _unitInspector;
         private readonly PlayerInventory _playerInventory;
         private readonly ObjectsSelector _objectSelector;
+        private readonly Dictionary<TowerType,TowerDataSO> _towers;
 
         public Action OnTowerCellSelect;
         
         public PlayerInvoker(TowerSpawner towerSpawner,UnitInspector unitInspector,
-            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController)
+            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerDataSO> towers)
         {
             _playerInventory = playerInventory;
             _towerSpawner = towerSpawner;
             _unitInspector = unitInspector;
             _objectSelector = objectSelector;
             _cameraController = cameraController;
+            _towers = towers;
         }
         
         public bool SpawnUnit(TowerType towerType)
         {
-            if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(5))
+            if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(_towers[towerType].Price))
             {
                 Transform towerTransform = _objectSelector.SelectedCell.GetTowerPlaceAndDisable(out Vector3 attackRangePoint);
                 _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation, attackRangePoint);

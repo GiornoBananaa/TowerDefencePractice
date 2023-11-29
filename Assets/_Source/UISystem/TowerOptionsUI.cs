@@ -1,37 +1,46 @@
+using System;
 using PlayerSystem;
 using TowerSystem;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UISystem
 {
     public class TowerOptionsUI : MonoBehaviour
     {
-        [SerializeField] private Button _basicButton;
         [SerializeField] private GameObject _panel;
-
+        [SerializeField] private TowerBuildButton[] _towerBuildButtons;
+        
         private PlayerInvoker _playerInvoker;
         
         public void Construct(PlayerInvoker playerInvoker)
         {
             _playerInvoker = playerInvoker;
             _playerInvoker.OnTowerCellSelect += OpenPanel;
+            foreach (var towerBuildButton in _towerBuildButtons)
+            {
+                towerBuildButton.OnClick += SpawnUnit;
+            }
         }
-
-        private void Awake()
-        {
-            _basicButton.onClick.AddListener(() => SpawnUnit(TowerType.Basic));
-        }
-
+        
         private void SpawnUnit(TowerType type)
         {
-            _playerInvoker.SpawnUnit(type);
-            _panel.SetActive(false);
+            if (_playerInvoker.SpawnUnit(type))
+            {
+                _panel.SetActive(false);
+            }
         }
         
         private void OpenPanel()
         {
             _panel.SetActive(true);
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var towerBuildButton in _towerBuildButtons)
+            {
+                towerBuildButton.OnClick -= SpawnUnit;
+            }
         }
     }
 }

@@ -99,13 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d8e262cf14e8c4eb816c9861418755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TowerType>k__BackingField: 0
+  <Attack>k__BackingField: 5
+  <AttackCooldown>k__BackingField: 0.4
+  <AttackRange>k__BackingField: 15
+  <BulletSpeed>k__BackingField: 15
+  <Price>k__BackingField: 5
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
   _enemyTrigger: {fileID: 764649429808528001}
-  <Attack>k__BackingField: 5
-  <BulletSpeed>k__BackingField: 15
-  <AttackCooldown>k__BackingField: 0.4
-  <Radius>k__BackingField: 13
 --- !u!135 &764649429808528001
 SphereCollider:
   m_ObjectHideFlags: 0

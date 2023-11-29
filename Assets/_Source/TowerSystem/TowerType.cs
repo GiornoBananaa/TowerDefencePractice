@@ -2,6 +2,8 @@
 {
     public enum TowerType
     {
-        Basic
+        Basic,
+        Basic2,
+        Basic3,
     }
 }
