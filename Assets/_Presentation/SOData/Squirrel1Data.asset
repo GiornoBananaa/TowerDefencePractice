@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3cf37e8b11fdc4b9239bddcc9c63c9, type: 3}
+  m_Name: Squirrel1Data
+  m_EditorClassIdentifier: 
+  <TowerType>k__BackingField: 0
+  <Attack>k__BackingField: 5
+  <AttackCooldown>k__BackingField: 0.4
+  <AttackRange>k__BackingField: 15
+  <BulletSpeed>k__BackingField: 15
+  <Price>k__BackingField: 5
+  <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: dac8cb0c5942e8440be887550aeb0c38, type: 3}

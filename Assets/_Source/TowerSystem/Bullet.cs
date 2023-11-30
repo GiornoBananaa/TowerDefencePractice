@@ -16,7 +16,7 @@ namespace TowerSystem
         public Action OnLifeEnd;
         public Action OnBulletDestroy;
 
-        public void SetTarget(Enemy enemy, int damage,int bulletSpeed)
+        public void SetTarget(Enemy enemy, int damage, float bulletSpeed)
         {
             _damage = damage;
             _speed = bulletSpeed;

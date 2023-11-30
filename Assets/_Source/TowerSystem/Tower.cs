@@ -6,10 +6,12 @@ namespace TowerSystem
 {
     public class Tower : MonoBehaviour
     {
+        [field: SerializeField] public TowerType TowerType { get; private set; }
         [field: SerializeField] public int Attack { get; private set; }
-        [field: SerializeField] public int BulletSpeed { get; private set; }
         [field: SerializeField] public float AttackCooldown { get; private set; }
-        [field: SerializeField] public float Radius { get; private set; }
+        [field: SerializeField] public float AttackRange { get; private set; }
+        [field: SerializeField] public float BulletSpeed { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
 
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _firePoint;
@@ -21,7 +23,7 @@ namespace TowerSystem
 
         private void Awake()
         {
-            _enemyTrigger.radius = Radius;
+            _enemyTrigger.radius = AttackRange;
             _bulletPool = new BulletPool(_bulletPrefab,10);
             _enemiesInRange = new List<Enemy>();
         }
@@ -48,7 +50,7 @@ namespace TowerSystem
             if (_bulletPool.TryGetFromPool(out Bullet bullet))
             {
                 while (!_enemiesInRange[0].gameObject.activeSelf
-                       || Vector3.Distance( transform.TransformPoint(_enemyTrigger.center), _enemiesInRange[0].transform.position) > Radius * 1.5f)
+                       || Vector3.Distance( transform.TransformPoint(_enemyTrigger.center), _enemiesInRange[0].transform.position) > AttackRange * 1.5f)
                 {
                     _enemiesInRange.RemoveAt(0);
                     if(_enemiesInRange.Count == 0)

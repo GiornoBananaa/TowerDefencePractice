@@ -15,22 +15,11 @@ namespace EnemySystem
         [SerializeField] private int Hp;
         [SerializeField] private int Coins;
         [SerializeField] private GameObject Prefab;
-
-        public void OnEnable()
-        {
-            SerializedObject serialized = new SerializedObject(Prefab.GetComponent<Enemy>());
-            serialized.FindProperty("<EnemyType>k__BackingField").enumValueIndex = (int)EnemyType;
-            serialized.FindProperty("<Speed>k__BackingField").floatValue = Speed;
-            serialized.FindProperty("<Attack>k__BackingField").intValue = Attack;
-            serialized.FindProperty("<AttackCooldown>k__BackingField").floatValue = AttackCooldown;
-            serialized.FindProperty("<Hp>k__BackingField").intValue = Hp;
-            serialized.FindProperty("<Coins>k__BackingField").intValue = Coins;
-        }
     }
 
     [CustomEditor(typeof(EnemyDataSO))]
     [CanEditMultipleObjects]
-    public class AudioSettingsCustomEditor : Editor
+    public class EnemyDataCustomEditor : Editor
     {
         private SerializedProperty EnemyType;
         private SerializedProperty Speed;
