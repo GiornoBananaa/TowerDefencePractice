@@ -27,8 +27,7 @@ namespace Core
         [SerializeField] private DayAndNightCycle _dayAndNightCycle;
         [SerializeField] private GameObject[] _enemyPrefabs;
         [SerializeField] private GameObject[] _towerPrefabs;
-        [SerializeField] private TowerDataSO _squirrelData;
-        [SerializeField] private TowerDataSO _squirrel2Data;
+        [SerializeField] private TowersDataSO _squirrelsData;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private BuildingModeButton _buildingModeButton;
@@ -42,6 +41,8 @@ namespace Core
         //TODO give data through scriptable object
         private void Awake()
         {
+            
+            
             _levelSetter = new LevelSetter(_levelsData.LevelsData);
             _game = new Game(_levelSetter);
             _baseHealth.OnBaseDestroy += _game.Lose;
@@ -51,7 +52,7 @@ namespace Core
             _playerInventory.OnCoinsCountChange += _hudUpdater.CoinsCountUpdate;
             _playerInventory.AddCoins(0);
             _playerItemCollector.Construct(_playerInventory);
-            _playerInvoker = new PlayerInvoker(_towerSpawner, _unitInspector, _playerInventory, _objectSelector, _cameraController, new Dictionary<TowerType, TowerDataSO>() { { TowerType.Basic, _squirrelData }, { TowerType.Basic2, _squirrel2Data } });
+            _playerInvoker = new PlayerInvoker(_towerSpawner, _unitInspector, _playerInventory, _objectSelector, _cameraController, new Dictionary<TowerType, TowerData>() { { TowerType.Basic, _squirrelsData.TowersData[0] }, { TowerType.Basic2, _squirrelsData.TowersData[1] } });
             _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable += _objectSelector.UnselectAll;
             _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;

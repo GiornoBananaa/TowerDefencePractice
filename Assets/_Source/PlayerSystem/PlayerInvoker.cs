@@ -17,12 +17,12 @@ namespace PlayerSystem
         private readonly UnitInspector _unitInspector;
         private readonly PlayerInventory _playerInventory;
         private readonly ObjectsSelector _objectSelector;
-        private readonly Dictionary<TowerType,TowerDataSO> _towers;
+        private readonly Dictionary<TowerType,TowerData> _towers;
 
         public Action OnTowerCellSelect;
         
         public PlayerInvoker(TowerSpawner towerSpawner,UnitInspector unitInspector,
-            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerDataSO> towers)
+            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData> towers)
         {
             _playerInventory = playerInventory;
             _towerSpawner = towerSpawner;
