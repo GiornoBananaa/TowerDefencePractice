@@ -2,8 +2,8 @@
 {
     public enum TowerType
     {
-        Basic,
-        Basic2,
-        Basic3,
+        BasicSquirrel = 0,
+        Squirrel2 = 1,
+        Squirrel3 = 2,
     }
 }

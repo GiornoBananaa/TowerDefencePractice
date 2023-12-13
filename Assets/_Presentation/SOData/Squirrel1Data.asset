@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3cf37e8b11fdc4b9239bddcc9c63c9, type: 3}
   m_Name: Squirrel1Data
   m_EditorClassIdentifier: 
-  <TowerType>k__BackingField: 0
-  <Attack>k__BackingField: 5
-  <AttackCooldown>k__BackingField: 0.4
-  <AttackRange>k__BackingField: 15
-  <BulletSpeed>k__BackingField: 15
-  <Price>k__BackingField: 5
-  <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: dac8cb0c5942e8440be887550aeb0c38, type: 3}
+  <TowersData>k__BackingField:
+  - <TowerType>k__BackingField: 0
+    <Attack>k__BackingField: 5
+    <AttackCooldown>k__BackingField: 0.4
+    <AttackRange>k__BackingField: 15
+    <BulletSpeed>k__BackingField: 15
+    <Price>k__BackingField: 5
+    <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: dac8cb0c5942e8440be887550aeb0c38, type: 3}
+  - <TowerType>k__BackingField: 1
+    <Attack>k__BackingField: 5
+    <AttackCooldown>k__BackingField: 0.4
+    <AttackRange>k__BackingField: 15
+    <BulletSpeed>k__BackingField: 15
+    <Price>k__BackingField: 10
+    <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: 2520b3dab55669f4ba6b335f8eaea8e6, type: 3}

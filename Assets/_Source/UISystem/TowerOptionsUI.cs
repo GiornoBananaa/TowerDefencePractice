@@ -19,6 +19,8 @@ namespace UISystem
             foreach (var towerBuildButton in _towerBuildButtons)
             {
                 towerBuildButton.OnClick += SpawnUnit;
+                towerBuildButton.OnTowerMouseEnter += TurnOnTowerPreview;
+                towerBuildButton.OnTowerMouseExit += TurnOffTowerPreview;
             }
         }
         
@@ -27,7 +29,18 @@ namespace UISystem
             if (_playerInvoker.SpawnUnit(type))
             {
                 _panel.SetActive(false);
+                TurnOffTowerPreview();
             }
+        }
+        
+        private void TurnOnTowerPreview(TowerType type)
+        {
+            _playerInvoker.TurnOnTowerPreview(type);
+        }
+        
+        private void TurnOffTowerPreview()
+        {
+            _playerInvoker.TurnOffTowerPreview();
         }
         
         private void OpenPanel()
@@ -35,11 +48,13 @@ namespace UISystem
             _panel.SetActive(true);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             foreach (var towerBuildButton in _towerBuildButtons)
             {
                 towerBuildButton.OnClick -= SpawnUnit;
+                towerBuildButton.OnTowerMouseEnter -= TurnOnTowerPreview;
+                towerBuildButton.OnTowerMouseExit -= TurnOffTowerPreview;
             }
         }
     }

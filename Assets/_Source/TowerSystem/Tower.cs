@@ -12,15 +12,16 @@ namespace TowerSystem
         [field: SerializeField] public float AttackRange { get; private set; }
         [field: SerializeField] public float BulletSpeed { get; private set; }
         [field: SerializeField] public int Price { get; private set; }
-
+        
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private SphereCollider _enemyTrigger;
+        [SerializeField] private Projector _rangeProjector;
         
         private BulletPool _bulletPool;
         private List<Enemy> _enemiesInRange;
         private float _timeElapsed;
-
+        
         private void Awake()
         {
             _enemyTrigger.radius = AttackRange;
@@ -34,7 +35,17 @@ namespace TowerSystem
             
             CheckCooldown();
         }
-
+        
+        public void SetRangePoint(Vector3 position)
+        {
+            _enemyTrigger.center = transform.InverseTransformPoint(position);
+        }
+        
+        public void ShowAttackRange(bool show)
+        {
+            _rangeProjector.gameObject.SetActive(show);
+        }
+        
         private void CheckCooldown()
         {
             _timeElapsed += Time.deltaTime;
@@ -75,11 +86,6 @@ namespace TowerSystem
             {
                 _enemiesInRange.Remove(enemy);
             }
-        }
-
-        public void SetRangePoint(Vector3 position)
-        {
-            _enemyTrigger.center = transform.InverseTransformPoint(position);
         }
     }
 }
