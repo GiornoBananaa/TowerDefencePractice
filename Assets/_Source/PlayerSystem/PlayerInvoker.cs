@@ -61,9 +61,9 @@ namespace PlayerSystem
         
         public void InspectUnit(RaycastHit hit)
         {
-            Tower tower = hit.transform.GetComponent<Tower>();
-            _cameraController.FocusOnObject(tower.transform, false);
-            _towerInspector.InspectTower(tower);
+            BaseSquirrel baseSquirrel = hit.transform.GetComponent<BaseSquirrel>();
+            _cameraController.FocusOnObject(baseSquirrel.transform, false);
+            _towerInspector.InspectTower(baseSquirrel);
         }
         
         public void SelectBranch(RaycastHit hitInfo)

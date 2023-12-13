@@ -9,11 +9,11 @@ namespace UISystem
         [SerializeField] private Projector _rangeProjector;
         [SerializeField] private GameObject _inspectorPanel;
         
-        private Tower _inspectedTower;
+        private BaseSquirrel _inspectedBaseSquirrel;
         
-        public void InspectTower(Tower tower)
+        public void InspectTower(BaseSquirrel baseSquirrel)
         {
-            _inspectedTower = tower;
+            _inspectedBaseSquirrel = baseSquirrel;
             _inspectorPanel.SetActive(true);
         }
 

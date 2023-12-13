@@ -22,11 +22,8 @@ namespace Core
         [FormerlySerializedAs("_unitInspector")] [SerializeField] private TowerInspector _towerInspector;
         [SerializeField] private TowerOptionsUI _towerOptionsUI;
         [SerializeField] private BaseHealth _baseHealth;
-        [SerializeField] private Player _player;
         [SerializeField] private PlayerItemCollector _playerItemCollector;
         [SerializeField] private DayAndNightCycle _dayAndNightCycle;
-        [SerializeField] private GameObject[] _enemyPrefabs;
-        [SerializeField] private GameObject[] _towerPrefabs;
         [SerializeField] private TowersDataSO _squirrelsData;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;

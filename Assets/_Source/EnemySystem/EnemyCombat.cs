@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using BaseSystem;
+using Core;
+using TowerSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -10,6 +14,7 @@ namespace EnemySystem
         private float _timeElapsed;
         private bool _baseInAttackRange;
         private BaseHealth _baseHealth;
+        private List<IKillable> _towersInRange;
         
         public EnemyCombat(BaseHealth baseHealth, Enemy enemy)
         {
@@ -18,6 +23,7 @@ namespace EnemySystem
             _baseHealth = baseHealth;
             _baseInAttackRange = false;
             _timeElapsed = 0;
+            _towersInRange = new List<IKillable>();
         }
         
         public void StartBaseAttack()
@@ -27,14 +33,18 @@ namespace EnemySystem
 
         public void UpdateCooldown()
         {
-            if(!_baseInAttackRange) return;
+            if(!_baseInAttackRange && _towersInRange.Count == 0) return;
             
             _timeElapsed += Time.deltaTime;
-
+            
             if (_timeElapsed > _attackCooldown)
             {
                 _timeElapsed = 0;
-                Attack();
+                
+                if(_towersInRange.Count > 0)
+                    AttackTower();
+                else
+                    AttackBase();
             }
         }
         
@@ -42,10 +52,25 @@ namespace EnemySystem
         {
             _baseInAttackRange = false;
         }
-
-        private void Attack()
+        
+        public void StartTowerAttack(IKillable tower)
+        {
+            _towersInRange.Add(tower);
+        }
+        
+        public void StopTowerAttack(IKillable tower)
+        {
+            _towersInRange.Remove(tower);
+        }
+        
+        private void AttackBase()
         {
             _baseHealth.TakeDamage(_attack);
+        }
+        
+        private void AttackTower()
+        {
+            _towersInRange.First().TakeDamage(_attack);
         }
     }
 }

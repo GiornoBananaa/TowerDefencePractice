@@ -12,7 +12,6 @@ namespace TowerSystem
         [field: SerializeField] public int Attack { get; private set; }
         [field: SerializeField] public float AttackCooldown { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
-        [field: SerializeField] public float BulletSpeed { get; private set; }
         [field: SerializeField] public int Price { get; private set; }
         [field: SerializeField] public GameObject Prefab { get; private set; }
     }

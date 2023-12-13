@@ -1,3 +1,5 @@
+using Core;
+using TowerSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -29,6 +31,18 @@ namespace EnemySystem
         public void StopBaseAttack()
         {
             _enemyCombat.StopBaseAttack();
+        }
+        
+        public void AttackTower(Tower tower)
+        {
+            _enemyCombat.StartTowerAttack((IKillable)tower);
+            _enemyMovement.AddTarget(tower.transform);
+        }
+        
+        public void StopTowerAttack(Tower tower)
+        {
+            _enemyCombat.StopTowerAttack((IKillable)tower);
+            _enemyMovement.RemoveTarget(tower.transform);
         }
         
         public void SetNewTargetPosition(Vector3 target)

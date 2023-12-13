@@ -120,6 +120,7 @@ MonoBehaviour:
   _enemyTargetTrigger: {fileID: 7979470029481667630}
   _enemyCollisionDetector: {fileID: 5216885028745300798}
   _baseLayer: 7
+  _towerLayer: 12
   _deadlyForEnemyLayer: 13
   _coinPrefab: {fileID: 542574092261891432, guid: 72ad47347be1eb4419687ac6d8cb2b27, type: 3}
   <EnemyType>k__BackingField: 0

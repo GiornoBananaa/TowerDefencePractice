@@ -1,6 +1,8 @@
+using Core;
+
 namespace EnemySystem
 {
-    public class EnemyHealth
+    public class EnemyHealth: IKillable
     {
         private readonly Enemy _enemy;
         private readonly int _maxHp;
@@ -12,7 +14,9 @@ namespace EnemySystem
             _currentHp = maxHp;
             _enemy = enemy;
         }
-        
+
+        public int HP => _currentHp;
+
         public void TakeDamage(int damage)
         {
             _currentHp -= damage;
