@@ -31,6 +31,7 @@ namespace UISystem
         
         public void OnPointerDown(PointerEventData eventData)
         {
+            
             OnClick?.Invoke(_towerType);
         }
         

@@ -28,6 +28,7 @@ namespace UISystem
         {
             if (_playerInvoker.SpawnUnit(type))
             {
+                AudioManager.Instance.Play("squirrel_interact");
                 _panel.SetActive(false);
                 TurnOffTowerPreview();
             }

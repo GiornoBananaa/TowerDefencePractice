@@ -73,6 +73,7 @@ namespace EnemySystem
         
         public void TakeDamage(int damage)
         {
+            AudioManager.Instance.Play("hit_beaver");
             _enemyInvoker.TakeDamage(damage);
         }
         
