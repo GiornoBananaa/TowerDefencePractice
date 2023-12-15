@@ -96,17 +96,17 @@ namespace PlayerSystem
             if (focusTransform == null)
             {
                 var position = _target.position;
-                SetNePosition(new Vector3(position.x,_deafultHeight,position.z), 
+                SetNewPosition(new Vector3(position.x,_deafultHeight,position.z), 
                     _transitionDuration, CameraState.FreeCamera);
             }
             else
             {
-                SetNePosition(focusTransform.position, _transitionDuration,
+                SetNewPosition(focusTransform.position, _transitionDuration,
                     follow ? CameraState.Follow : CameraState.FocusOnSelected);
             }
         }
         
-        private void SetNePosition(Vector3 newPosition, float duration, CameraState onCompleteCameraState)
+        private void SetNewPosition(Vector3 newPosition, float duration, CameraState onCompleteCameraState)
         {
             _cameraState = CameraState.InTransition;
              _target.DOMove(newPosition, duration).OnComplete(() =>

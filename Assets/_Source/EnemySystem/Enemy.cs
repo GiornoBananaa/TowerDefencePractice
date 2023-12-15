@@ -11,6 +11,7 @@ namespace EnemySystem
         [SerializeField] private EnemyTargetTrigger _enemyTargetTrigger;
         [SerializeField] private EnemyCollisionDetector _enemyCollisionDetector;
         [SerializeField] private int _baseLayer;
+        [SerializeField] private int _towerLayer;
         [SerializeField] private int _deadlyForEnemyLayer;
         [SerializeField] private GameObject _coinPrefab;
         
@@ -36,7 +37,7 @@ namespace EnemySystem
             EnemyMovement enemyMovement = new EnemyMovement(_navMeshAgent);
             EnemyHealth enemyHealth= new EnemyHealth(Hp,this);
             _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
-            _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer);
+            _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer,_towerLayer);
             _enemyCollisionDetector.Construct(_enemyInvoker,_deadlyForEnemyLayer);
             _spawnPoint = transform.position;
             

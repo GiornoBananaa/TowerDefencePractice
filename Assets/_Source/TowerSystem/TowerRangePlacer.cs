@@ -14,7 +14,7 @@ namespace TowerSystem
         [SerializeField] private LayerMask _groundLayerMask;
 
         private bool _isinMavxRange;
-        private Tower _tower;
+        private BaseSquirrel _baseSquirrel;
         private TowerCell _towerCell;
         private PlayerInvoker _playerInvoker;
 
@@ -35,9 +35,9 @@ namespace TowerSystem
             CheckRange();
         }
 
-        public void EnableRangeChanging(Tower tower, TowerCell towerCell)
+        public void EnableRangeChanging(BaseSquirrel baseSquirrel, TowerCell towerCell)
         {
-            _tower = tower;
+            _baseSquirrel = baseSquirrel;
             _towerCell = towerCell;
             enabled = true;
             _maxRangeProjector.enabled = true;

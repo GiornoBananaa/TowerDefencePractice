@@ -27,7 +27,7 @@ namespace InputSystem
             ClickRaycast();
             ReadMoveCamera();
         }
-
+        //TODO: Fix tower click
         private void ClickRaycast()
         {
             if(!Input.GetMouseButtonDown(0)) return;
@@ -36,9 +36,10 @@ namespace InputSystem
             if(!Physics.Raycast(ray, out RaycastHit _raycastHit) || EventSystem.current.IsPointerOverGameObject()) return;
             
             int hitLayerBite = (1 << _raycastHit.collider.gameObject.layer);
-            
+            Debug.Log(_raycastHit.collider.gameObject.layer);
             ReadSelectTowerCell(_raycastHit,hitLayerBite);
             ReadSelectBranch(_raycastHit,hitLayerBite);
+            ReadInspectTower(_raycastHit,hitLayerBite);
             //ReadSelectFreeView(_raycastHit,hitLayerBite);
             ReadSelectTree(hitLayerBite);
         }

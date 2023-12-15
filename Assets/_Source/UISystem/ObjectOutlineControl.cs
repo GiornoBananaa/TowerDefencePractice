@@ -13,6 +13,7 @@ namespace UISystem
         
         private bool _outlineHighlighted;
         
+        
         private void Awake()
         {
             _outline.OutlineWidth = _defaultWidth;

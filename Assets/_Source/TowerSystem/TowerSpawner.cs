@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -6,21 +7,20 @@ namespace TowerSystem
 {
     public class TowerSpawner
     {
-        private GameObject[] _towersPrefabs;
+        private Dictionary<TowerType,TowerData> _towersData;
 
-        public TowerSpawner(GameObject[] towersPrefabs)
+        public TowerSpawner(Dictionary<TowerType,TowerData> towersData)
         {
-            _towersPrefabs = towersPrefabs;
+            _towersData = towersData;
         }
         
         public void SpawnUnit(TowerType type, Vector3 position, Quaternion rotation, Vector3 attackRangePoint)
         {
-            int prefabIndex = (int)type;
-            
-            if(prefabIndex > _towersPrefabs.Length)
+            if(!_towersData.ContainsKey(type))
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
             
-            Object.Instantiate(_towersPrefabs[(int)type],position,rotation).GetComponent<Tower>().SetRangePoint(attackRangePoint);
+            Object.Instantiate(_towersData[type].Prefab,position,rotation)
+                .GetComponent<Tower>().Construct(attackRangePoint,_towersData[type]);
         }
     }
 }

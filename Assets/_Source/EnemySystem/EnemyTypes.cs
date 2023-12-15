@@ -2,8 +2,8 @@
 {
     public enum EnemyTypes
     {
-        Cube,
-        Circle,
-        NumberOfTypes
+        Cube = 0,
+        Circle = 1,
+        NumberOfTypes = 2
     }
 }

@@ -12,11 +12,12 @@ namespace TowerSystem
         [SerializeField] private Material _deafultMaterial;
         [SerializeField] private Material _highlightingMaterial;
         [SerializeField] private Material _selectionMaterial;
-
+        
         private bool _isOccupied;
         private bool _isSelected;
-
+        
         public bool IsOccupied => _isOccupied;
+        public Vector3 AttackRangePoint => _attackRangePoint.position;
         
         private void Awake()
         {
@@ -24,12 +25,12 @@ namespace TowerSystem
             _isSelected = false;
             gameObject.SetActive(false);
         }
-
+        
         private void OnEnable()
         {
             _projector.material = _deafultMaterial;
         }
-
+        
         private void OnMouseEnter()
         {
             _projector.material = _highlightingMaterial;

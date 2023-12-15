@@ -14,19 +14,19 @@ namespace PlayerSystem
         
         private readonly CameraController _cameraController;
         private readonly TowerSpawner _towerSpawner;
-        private readonly UnitInspector _unitInspector;
+        private readonly TowerInspector _towerInspector;
         private readonly PlayerInventory _playerInventory;
         private readonly ObjectsSelector _objectSelector;
-        private readonly Dictionary<TowerType,TowerDataSO> _towers;
+        private readonly Dictionary<TowerType,TowerData> _towers;
 
         public Action OnTowerCellSelect;
         
-        public PlayerInvoker(TowerSpawner towerSpawner,UnitInspector unitInspector,
-            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerDataSO> towers)
+        public PlayerInvoker(TowerSpawner towerSpawner,TowerInspector towerInspector,
+            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData> towers)
         {
             _playerInventory = playerInventory;
             _towerSpawner = towerSpawner;
-            _unitInspector = unitInspector;
+            _towerInspector = towerInspector;
             _objectSelector = objectSelector;
             _cameraController = cameraController;
             _towers = towers;
@@ -40,8 +40,18 @@ namespace PlayerSystem
                 _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation, attackRangePoint);
                 return true;
             }
-
+            
             return false;
+        }
+
+        public void TurnOffTowerPreview()
+        {
+            _towerInspector.HideAttackRange();
+        }
+        
+        public void TurnOnTowerPreview(TowerType towerType)
+        {
+            _towerInspector.ShowAttackRange(_objectSelector.SelectedCell.AttackRangePoint,_towers[towerType].AttackRange);
         }
         
         public void MoveCamera(Vector3 direction)
@@ -51,7 +61,9 @@ namespace PlayerSystem
         
         public void InspectUnit(RaycastHit hit)
         {
-            _unitInspector.InspectUnit(hit);
+            BaseSquirrel baseSquirrel = hit.transform.GetComponent<BaseSquirrel>();
+            _cameraController.FocusOnObject(baseSquirrel.transform, false);
+            _towerInspector.InspectTower(baseSquirrel);
         }
         
         public void SelectBranch(RaycastHit hitInfo)
@@ -67,6 +79,8 @@ namespace PlayerSystem
 
         public void UnselectAll(RaycastHit hitInfo)
         {
+            Debug.Log("Unselect");
+            _towerInspector.StopInspection();
             _objectSelector.UnselectAll();
             _cameraController.FocusOnObject(null,true);
         }

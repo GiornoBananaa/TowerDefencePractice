@@ -6,9 +6,9 @@ namespace TowerSystem
 {
     public class Bullet : MonoBehaviour
     {
-        private float _lifeTime = 10f;
+        [SerializeField] private float _lifeTime = 10f;
+        [SerializeField] private float _speed;
         private int _damage;
-        private float _speed;
         private float _currentLifeTime;
         private Transform _target;
         private Enemy _targetEnemy;
@@ -16,10 +16,9 @@ namespace TowerSystem
         public Action OnLifeEnd;
         public Action OnBulletDestroy;
 
-        public void SetTarget(Enemy enemy, int damage, float bulletSpeed)
+        public void SetTarget(Enemy enemy, int damage)
         {
             _damage = damage;
-            _speed = bulletSpeed;
             _target = enemy.transform;
             _targetEnemy = enemy;
         }
