@@ -52,25 +52,21 @@ namespace UISystem
         {
             foreach (var towerType in towerTypes)
             {
+                TowerBuildButton towerBuildButton;
                 if(_towerBuildButtonPool.Count!=0)
                 {
-                    TowerBuildButton button = _towerBuildButtonPool.Dequeue();
-                    button.SetTowerType(towerType, _towerDatas[towerType].Price);
-                    button.gameObject.SetActive(true);
-                    _activeTowerBuildButtons.Add(button);
+                    towerBuildButton = _towerBuildButtonPool.Dequeue();
                 }
                 else
-                {
-                    TowerBuildButton towerBuildButton =
-                        Instantiate(_buttonPrefab, _buttonsLayout).GetComponent<TowerBuildButton>();
-
-                    towerBuildButton.SetTowerType(towerType, _towerDatas[towerType].Price);
-                    towerBuildButton.OnClick += SpawnUnit;
-                    towerBuildButton.OnTowerMouseEnter += TurnOnTowerPreview;
-                    towerBuildButton.OnTowerMouseExit += TurnOffTowerPreview;
-
-                    _activeTowerBuildButtons.Add(towerBuildButton);
+                { 
+                    towerBuildButton = Instantiate(_buttonPrefab, _buttonsLayout).GetComponent<TowerBuildButton>();
                 }
+                towerBuildButton.SetTowerType(towerType, _towerDatas[towerType].Price);
+                towerBuildButton.OnClick += SpawnUnit;
+                towerBuildButton.OnTowerMouseEnter += TurnOnTowerPreview;
+                towerBuildButton.OnTowerMouseExit += TurnOffTowerPreview;
+                towerBuildButton.gameObject.SetActive(true);
+                _activeTowerBuildButtons.Add(towerBuildButton);
             }
             _panel.SetActive(true);
         }

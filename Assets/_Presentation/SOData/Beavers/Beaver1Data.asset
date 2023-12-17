@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 0
   Speed: 6
-  Attack: 3
+  Attack: 2
   AttackCooldown: 1
   Hp: 14
   Coins: 1
