@@ -15,6 +15,8 @@ namespace Core
     public class Bootstrapper : MonoBehaviour
     {
         [SerializeField] private LevelsDataSO _levelsData;
+        [SerializeField] private TowersDataSO _towersDataByLevel;
+        [SerializeField] private TowersSpawnDataSO _towersSpawnData;
         [SerializeField] private LevelTimer _levelTimer;
         [SerializeField] private InputListener _inputListener;
         [SerializeField] private EnemySpawner _enemySpawner;
@@ -24,7 +26,6 @@ namespace Core
         [SerializeField] private BaseHealth _baseHealth;
         [SerializeField] private PlayerItemCollector _playerItemCollector;
         [SerializeField] private DayAndNightCycle _dayAndNightCycle;
-        [SerializeField] private TowersDataSO _squirrelsData;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private BuildingModeButton _buildingModeButton;
@@ -38,23 +39,31 @@ namespace Core
         
         private void Awake()
         {
-            Dictionary<TowerType, TowerData> towersDictionary = new Dictionary<TowerType, TowerData>()
+            Dictionary<TowerType, TowerData[]> towersDictionary = new Dictionary<TowerType, TowerData[]>()
             {
-                { TowerType.BasicSquirrel, _squirrelsData.BasicSquirrelData },
-                { TowerType.Squirrel2, _squirrelsData.Squirrel2Data },
-                { TowerType.BerserkSquirrel, _squirrelsData.BerserkSquirrelData }
+                { TowerType.BasicSquirrel, _towersDataByLevel.BasicSquirrelDataByLevels },
+                { TowerType.Squirrel2, _towersDataByLevel.Squirrel2DataByLevels },
+                { TowerType.BerserkSquirrel, _towersDataByLevel.BerserkSquirrelDataByLevels }
+            };
+            
+            Dictionary<TowerType, GameObject> towersSpawnDataDictionary = new Dictionary<TowerType, GameObject>()
+            {
+                { TowerType.BasicSquirrel, _towersSpawnData.TowersSpawnData[0].Prefab },
+                { TowerType.Squirrel2, _towersSpawnData.TowersSpawnData[1].Prefab },
+                { TowerType.BerserkSquirrel, _towersSpawnData.TowersSpawnData[2].Prefab }
             };
             
             _levelSetter = new LevelSetter(_levelsData.LevelsData);
             _game = new Game(_levelSetter);
             _baseHealth.OnBaseDestroy += _game.Lose;
             _baseHealth.OnBaseHealthChange += _hudUpdater.BaseHealthUpdate;
-            _towerSpawner = new TowerSpawner(towersDictionary);
+            _towerSpawner = new TowerSpawner(towersDictionary,towersSpawnDataDictionary);
             _playerInventory = new PlayerInventory();
             _playerInventory.OnCoinsCountChange += _hudUpdater.CoinsCountUpdate;
             _playerInventory.AddCoins(10);
             _playerItemCollector.Construct(_playerInventory);
             _playerInvoker = new PlayerInvoker(_towerSpawner, _towerInspector, _playerInventory, _objectSelector, _cameraController, towersDictionary);
+            _towerInspector.Construct(_playerInvoker);
             _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable += _objectSelector.UnselectAll;
             _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;

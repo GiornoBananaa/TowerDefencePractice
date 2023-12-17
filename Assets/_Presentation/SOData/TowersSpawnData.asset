@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9cde4ccc6d4dc9b5709ad86bf6dff7, type: 3}
+  m_Name: TowersSpawnData
+  m_EditorClassIdentifier: 
+  <TowersSpawnData>k__BackingField:
+  - <TowerType>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: dac8cb0c5942e8440be887550aeb0c38, type: 3}
+  - <TowerType>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: 2520b3dab55669f4ba6b335f8eaea8e6, type: 3}
+  - <TowerType>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 3128080323717870265, guid: a31af92ecfb2d8e4dbb1e9a85c18b295, type: 3}

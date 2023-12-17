@@ -10,7 +10,7 @@ namespace TowerSystem
         [SerializeField] private Transform _firePoint;
         protected BulletPool _bulletPool;
         
-        public override void Construct(TowerCell towerCell, TowerData towerData)
+        public override void Construct(TowerCell towerCell, TowerData[] towerData)
         {
             base.Construct(towerCell,towerData);
             _bulletPool = new BulletPool(_bulletPrefab,10);

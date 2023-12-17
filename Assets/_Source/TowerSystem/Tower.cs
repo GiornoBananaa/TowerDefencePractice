@@ -6,18 +6,20 @@ namespace TowerSystem
 {
     public abstract class Tower : MonoBehaviour
     {
-        public virtual TowerData TowerData { get; protected set; }
+        public TowerData[] TowerLevelDatas { get; protected set; }
+        public virtual TowerData TowerData => TowerLevelDatas[Level];
+        public int Level { get; protected set; }
+        public TowerCell TowerCell { get; private set; }
         
         [SerializeField] protected SphereCollider _enemyTrigger;
         protected List<Enemy> _enemiesInRange;
-        protected TowerCell _towerCell;
         private float _timeElapsed;
         
-        public virtual void Construct(TowerCell towerCell, TowerData towerData)
+        public virtual void Construct(TowerCell towerCell, TowerData[] towerData)
         {
-            _towerCell = towerCell;
+            TowerCell = towerCell;
             _enemyTrigger.center = transform.InverseTransformPoint(towerCell.AttackRangePoint);
-            TowerData = towerData;
+            TowerLevelDatas = towerData;
             _enemyTrigger.radius = TowerData.AttackRange;
             _enemiesInRange = new List<Enemy>();
         }
@@ -30,6 +32,11 @@ namespace TowerSystem
         }
         
         protected abstract void AttackEnemy();
+
+        public void UpgradeTower(int level)
+        {
+            Level = level;
+        }
         
         protected void OnTriggerEnter(Collider other)
         {

@@ -8,22 +8,26 @@ namespace TowerSystem
         [SerializeField] private Projector _projector;
         [SerializeField] private Collider _collider;
         [SerializeField] private Transform _spawnPoint;
-        [SerializeField] private Transform _attackRangePoint;
         [SerializeField] private Material _deafultMaterial;
         [SerializeField] private Material _highlightingMaterial;
         [SerializeField] private Material _selectionMaterial;
+        [SerializeField] private LayerMask _groundLayer;
         
         private bool _isOccupied;
         private bool _isSelected;
+        private Vector3 _attackRangePoint;
         
         [field:SerializeField] public TowerType[] AvailableTowerTypes { get; private set; }
         public bool IsOccupied => _isOccupied;
-        public Vector3 AttackRangePoint => _attackRangePoint.position;
+        public Vector3 AttackRangePoint => _attackRangePoint;
         public Transform SpawnPoint => _spawnPoint;
         
         
         private void Awake()
         {
+            Ray ray = new Ray(transform.position,Vector3.down); 
+            Physics.Raycast(ray, out RaycastHit hit,_groundLayer);
+            _attackRangePoint = hit.point;
             _isOccupied = false;
             _isSelected = false;
             gameObject.SetActive(false);

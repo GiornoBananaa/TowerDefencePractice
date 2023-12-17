@@ -190,6 +190,7 @@ MonoBehaviour:
   _sizeOverMouseModifer: 1.2
   _rectTransform: {fileID: 1132275609639579337}
   _towerCost: {fileID: 4717683627262536278}
+  _towerName: {fileID: 6390255061460604211}
 --- !u!222 &191619636297097777
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ GameObject:
   - component: {fileID: 1513417937500618784}
   - component: {fileID: 6390255061460604211}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TowerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

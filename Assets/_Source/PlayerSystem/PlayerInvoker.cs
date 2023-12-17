@@ -13,12 +13,12 @@ namespace PlayerSystem
         private readonly TowerInspector _towerInspector;
         private readonly PlayerInventory _playerInventory;
         private readonly ObjectsSelector _objectSelector;
-        private readonly Dictionary<TowerType,TowerData> _towers;
+        private readonly Dictionary<TowerType,TowerData[]> _towers;
 
         public Action<TowerType[]> OnTowerCellSelect;
         
         public PlayerInvoker(TowerSpawner towerSpawner,TowerInspector towerInspector,
-            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData> towers)
+            PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData[]> towers)
         {
             _playerInventory = playerInventory;
             _towerSpawner = towerSpawner;
@@ -30,7 +30,7 @@ namespace PlayerSystem
         
         public bool SpawnUnit(TowerType towerType)
         {
-            if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(_towers[towerType].Price))
+            if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(_towers[towerType][0].Price))
             {
                 _objectSelector.SelectedCell.DisableCell();
                 _towerSpawner.SpawnUnit(towerType, _objectSelector.SelectedCell);
@@ -47,7 +47,7 @@ namespace PlayerSystem
         
         public void TurnOnTowerPreview(TowerType towerType)
         {
-            _towerInspector.ShowAttackRange(_objectSelector.SelectedCell.AttackRangePoint,_towers[towerType].AttackRange);
+            _towerInspector.ShowAttackRange(_objectSelector.SelectedCell.AttackRangePoint,_towers[towerType][0].AttackRange);
         }
         
         public void MoveCamera(Vector3 direction)
@@ -57,9 +57,19 @@ namespace PlayerSystem
         
         public void InspectUnit(RaycastHit hit)
         {
-            BaseSquirrel baseSquirrel = hit.transform.GetComponent<BaseSquirrel>();
-            _cameraController.FocusOnObject(baseSquirrel.transform, false);
-            _towerInspector.InspectTower(baseSquirrel);
+            Tower tower = hit.transform.GetComponent<Tower>();
+            _cameraController.FocusOnObject(tower.transform, false);
+            _towerInspector.InspectTower(tower);
+        }
+        
+        public bool UpgradeTower(Tower tower)
+        {
+            if(SpendCoins(tower.TowerLevelDatas[tower.Level+1].Price))
+            {
+                tower.UpgradeTower(tower.Level+1);
+                return true;
+            }
+            return false;
         }
         
         public void SelectBranch(RaycastHit hitInfo)

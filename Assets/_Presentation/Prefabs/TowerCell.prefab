@@ -82,10 +82,13 @@ MonoBehaviour:
   _projector: {fileID: 3593786197184520905}
   _collider: {fileID: 2916299122748011476}
   _spawnPoint: {fileID: 4886066826517077438}
-  _attackRangePoint: {fileID: 3628804584388977437}
   _deafultMaterial: {fileID: 2100000, guid: 72fe15203d3ca7049a7c375bef99b0cc, type: 2}
   _highlightingMaterial: {fileID: 2100000, guid: 3a0517a9265f6864380a7b04ba2c0420, type: 2}
   _selectionMaterial: {fileID: 2100000, guid: 5dcdf4ef1b27d9c4f9d602aa0b1d0305, type: 2}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  <AvailableTowerTypes>k__BackingField: 
 --- !u!65 &2916299122748011476
 BoxCollider:
   m_ObjectHideFlags: 0

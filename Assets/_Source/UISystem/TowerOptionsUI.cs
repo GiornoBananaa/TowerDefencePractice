@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using PlayerSystem;
 using TowerSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UISystem
 {
@@ -17,9 +14,9 @@ namespace UISystem
         private PlayerInvoker _playerInvoker;
         private List<TowerBuildButton> _activeTowerBuildButtons;
         private Queue<TowerBuildButton> _towerBuildButtonPool;
-        private Dictionary<TowerType,TowerData> _towerDatas;
+        private Dictionary<TowerType,TowerData[]> _towerDatas;
         
-        public void Construct(PlayerInvoker playerInvoker, Dictionary<TowerType,TowerData> towerDatas)
+        public void Construct(PlayerInvoker playerInvoker, Dictionary<TowerType,TowerData[]> towerDatas)
         {
             _playerInvoker = playerInvoker;
             _playerInvoker.OnTowerCellSelect += OpenPanel;
@@ -61,7 +58,7 @@ namespace UISystem
                 { 
                     towerBuildButton = Instantiate(_buttonPrefab, _buttonsLayout).GetComponent<TowerBuildButton>();
                 }
-                towerBuildButton.SetTowerType(towerType, _towerDatas[towerType].Price);
+                towerBuildButton.SetTowerType(_towerDatas[towerType][0]);
                 towerBuildButton.OnClick += SpawnUnit;
                 towerBuildButton.OnTowerMouseEnter += TurnOnTowerPreview;
                 towerBuildButton.OnTowerMouseExit += TurnOffTowerPreview;

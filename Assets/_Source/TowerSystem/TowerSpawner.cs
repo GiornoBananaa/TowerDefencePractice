@@ -7,11 +7,13 @@ namespace TowerSystem
 {
     public class TowerSpawner
     {
-        private Dictionary<TowerType,TowerData> _towersData;
+        private Dictionary<TowerType,GameObject> _towersSpawnData;
+        private Dictionary<TowerType,TowerData[]> _towersData;
 
-        public TowerSpawner(Dictionary<TowerType,TowerData> towersData)
+        public TowerSpawner(Dictionary<TowerType,TowerData[]> towersData,Dictionary<TowerType,GameObject> towersSpawnData)
         {
             _towersData = towersData;
+            _towersSpawnData = towersSpawnData;
         }
         
         public void SpawnUnit(TowerType type,  TowerCell towerCell)
@@ -19,7 +21,7 @@ namespace TowerSystem
             if(!_towersData.ContainsKey(type))
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
             
-            Object.Instantiate(_towersData[type].Prefab,towerCell.SpawnPoint.position,towerCell.SpawnPoint.localRotation)
+            Object.Instantiate(_towersSpawnData[type],towerCell.SpawnPoint.position,towerCell.SpawnPoint.localRotation)
                 .GetComponent<Tower>().Construct(towerCell,_towersData[type]);
         }
     }

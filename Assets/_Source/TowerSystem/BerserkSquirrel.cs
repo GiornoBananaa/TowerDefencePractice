@@ -9,18 +9,20 @@ namespace TowerSystem
     {
         [SerializeField] private HealthView _healthView;
         private int _currentHp;
-        private BerserkTowerData _berserkTowerData;
-
-        public override TowerData TowerData => _berserkTowerData;
+        private BerserkTowerData[] _berserkTowerLevelDatas;
         
         public event Action OnLifeEnd;
         
-        public override void Construct(TowerCell towerCell, TowerData towerData)
+        public override TowerData TowerData => _berserkTowerLevelDatas[Level];
+        private BerserkTowerData BerserkTowerData =>_berserkTowerLevelDatas[Level];
+
+        
+        public override void Construct(TowerCell towerCell, TowerData[] towerData)
         {
-            _berserkTowerData = ((BerserkTowerData)towerData);
+            _berserkTowerLevelDatas = ((BerserkTowerData[])towerData);
             base.Construct(towerCell,towerData);
-            _currentHp = _berserkTowerData.HP;
-            _healthView.ChangeHeath((float)_currentHp/_berserkTowerData.HP);
+            _currentHp = BerserkTowerData.HP;
+            _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
         }
         
         protected override void AttackEnemy()
@@ -42,21 +44,21 @@ namespace TowerSystem
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                _towerCell.EnableCell();
+                TowerCell.EnableCell();
                 Destroy(gameObject);
                 OnLifeEnd?.Invoke();
             }
 
             if (_currentHp < 0)
                 _currentHp = 0;
-            _healthView.ChangeHeath((float)_currentHp/_berserkTowerData.HP);
+            _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
         }
 
         public void Heal(int hp)
         {
-            _currentHp = _currentHp + hp > _berserkTowerData.HP ?
-                _berserkTowerData.HP : _currentHp + hp;
-            _healthView.ChangeHeath((float)_currentHp/_berserkTowerData.HP);
+            _currentHp = _currentHp + hp > BerserkTowerData.HP ?
+                BerserkTowerData.HP : _currentHp + hp;
+            _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
         }
     }
 }

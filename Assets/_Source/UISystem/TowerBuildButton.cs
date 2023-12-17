@@ -12,6 +12,7 @@ namespace UISystem
         [SerializeField] private float _sizeOverMouseModifer;
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private TMP_Text _towerCost;
+        [SerializeField] private TMP_Text _towerName;
         
         private TowerType _towerType;
         
@@ -20,16 +21,16 @@ namespace UISystem
         public Action OnTowerMouseExit;
         private Vector2 _defaultSize;
         
-        
         private void Awake()
         {
             _defaultSize = _rectTransform.sizeDelta;
         }
 
-        public void SetTowerType(TowerType towerType, int cost)
+        public void SetTowerType(TowerData towerData)
         {
-            _towerType = towerType;
-            _towerCost.text = cost.ToString();
+            _towerType = towerData.TowerType;
+            _towerCost.text = towerData.Price.ToString();
+            _towerName.text = towerData.Name;
         }
         
         public void OnPointerEnter(PointerEventData eventData)

@@ -40,7 +40,7 @@ namespace UISystem
             StartCoroutine(OutlineEnable(enable));
         }
         
-        // This coroutine fixes graphic bug where outline is showed for one frame when it's enabling
+        // This coroutine fixes graphic bu*g where outline is showed for one frame when it's enabling
         private IEnumerator OutlineEnable(bool enable)
         {
             _outline.OutlineWidth = _outlineHighlighted ? _highlightedWidth : _defaultWidth;
