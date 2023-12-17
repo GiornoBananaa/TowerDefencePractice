@@ -21,6 +21,8 @@ namespace PlayerSystem
         private Branch _selectedBranch;
         private TowerCell _selectedCell;
         
+        private bool _buildModeSelected;
+        
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private ObjectOutlineControl _treeOutline;
         [SerializeField] private Branch[] _branches;
@@ -88,6 +90,7 @@ namespace PlayerSystem
 
         public void SelectTree()
         {
+            _buildModeSelected = true;
             _treeOutline.EnableOutline(false);
             SelectedBranch = null;
             SelectedCell = null;
@@ -101,6 +104,7 @@ namespace PlayerSystem
         
         public void UnselectAll()
         {
+            _buildModeSelected = false;
             _treeOutline.EnableOutline(true);
             SelectedBranch = null;
             SelectedCell = null;
@@ -114,6 +118,7 @@ namespace PlayerSystem
         
         public void SelectBranch(RaycastHit hitInfo)
         {
+            if(!_buildModeSelected) return;
             GameObject selected = hitInfo.collider.gameObject;
             
             foreach (var branch in _branches)

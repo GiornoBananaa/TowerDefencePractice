@@ -80,7 +80,10 @@ namespace EnemySystem
         public void GoBackToSpawn()
         {
             if(gameObject.activeInHierarchy)
+            {
                 _enemyInvoker.SetNewTargetPosition(_spawnPoint);
+                _enemyInvoker.EnableAdditionalMoveTargeting(false);
+            }
             _destination = _spawnPoint;
         }
         

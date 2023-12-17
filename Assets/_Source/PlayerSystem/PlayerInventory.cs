@@ -18,11 +18,6 @@ namespace PlayerSystem
             }
         }
         
-        public PlayerInventory()
-        {
-            Coins = 5;
-        }
-        
         public void AddCoins(int count)
         {
             Coins+=count;

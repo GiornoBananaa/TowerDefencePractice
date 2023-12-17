@@ -9,11 +9,11 @@ namespace UISystem
         [SerializeField] private Projector _rangeProjector;
         [SerializeField] private GameObject _inspectorPanel;
         
-        private BaseSquirrel _inspectedBaseSquirrel;
+        private Tower _inspectedTower;
         
-        public void InspectTower(BaseSquirrel baseSquirrel)
+        public void InspectTower(Tower tower)
         {
-            _inspectedBaseSquirrel = baseSquirrel;
+            _inspectedTower = tower;
             _inspectorPanel.SetActive(true);
         }
 
@@ -29,6 +29,7 @@ namespace UISystem
             _rangeProjector.orthographicSize = rangeSize;
             _rangeProjector.gameObject.SetActive(true);
         }
+        
         public void HideAttackRange()
         {
             _rangeProjector.gameObject.SetActive(false);

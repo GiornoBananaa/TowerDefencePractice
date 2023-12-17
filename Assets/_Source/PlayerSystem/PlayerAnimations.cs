@@ -24,7 +24,7 @@ namespace PlayerSystem
         {
             SetAnimations();
         }
-
+        
         private void SetAnimations()
         {
             float prevdist = Vector3.Distance(transform.position, _prevPosition);

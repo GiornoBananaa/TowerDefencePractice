@@ -14,7 +14,7 @@ namespace EnemySystem
         private float _timeElapsed;
         private bool _baseInAttackRange;
         private BaseHealth _baseHealth;
-        private List<IKillable> _towersInRange;
+        private List<Tower> _towersInRange;
         
         public EnemyCombat(BaseHealth baseHealth, Enemy enemy)
         {
@@ -23,7 +23,7 @@ namespace EnemySystem
             _baseHealth = baseHealth;
             _baseInAttackRange = false;
             _timeElapsed = 0;
-            _towersInRange = new List<IKillable>();
+            _towersInRange = new List<Tower>();
         }
         
         public void StartBaseAttack()
@@ -53,12 +53,12 @@ namespace EnemySystem
             _baseInAttackRange = false;
         }
         
-        public void StartTowerAttack(IKillable tower)
+        public void StartTowerAttack(Tower tower)
         {
             _towersInRange.Add(tower);
         }
         
-        public void StopTowerAttack(IKillable tower)
+        public void StopTowerAttack(Tower tower)
         {
             _towersInRange.Remove(tower);
         }
@@ -70,7 +70,15 @@ namespace EnemySystem
         
         private void AttackTower()
         {
-            _towersInRange.First().TakeDamage(_attack);
+            Tower tower = _towersInRange.First();
+            if (tower == null)
+            {
+                _towersInRange.Remove(tower);
+            }
+            else
+            {
+                ((IKillable)tower).TakeDamage(_attack);
+            }
         }
     }
 }

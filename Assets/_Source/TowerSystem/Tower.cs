@@ -6,14 +6,19 @@ namespace TowerSystem
 {
     public abstract class Tower : MonoBehaviour
     {
-        public TowerData TowerData { get; private set; }
+        public virtual TowerData TowerData { get; protected set; }
         
         [SerializeField] protected SphereCollider _enemyTrigger;
         protected List<Enemy> _enemiesInRange;
+        protected TowerCell _towerCell;
         private float _timeElapsed;
         
-        protected virtual void Awake()
+        public virtual void Construct(TowerCell towerCell, TowerData towerData)
         {
+            _towerCell = towerCell;
+            _enemyTrigger.center = transform.InverseTransformPoint(towerCell.AttackRangePoint);
+            TowerData = towerData;
+            _enemyTrigger.radius = TowerData.AttackRange;
             _enemiesInRange = new List<Enemy>();
         }
         
@@ -25,13 +30,6 @@ namespace TowerSystem
         }
         
         protected abstract void AttackEnemy();
-        
-        public void Construct(Vector3 attackRangePosition, TowerData towerData)
-        {
-            _enemyTrigger.center = transform.InverseTransformPoint(attackRangePosition);
-            TowerData = towerData;
-            _enemyTrigger.radius = TowerData.AttackRange;
-        }
         
         protected void OnTriggerEnter(Collider other)
         {

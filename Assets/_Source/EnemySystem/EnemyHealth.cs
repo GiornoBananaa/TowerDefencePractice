@@ -1,9 +1,11 @@
+using System;
 using Core;
 
 namespace EnemySystem
 {
     public class EnemyHealth: IKillable
     {
+        public event Action OnLifeEnd; 
         private readonly Enemy _enemy;
         private readonly int _maxHp;
         private int _currentHp;
@@ -22,7 +24,7 @@ namespace EnemySystem
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                _enemy.OnLifeEnd.Invoke();
+                OnLifeEnd?.Invoke();
             }
 
             if (_currentHp < 0)

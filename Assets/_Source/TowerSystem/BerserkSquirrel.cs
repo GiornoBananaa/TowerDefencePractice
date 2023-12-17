@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using UnityEngine;
 
 namespace TowerSystem
@@ -6,9 +7,19 @@ namespace TowerSystem
     public class BerserkSquirrel : Tower, IKillable
     {
         private int _currentHp;
-        private int _maxHp;
+        private BerserkTowerData _berserkTowerData;
+
+        public override TowerData TowerData => _berserkTowerData;
         
-        public int HP { get; }
+        public event Action OnLifeEnd;
+        public int HP { get; private set; }
+        
+        public override void Construct(TowerCell towerCell, TowerData towerData)
+        {
+            _berserkTowerData = ((BerserkTowerData)towerData);
+            base.Construct(towerCell,towerData);
+            HP = _berserkTowerData.HP;
+        }
         
         protected override void AttackEnemy()
         {
@@ -21,7 +32,7 @@ namespace TowerSystem
                     return;
             }
             
-            
+            // no attack(temporarily)
         }
         
         public void TakeDamage(int damage)
@@ -29,7 +40,9 @@ namespace TowerSystem
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                // dead
+                _towerCell.EnableCell();
+                Destroy(gameObject);
+                OnLifeEnd?.Invoke();
             }
 
             if (_currentHp < 0)
@@ -38,8 +51,8 @@ namespace TowerSystem
 
         public void Heal(int hp)
         {
-            _currentHp = _currentHp + hp > _maxHp ?
-                _maxHp : _currentHp + hp;
+            _currentHp = _currentHp + hp > _berserkTowerData.HP ?
+                _berserkTowerData.HP : _currentHp + hp;
         }
     }
 }

@@ -16,8 +16,11 @@ namespace TowerSystem
         private bool _isOccupied;
         private bool _isSelected;
         
+        [field:SerializeField] public TowerType[] AvailableTowerTypes { get; private set; }
         public bool IsOccupied => _isOccupied;
         public Vector3 AttackRangePoint => _attackRangePoint.position;
+        public Transform SpawnPoint => _spawnPoint;
+        
         
         private void Awake()
         {
@@ -58,13 +61,18 @@ namespace TowerSystem
             }
         }
         
-        public Transform GetTowerPlaceAndDisable(out Vector3 attackRangePoint)
+        public void DisableCell()
         {
             _collider.enabled = false;
             _projector.enabled = false;
             _isOccupied = true;
-            attackRangePoint = _attackRangePoint.position;
-            return _spawnPoint;
+        }
+        
+        public void EnableCell()
+        {
+            _collider.enabled = true;
+            _projector.enabled = true;
+            _isOccupied = false;
         }
     }
 }

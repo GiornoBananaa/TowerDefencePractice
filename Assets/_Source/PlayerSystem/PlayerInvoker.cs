@@ -8,10 +8,6 @@ namespace PlayerSystem
 {
     public class PlayerInvoker
     {
-        
-        //TODO create another invoker for build mode
-        //TODO load enemy and tower data from resources
-        
         private readonly CameraController _cameraController;
         private readonly TowerSpawner _towerSpawner;
         private readonly TowerInspector _towerInspector;
@@ -19,7 +15,7 @@ namespace PlayerSystem
         private readonly ObjectsSelector _objectSelector;
         private readonly Dictionary<TowerType,TowerData> _towers;
 
-        public Action OnTowerCellSelect;
+        public Action<TowerType[]> OnTowerCellSelect;
         
         public PlayerInvoker(TowerSpawner towerSpawner,TowerInspector towerInspector,
             PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData> towers)
@@ -36,8 +32,8 @@ namespace PlayerSystem
         {
             if(_objectSelector.SelectedCell != null && !_objectSelector.SelectedCell.IsOccupied && SpendCoins(_towers[towerType].Price))
             {
-                Transform towerTransform = _objectSelector.SelectedCell.GetTowerPlaceAndDisable(out Vector3 attackRangePoint);
-                _towerSpawner.SpawnUnit(towerType, towerTransform.position, towerTransform.localRotation, attackRangePoint);
+                _objectSelector.SelectedCell.DisableCell();
+                _towerSpawner.SpawnUnit(towerType, _objectSelector.SelectedCell);
                 return true;
             }
             
@@ -74,12 +70,11 @@ namespace PlayerSystem
         public void SelectCell(RaycastHit hitInfo)
         {
             _objectSelector.SelectCell(hitInfo);
-            OnTowerCellSelect.Invoke();
+            OnTowerCellSelect.Invoke(_objectSelector.SelectedCell.AvailableTowerTypes);
         }
 
         public void UnselectAll(RaycastHit hitInfo)
         {
-            Debug.Log("Unselect");
             _towerInspector.StopInspection();
             _objectSelector.UnselectAll();
             _cameraController.FocusOnObject(null,true);

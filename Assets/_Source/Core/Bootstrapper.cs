@@ -35,13 +35,14 @@ namespace Core
         private Game _game;
         private LevelSetter _levelSetter;
         
-        //TODO give data through scriptable object
+        
         private void Awake()
         {
             Dictionary<TowerType, TowerData> towersDictionary = new Dictionary<TowerType, TowerData>()
             {
-                { TowerType.BasicSquirrel, _squirrelsData.TowersData[0] },
-                { TowerType.Squirrel2, _squirrelsData.TowersData[1] }
+                { TowerType.BasicSquirrel, _squirrelsData.BasicSquirrelData },
+                { TowerType.Squirrel2, _squirrelsData.Squirrel2Data },
+                { TowerType.BerserkSquirrel, _squirrelsData.BerserkSquirrelData }
             };
             
             _levelSetter = new LevelSetter(_levelsData.LevelsData);
@@ -51,7 +52,7 @@ namespace Core
             _towerSpawner = new TowerSpawner(towersDictionary);
             _playerInventory = new PlayerInventory();
             _playerInventory.OnCoinsCountChange += _hudUpdater.CoinsCountUpdate;
-            _playerInventory.AddCoins(0);
+            _playerInventory.AddCoins(10);
             _playerItemCollector.Construct(_playerInventory);
             _playerInvoker = new PlayerInvoker(_towerSpawner, _towerInspector, _playerInventory, _objectSelector, _cameraController, towersDictionary);
             _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
@@ -59,7 +60,7 @@ namespace Core
             _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable += _buildingModeButton.DisableBuildView;
             _inputListener.Construct(_playerInvoker);
-            _towerOptionsUI.Construct(_playerInvoker);
+            _towerOptionsUI.Construct(_playerInvoker,towersDictionary);
             _enemyPool = new EnemyPool(_baseHealth);
             _levelSetter.OnLevelChange += _enemyPool.OnLevelChange;
             _enemySpawner.Construct(_enemyPool);

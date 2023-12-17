@@ -62,9 +62,9 @@ GameObject:
   - component: {fileID: 6848100722056227305}
   - component: {fileID: 1020358808418575336}
   - component: {fileID: 764649429808528001}
-  - component: {fileID: -7093695897383453444}
+  - component: {fileID: 4522285538299312695}
   m_Layer: 12
-  m_Name: Squirrel 3
+  m_Name: BasicSquirrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,9 +103,9 @@ MonoBehaviour:
   <TowerType>k__BackingField: 0
   <Attack>k__BackingField: 5
   <AttackCooldown>k__BackingField: 0.4
-  <AttackRange>k__BackingField: 0
+  <AttackRange>k__BackingField: 15
   <BulletSpeed>k__BackingField: 15
-  <Price>k__BackingField: 0
+  <Price>k__BackingField: 5
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
   _enemyTrigger: {fileID: 764649429808528001}
@@ -131,7 +131,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 13
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &-7093695897383453444
+--- !u!65 &4522285538299312695
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9bff5ea41f5dbe47ae7cbde7be590cb, type: 2}
+  - {fileID: 2100000, guid: 91d6642fdf4562448966fee30fe3f798, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

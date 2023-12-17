@@ -4,6 +4,6 @@
     {
         BasicSquirrel = 0,
         Squirrel2 = 1,
-        Squirrel3 = 2,
+        BerserkSquirrel = 2,
     }
 }

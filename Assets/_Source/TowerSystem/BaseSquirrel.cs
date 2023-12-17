@@ -10,9 +10,9 @@ namespace TowerSystem
         [SerializeField] private Transform _firePoint;
         protected BulletPool _bulletPool;
         
-        protected override void Awake()
+        public override void Construct(TowerCell towerCell, TowerData towerData)
         {
-            base.Awake();
+            base.Construct(towerCell,towerData);
             _bulletPool = new BulletPool(_bulletPrefab,10);
         }
 
@@ -21,7 +21,8 @@ namespace TowerSystem
             if (_bulletPool.TryGetFromPool(out Bullet bullet))
             {
                 while (!_enemiesInRange[0].gameObject.activeSelf
-                       || Vector3.Distance( transform.TransformPoint(_enemyTrigger.center), _enemiesInRange[0].transform.position) > TowerData.AttackRange * 1.5f)
+                       || Vector3.Distance( transform.TransformPoint(_enemyTrigger.center), 
+                           _enemiesInRange[0].transform.position) > TowerData.AttackRange * 1.5f)
                 {
                     _enemiesInRange.RemoveAt(0);
                     if(_enemiesInRange.Count == 0)

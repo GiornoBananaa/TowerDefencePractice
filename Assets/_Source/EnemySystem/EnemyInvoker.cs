@@ -1,3 +1,4 @@
+using System;
 using Core;
 using TowerSystem;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace EnemySystem
             _enemyMovement = enemyMovement;
             _enemyCombat = enemyCombat;
             _enemyHealth = enemyHealth;
+            _enemyHealth.OnLifeEnd += _enemy.OnLifeEnd;
         }
         
         public void TakeDamage(int damage) => _enemyHealth.TakeDamage(damage);
@@ -35,14 +37,14 @@ namespace EnemySystem
         
         public void AttackTower(Tower tower)
         {
-            _enemyCombat.StartTowerAttack((IKillable)tower);
-            _enemyMovement.AddTarget(tower.transform);
+            _enemyCombat.StartTowerAttack(tower);
+            _enemyMovement.AddTarget(tower);
         }
         
         public void StopTowerAttack(Tower tower)
         {
-            _enemyCombat.StopTowerAttack((IKillable)tower);
-            _enemyMovement.RemoveTarget(tower.transform);
+            _enemyCombat.StopTowerAttack(tower);
+            _enemyMovement.RemoveTarget(tower);
         }
         
         public void SetNewTargetPosition(Vector3 target)
@@ -58,6 +60,11 @@ namespace EnemySystem
         public void ReturnToPool()
         {
             _enemy.OnReturnToPool?.Invoke();
+        }
+
+        public void EnableAdditionalMoveTargeting(bool enable)
+        {
+            _enemyMovement.EnableAdditionalMoveTargeting(enable);
         }
     }
 }

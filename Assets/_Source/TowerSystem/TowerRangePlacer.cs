@@ -6,7 +6,7 @@ namespace TowerSystem
     public class TowerRangePlacer : MonoBehaviour
     {
         
-        //SCRIPT IS NOT IN USE (temporarily)
+        //SCRIPT IS NOT IN USE
         
         
         [SerializeField] private Projector _maxRangeProjector;

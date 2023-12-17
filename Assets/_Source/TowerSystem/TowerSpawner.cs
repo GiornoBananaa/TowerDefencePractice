@@ -14,13 +14,13 @@ namespace TowerSystem
             _towersData = towersData;
         }
         
-        public void SpawnUnit(TowerType type, Vector3 position, Quaternion rotation, Vector3 attackRangePoint)
+        public void SpawnUnit(TowerType type,  TowerCell towerCell)
         {
             if(!_towersData.ContainsKey(type))
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
             
-            Object.Instantiate(_towersData[type].Prefab,position,rotation)
-                .GetComponent<Tower>().Construct(attackRangePoint,_towersData[type]);
+            Object.Instantiate(_towersData[type].Prefab,towerCell.SpawnPoint.position,towerCell.SpawnPoint.localRotation)
+                .GetComponent<Tower>().Construct(towerCell,_towersData[type]);
         }
     }
 }
