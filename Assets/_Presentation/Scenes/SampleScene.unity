@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8348853974810157150, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
   m_PrefabInstance: {fileID: 4204343984970253650}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204343984970253651}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f6cd4012f7c1b74f85e8b16ffe0423e, type: 3}
@@ -6795,10 +6795,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4641897693692733862, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6121248324635712626, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
@@ -6842,37 +6838,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6373663154111151767, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4204343984970253652}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
---- !u!1 &4204343984970253651 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6373663154111151767, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
-  m_PrefabInstance: {fileID: 4204343984970253650}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &4204343984970253652
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204343984970253651}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8.914009, y: 1, z: 44.731133}
-  m_Center: {x: -10.411381, y: 0, z: -12.718826}
 --- !u!1001 &5466650003940024560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6884,6 +6851,10 @@ PrefabInstance:
     - target: {fileID: 1396948138740575510, guid: f1bc2022878d624408015058fe5e9846, type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476224020253530639, guid: f1bc2022878d624408015058fe5e9846, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7724510642180188214, guid: f1bc2022878d624408015058fe5e9846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7052,6 +7023,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701529316201625960, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794810761711975498, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7225751917853085778, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}

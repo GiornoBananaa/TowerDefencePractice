@@ -131,7 +131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7556941760229367880
 Transform:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 3086024747143543079}
   - component: {fileID: 8348853974810157150}
   - component: {fileID: 1032659878945487196}
+  - component: {fileID: 2891924330620097482}
   m_Layer: 0
   m_Name: ItemCollector
   m_TagString: Untagged
@@ -287,3 +288,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2891924330620097482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373663154111151767}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 159.73085, y: 1, z: 190.83875}
+  m_Center: {x: 1.6131058, y: 0, z: 14.916428}

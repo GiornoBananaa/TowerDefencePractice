@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb0be32921269345b505f3de9285cb7, type: 3}
   m_Name: Beaver2Data
   m_EditorClassIdentifier: 
-  EnemyType: 0
+  EnemyType: 1
   Speed: 4
   Attack: 2
   AttackCooldown: 1
