@@ -15,13 +15,13 @@ MonoBehaviour:
   <BasicSquirrelDataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
-    <Attack>k__BackingField: 5
-    <AttackCooldown>k__BackingField: 0.4
+    <Attack>k__BackingField: 1
+    <AttackCooldown>k__BackingField: 0.5
     <AttackRange>k__BackingField: 15
     <Price>k__BackingField: 5
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
-    <Attack>k__BackingField: 7
+    <Attack>k__BackingField: 2
     <AttackCooldown>k__BackingField: 0.4
     <AttackRange>k__BackingField: 15
     <Price>k__BackingField: 5
@@ -29,14 +29,14 @@ MonoBehaviour:
   - <TowerType>k__BackingField: 1
     <Name>k__BackingField: Basic Squirrel 2
     <Attack>k__BackingField: 5
-    <AttackCooldown>k__BackingField: 0.4
-    <AttackRange>k__BackingField: 15
+    <AttackCooldown>k__BackingField: 2
+    <AttackRange>k__BackingField: 30
     <Price>k__BackingField: 10
   <BerserkSquirrelDataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 2
     <Name>k__BackingField: Berserk squirrel
-    <Attack>k__BackingField: 5
-    <AttackCooldown>k__BackingField: 0.4
-    <AttackRange>k__BackingField: 0
-    <Price>k__BackingField: 5
-    <HP>k__BackingField: 40
+    <Attack>k__BackingField: 1
+    <AttackCooldown>k__BackingField: 0.5
+    <AttackRange>k__BackingField: 2
+    <Price>k__BackingField: 7
+    <HP>k__BackingField: 10
