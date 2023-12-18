@@ -16,15 +16,21 @@ MonoBehaviour:
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
     <Attack>k__BackingField: 1
-    <AttackCooldown>k__BackingField: 0.5
+    <AttackCooldown>k__BackingField: 1
     <AttackRange>k__BackingField: 15
     <Price>k__BackingField: 5
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
     <Attack>k__BackingField: 2
-    <AttackCooldown>k__BackingField: 0.4
+    <AttackCooldown>k__BackingField: 0.7
     <AttackRange>k__BackingField: 15
-    <Price>k__BackingField: 5
+    <Price>k__BackingField: 15
+  - <TowerType>k__BackingField: 0
+    <Name>k__BackingField: Basic Squirrel
+    <Attack>k__BackingField: 2
+    <AttackCooldown>k__BackingField: 0.5
+    <AttackRange>k__BackingField: 20
+    <Price>k__BackingField: 25
   <Squirrel2DataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 1
     <Name>k__BackingField: Basic Squirrel 2
@@ -32,11 +38,30 @@ MonoBehaviour:
     <AttackCooldown>k__BackingField: 2
     <AttackRange>k__BackingField: 30
     <Price>k__BackingField: 10
+  - <TowerType>k__BackingField: 1
+    <Name>k__BackingField: Basic Squirrel 2
+    <Attack>k__BackingField: 5
+    <AttackCooldown>k__BackingField: 1.7
+    <AttackRange>k__BackingField: 35
+    <Price>k__BackingField: 25
+  - <TowerType>k__BackingField: 1
+    <Name>k__BackingField: Basic Squirrel 2
+    <Attack>k__BackingField: 5
+    <AttackCooldown>k__BackingField: 1.5
+    <AttackRange>k__BackingField: 45
+    <Price>k__BackingField: 35
   <BerserkSquirrelDataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 2
     <Name>k__BackingField: Berserk squirrel
     <Attack>k__BackingField: 1
     <AttackCooldown>k__BackingField: 0.5
     <AttackRange>k__BackingField: 2
-    <Price>k__BackingField: 7
-    <HP>k__BackingField: 10
+    <Price>k__BackingField: 10
+    <HP>k__BackingField: 15
+  - <TowerType>k__BackingField: 2
+    <Name>k__BackingField: Berserk squirrel
+    <Attack>k__BackingField: 1
+    <AttackCooldown>k__BackingField: 0.5
+    <AttackRange>k__BackingField: 2
+    <Price>k__BackingField: 15
+    <HP>k__BackingField: 20
