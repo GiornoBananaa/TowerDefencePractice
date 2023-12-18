@@ -28,8 +28,19 @@ namespace TowerSystem
                     if(_enemiesInRange.Count == 0)
                         return;
                 }
-                bullet.SetTarget(_enemiesInRange[0], TowerData.Attack);
-                bullet.transform.position = _firePoint.position;
+
+                while (_enemiesInRange.Count != 0)
+                {
+                    if (_enemiesInRange[0].AddPredictedDamage(bullet.Damage))
+                    {
+                        bullet.SetTarget(_enemiesInRange[0], TowerData.Attack);
+                        bullet.transform.position = _firePoint.position;
+                        break;
+                    }
+
+                    _enemiesInRange.RemoveAt(0);
+                }
+                
             }
         }
     }

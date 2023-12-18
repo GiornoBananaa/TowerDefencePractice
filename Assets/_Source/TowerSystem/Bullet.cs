@@ -8,7 +8,7 @@ namespace TowerSystem
     {
         [SerializeField] private float _lifeTime = 10f;
         [SerializeField] private float _speed;
-        private int _damage;
+        public int Damage { get; protected set; }
         private float _currentLifeTime;
         private Transform _target;
         private Enemy _targetEnemy;
@@ -18,7 +18,7 @@ namespace TowerSystem
 
         public void SetTarget(Enemy enemy, int damage)
         {
-            _damage = damage;
+            Damage = damage;
             _target = enemy.transform;
             _targetEnemy = enemy;
         }
@@ -65,7 +65,7 @@ namespace TowerSystem
         {
             if (_targetEnemy != null && other.gameObject == _targetEnemy.gameObject)
             {
-                _targetEnemy.TakeDamage(_damage);
+                _targetEnemy.TakeDamage(Damage);
                 OnLifeEnd.Invoke();
             }
         }

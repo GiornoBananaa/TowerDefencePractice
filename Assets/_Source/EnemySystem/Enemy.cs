@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using BaseSystem;
+using TowerSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +20,7 @@ namespace EnemySystem
         private EnemyInvoker _enemyInvoker;
         private Vector3 _destination;
         private Vector3 _spawnPoint;
+        private int _predictedDamage;
         
         [field: SerializeField] public EnemyTypes EnemyType{ get; private set; }
         [field: SerializeField] public float Speed{ get; private set; }
@@ -75,6 +78,14 @@ namespace EnemySystem
         {
             AudioManager.Instance.Play("hit_beaver");
             _enemyInvoker.TakeDamage(damage);
+        }
+
+        public bool AddPredictedDamage(int damage)
+        {
+            if (_predictedDamage >= Hp)
+                return false;
+            _predictedDamage += damage;
+            return true;
         }
         
         public void GoBackToSpawn()
