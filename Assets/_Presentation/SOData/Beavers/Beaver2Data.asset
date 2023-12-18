@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 0
   Speed: 4
-  Attack: 3
+  Attack: 2
   AttackCooldown: 1
-  Hp: 20
+  Hp: 2
   Coins: 2
   Prefab: {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}

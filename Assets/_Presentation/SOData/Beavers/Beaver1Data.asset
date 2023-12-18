@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Beaver1Data
   m_EditorClassIdentifier: 
   EnemyType: 0
-  Speed: 6
-  Attack: 2
-  AttackCooldown: 1
-  Hp: 14
+  Speed: 2
+  Attack: 4
+  AttackCooldown: 2
+  Hp: 4
   Coins: 1
   Prefab: {fileID: 3073385137046030694, guid: 47744cd95556a1748822d6cb74fd7cc7, type: 3}
