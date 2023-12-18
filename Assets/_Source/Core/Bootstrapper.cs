@@ -34,7 +34,7 @@ namespace Core
         private TowerSpawner _towerSpawner;
         private EnemyPool _enemyPool;
         private Game _game;
-        private LevelSetter _levelSetter;
+        private WaveSetter _waveSetter;
         
         
         private void Awake()
@@ -53,8 +53,8 @@ namespace Core
                 { TowerType.BerserkSquirrel, _towersSpawnData.TowersSpawnData[2].Prefab }
             };
             
-            _levelSetter = new LevelSetter(_levelsData.LevelsData);
-            _game = new Game(_levelSetter);
+            _waveSetter = new WaveSetter(_levelsData);
+            _game = new Game();
             _baseHealth.OnBaseDestroy += _game.Lose;
             _baseHealth.OnBaseHealthChange += _hudUpdater.BaseHealthUpdate;
             _towerSpawner = new TowerSpawner(towersDictionary,towersSpawnDataDictionary);
@@ -71,13 +71,13 @@ namespace Core
             _inputListener.Construct(_playerInvoker);
             _towerOptionsUI.Construct(_playerInvoker,towersDictionary);
             _enemyPool = new EnemyPool(_baseHealth);
-            _levelSetter.OnLevelChange += _enemyPool.OnLevelChange;
+            _waveSetter.OnWaveChange += _enemyPool.OnWaveChange;
             _enemySpawner.Construct(_enemyPool);
-            _levelSetter.OnLevelChange += _enemySpawner.OnLevelChange;
-            _levelSetter.OnLevelChange += _levelTimer.OnLevelChange;
-            _levelSetter.NextLevel();
+            _waveSetter.OnWaveChange += _enemySpawner.OnWaveChange;
+            _waveSetter.OnWaveChange += _levelTimer.OnWaveChange;
+            _waveSetter.SetWave();
             _levelTimer.OnAttackEnd += _enemySpawner.StopSpawning;
-            _levelTimer.OnAttackEnd += _levelSetter.NextLevel;
+            _levelTimer.OnAttackEnd += _waveSetter.NextWave;
             _levelTimer.OnAttackEnd += _enemyPool.ReturnToSpawnPoint;
             _levelTimer.OnAttackStart += _enemySpawner.StartSpawning;
             _levelTimer.OnAttackStart += _enemyPool.GoAttackBase;
@@ -95,10 +95,10 @@ namespace Core
             _buildingModeButton.OnBuildModeDisable -= _objectSelector.UnselectAll;
             _objectSelector.OnBuildModeEnable -= _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable -= _buildingModeButton.DisableBuildView;
-            _levelSetter.OnLevelChange -= _enemyPool.OnLevelChange;
-            _levelSetter.OnLevelChange -= _enemySpawner.OnLevelChange;
+            _waveSetter.OnWaveChange -= _enemyPool.OnWaveChange;
+            _waveSetter.OnWaveChange -= _enemySpawner.OnWaveChange;
             _levelTimer.OnAttackEnd -= _enemySpawner.StopSpawning;
-            _levelTimer.OnAttackEnd -= _levelSetter.NextLevel;
+            _levelTimer.OnAttackEnd -= _waveSetter.NextWave;
             _levelTimer.OnAttackEnd -= _enemyPool.ReturnToSpawnPoint;
             _levelTimer.OnAttackStart -= _enemySpawner.StartSpawning;
             _levelTimer.OnAttackStart -= _enemyPool.GoAttackBase;

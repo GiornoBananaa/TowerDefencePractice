@@ -31,6 +31,8 @@ namespace EnemySystem
         
         public void RemoveTarget(Tower target)
         {
+            if(_navMeshAgent == null)
+                return;
             _additionalTargets.Remove(target);
             if (!_additionalTargeting)
             {

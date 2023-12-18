@@ -5,13 +5,6 @@ namespace Core
 {
     public class Game
     {
-        private LevelSetter _levelSetter;
-
-        public Game(LevelSetter levelSetter)
-        {
-            _levelSetter = levelSetter;
-        }
-
         public void Restart()
         {
             
@@ -22,9 +15,9 @@ namespace Core
             
         }
         
-        public void PassLevel()
+        public void Win()
         {
-            _levelSetter.NextLevel();
+            
         }
     }
 }

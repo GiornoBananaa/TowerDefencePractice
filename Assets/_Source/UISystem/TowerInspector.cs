@@ -41,6 +41,9 @@ namespace UISystem
 
         public void InspectTower(Tower tower)
         {
+            if (_inspectorPanel.gameObject.activeSelf)
+                StopInspection();
+            
             _inspectedTower = tower;
             
             switch (tower)

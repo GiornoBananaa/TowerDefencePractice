@@ -87,7 +87,7 @@ namespace EnemySystem
                 enemy.gameObject.SetActive(false);
             }
             
-            public void OnLevelChange(LevelData levelData)
+            public void OnWaveChange(LevelData levelData)
             {
                 _enemySpawnDatas = levelData.EnemySpawnData;
                 foreach (var enemySpawnData in levelData.EnemySpawnData)

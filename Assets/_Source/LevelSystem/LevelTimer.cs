@@ -58,7 +58,7 @@ namespace LevelSystem
             _timeText.text = ((int)_timeElapsed).ToString();
         }
         
-        public void OnLevelChange(LevelData levelData)
+        public void OnWaveChange(LevelData levelData)
         {
             _attackTime = levelData.LevelDuration;
             _preparationTime = levelData.PreparationDuration;

@@ -22,7 +22,7 @@ namespace EnemySystem
             CheckCooldown();
         }
 
-        public void OnLevelChange(LevelData levelData)
+        public void OnWaveChange(LevelData levelData)
         {
             _spawnCooldown = levelData.EnemiesSpawnCooldown;
         }
