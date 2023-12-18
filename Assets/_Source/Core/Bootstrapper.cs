@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BaseSystem;
+using EndGameSystem;
 using EnemySystem;
 using InputSystem;
 using LevelSystem;
@@ -28,14 +29,14 @@ namespace Core
         [SerializeField] private DayAndNightCycle _dayAndNightCycle;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;
-        [SerializeField] private BuildingModeButton _buildingModeButton;
+        [SerializeField] private BuildingModeButton _buildingModeButton; //TODO: build mod view script
+        [SerializeField] private EndGameView _endGameView; //TODO: build mod view script
         private PlayerInvoker _playerInvoker;
         private PlayerInventory _playerInventory;
         private TowerSpawner _towerSpawner;
         private EnemyPool _enemyPool;
         private Game _game;
         private WaveSetter _waveSetter;
-        
         
         private void Awake()
         {
@@ -53,8 +54,8 @@ namespace Core
                 { TowerType.BerserkSquirrel, _towersSpawnData.TowersSpawnData[2].Prefab }
             };
             
-            _waveSetter = new WaveSetter(_levelsData);
-            _game = new Game();
+            _game = new Game(_endGameView);
+            _waveSetter = new WaveSetter(_levelsData, _game);
             _baseHealth.OnBaseDestroy += _game.Lose;
             _baseHealth.OnBaseHealthChange += _hudUpdater.BaseHealthUpdate;
             _towerSpawner = new TowerSpawner(towersDictionary,towersSpawnDataDictionary);

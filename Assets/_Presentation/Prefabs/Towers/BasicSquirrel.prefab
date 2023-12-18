@@ -100,16 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d8e262cf14e8c4eb816c9861418755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TowerType>k__BackingField: 0
-  <Attack>k__BackingField: 5
-  <AttackCooldown>k__BackingField: 0.4
-  <AttackRange>k__BackingField: 15
-  <BulletSpeed>k__BackingField: 15
-  <Price>k__BackingField: 5
+  _enemyTrigger: {fileID: 764649429808528001}
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
-  _enemyTrigger: {fileID: 764649429808528001}
-  _rangeProjector: {fileID: 0}
 --- !u!135 &764649429808528001
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -150,8 +143,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.7095356, y: 4.988205, z: 2.6480885}
+  m_Center: {x: -0.006243229, y: 0.037226558, z: 0.008076668}
 --- !u!1 &3443322130289434761
 GameObject:
   m_ObjectHideFlags: 0

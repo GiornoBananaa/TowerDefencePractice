@@ -1,4 +1,6 @@
 using System;
+using Core;
+using EndGameSystem;
 using UnityEngine;
 
 namespace LevelSystem
@@ -7,11 +9,13 @@ namespace LevelSystem
     {
         public Action<LevelData> OnWaveChange;
         private LevelsDataSO _levelsData;
+        private Game _game;
         private int _level;
         
-        public WaveSetter(LevelsDataSO levelsData)
+        public WaveSetter(LevelsDataSO levelsData, Game game)
         {
             _levelsData = levelsData;
+            _game = game;
         }
         
         public void SetWave()
@@ -21,10 +25,13 @@ namespace LevelSystem
         
         public void NextWave()
         {
-            if (_level+1 >= _levelsData.LevelsData.Length) return;
-
+            if (_level+1 >= _levelsData.LevelsData.Length)
+            {
+                _game.Win();
+                return;
+            }
+            
             _level++;
-            _levelsData.CurrentLevel = _level;
             
             OnWaveChange?.Invoke(_levelsData.LevelsData[_level]);
         }

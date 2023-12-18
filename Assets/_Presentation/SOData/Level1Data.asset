@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd6e5f5dee416ee4998c53176fdd1b67, type: 3}
-  m_Name: LevelsData
+  m_Name: Level1Data
   m_EditorClassIdentifier: 
   <LevelsData>k__BackingField:
   - <LevelDuration>k__BackingField: 50
