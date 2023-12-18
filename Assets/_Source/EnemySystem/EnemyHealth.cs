@@ -1,23 +1,24 @@
 using System;
 using Core;
+using UnityEngine;
 
 namespace EnemySystem
 {
     public class EnemyHealth: IKillable
     {
-        public event Action OnLifeEnd; 
-        private readonly Enemy _enemy;
         private readonly int _maxHp;
         private int _currentHp;
+
+        public event Action OnLifeEnd;
         
-        public EnemyHealth(int maxHp, Enemy enemy)
+        public EnemyHealth(int maxHp)
         {
             _maxHp = maxHp;
             _currentHp = maxHp;
-            _enemy = enemy;
         }
 
         public int HP => _currentHp;
+        
 
         public void TakeDamage(int damage)
         {

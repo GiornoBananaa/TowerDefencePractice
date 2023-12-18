@@ -1,6 +1,7 @@
 using System;
 using Core;
 using TowerSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace EnemySystem
@@ -12,13 +13,14 @@ namespace EnemySystem
         private readonly EnemyCombat _enemyCombat;
         private readonly EnemyHealth _enemyHealth;
         
+        
         public EnemyInvoker(Enemy enemy,EnemyMovement enemyMovement,EnemyCombat enemyCombat,EnemyHealth enemyHealth)
         {
             _enemy = enemy;
             _enemyMovement = enemyMovement;
             _enemyCombat = enemyCombat;
             _enemyHealth = enemyHealth;
-            _enemyHealth.OnLifeEnd += _enemy.OnLifeEnd;
+            _enemyHealth.OnLifeEnd += PlayDeath;
         }
         
         public void TakeDamage(int damage) => _enemyHealth.TakeDamage(damage);
@@ -65,6 +67,13 @@ namespace EnemySystem
         public void EnableAdditionalMoveTargeting(bool enable)
         {
             _enemyMovement.EnableAdditionalMoveTargeting(enable);
+        }
+
+        public void PlayDeath()
+        {
+            ResetEnemy();
+            _enemy.DropCoins();
+            ReturnToPool();
         }
     }
 }

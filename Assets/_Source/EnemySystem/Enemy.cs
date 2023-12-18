@@ -35,7 +35,7 @@ namespace EnemySystem
             _navMeshAgent.speed = Speed;
             EnemyCombat enemyCombat = new EnemyCombat(baseHealth, this);
             EnemyMovement enemyMovement = new EnemyMovement(_navMeshAgent);
-            EnemyHealth enemyHealth= new EnemyHealth(Hp,this);
+            EnemyHealth enemyHealth= new EnemyHealth(Hp);
             _enemyInvoker = new EnemyInvoker(this,enemyMovement,enemyCombat,enemyHealth);
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer,_towerLayer);
             _enemyCollisionDetector.Construct(_enemyInvoker,_deadlyForEnemyLayer);
@@ -94,7 +94,7 @@ namespace EnemySystem
             _destination = Vector3.zero;
         }
         
-        private void DropCoins()
+        public void DropCoins()
         {
             for (int i =0; i < Coins; i++)
             {
