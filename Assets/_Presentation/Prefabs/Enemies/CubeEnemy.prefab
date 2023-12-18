@@ -124,11 +124,11 @@ MonoBehaviour:
   _deadlyForEnemyLayer: 13
   _coinPrefab: {fileID: 542574092261891432, guid: 72ad47347be1eb4419687ac6d8cb2b27, type: 3}
   <EnemyType>k__BackingField: 0
-  <Speed>k__BackingField: 4
-  <Attack>k__BackingField: 5
-  <AttackCooldown>k__BackingField: 1
-  <Hp>k__BackingField: 20
-  <Coins>k__BackingField: 2
+  <Speed>k__BackingField: 2
+  <Attack>k__BackingField: 2
+  <AttackCooldown>k__BackingField: 2
+  <Hp>k__BackingField: 2
+  <Coins>k__BackingField: 1
 --- !u!195 &410506903509864366
 NavMeshAgent:
   m_ObjectHideFlags: 0
