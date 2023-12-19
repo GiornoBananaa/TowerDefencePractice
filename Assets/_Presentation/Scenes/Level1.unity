@@ -1388,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -3121,7 +3121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -4971,7 +4971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -5154,7 +5154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -7021,6 +7021,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785045645946822567, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
+      propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
