@@ -2205,14 +2205,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8023461829443112932, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.246643
-      objectReference: {fileID: 0}
-    - target: {fileID: 8105953937769635633, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.79833984
-      objectReference: {fileID: 0}
     - target: {fileID: 8113477173065406216, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
       propertyPath: m_Name
       value: EndGameCanvas
@@ -2230,10 +2222,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3119458154181752332, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.532074
-      objectReference: {fileID: 0}
     - target: {fileID: 6260193875302089583, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
       propertyPath: m_Pivot.x
       value: 0

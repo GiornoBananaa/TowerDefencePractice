@@ -94,7 +94,7 @@ namespace PlayerSystem
             _treeOutline.EnableOutline(false);
             SelectedBranch = null;
             SelectedCell = null;
-            _cameraController.FocusOnObject(_treeOutline.transform, false);
+            _cameraController.FocusOnObject(_treeOutline.transform, true);
             foreach (var branch in _branches)
             {
                 branch.outline.EnableOutline(true);
@@ -126,7 +126,7 @@ namespace PlayerSystem
                 if (branch.branch.gameObject == selected)
                 {
                     SelectedBranch = branch;
-                    _cameraController.FocusOnObject(hitInfo.collider.transform, false);
+                    _cameraController.FocusOnObject(hitInfo.collider.transform, true);
                     return;
                 }
             }

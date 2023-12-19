@@ -9,8 +9,7 @@ namespace PlayerSystem
     {
         FreeCamera = 0,
         InTransition = 1,
-        FocusOnSelected = 2,
-        Follow = 3,
+        Follow = 2,
     }
     
     public class CameraController : MonoBehaviour
@@ -63,11 +62,13 @@ namespace PlayerSystem
     
         public void MoveCamera(Vector3 direction)
         {
-            if (_cameraState != CameraState.FreeCamera) return;
+            if (_cameraState != CameraState.FreeCamera || direction == Vector3.zero) return;
             direction = _target.TransformVector(direction);
             direction = new Vector3(direction.x, 0, direction.z).normalized;
+            if (Math.Abs(_target.position.y - _deafultHeight) > 0.2f)
+                _target.DOMoveY(_deafultHeight,_transitionDuration);
             _target.localPosition += direction * _moveSpeed;
-
+            
             _target.position = new Vector3(_target.position.x > _borderXmax ? _borderXmax : (_target.position.x < _borderXmin ? _borderXmin : _target.position.x),
                 _target.position.y, 
                 _target.position.z > _borderZmax ? _borderZmax : (_target.position.z < _borderZmin ? _borderZmin : _target.position.z));
@@ -78,9 +79,9 @@ namespace PlayerSystem
             _target.DOKill();
         }
 
-        public void FocusOnObject(Transform focusTransform ,bool follow)
+        public void FocusOnObject(Transform focusTransform, bool follow)
         {
-            if(_focusedTransform == focusTransform) return;
+            if(_focusedTransform == focusTransform && follow) return;
             
             if (follow)
             {
@@ -101,8 +102,7 @@ namespace PlayerSystem
             }
             else
             {
-                SetNewPosition(focusTransform.position, _transitionDuration,
-                    follow ? CameraState.Follow : CameraState.FocusOnSelected);
+                SetNewPosition(focusTransform.position, _transitionDuration, follow? CameraState.Follow:CameraState.FreeCamera);
             }
         }
         
