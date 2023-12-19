@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Presentation/Scenes/MainMenu.unity.meta
 guid: 01985f39abe29f84e8e934dc80b8f44b
+========
+guid: 89b0274908c698b40a0767822fc248f2
+>>>>>>>> feature/LevelDesign:Assets/DinV_Studio/Poly_Low_Trees_Pack_FREE/Scenes/Overview_Scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
