@@ -633,17 +633,6 @@ MonoBehaviour:
   _cameraController: {fileID: 168784229}
   _treeOutline: {fileID: 1660063095}
   _branches:
-  - branch: {fileID: 1095062564}
-    towerCells:
-    - {fileID: 1252389489}
-    - {fileID: 1778168175}
-    - {fileID: 1089218013}
-    - {fileID: 1508748791}
-    - {fileID: 2076058587}
-    - {fileID: 1697892553}
-    - {fileID: 1970682764}
-    - {fileID: 1898863954}
-    outline: {fileID: 1095062572}
   - branch: {fileID: 1952165419}
     towerCells:
     - {fileID: 1741501819}
@@ -662,6 +651,17 @@ MonoBehaviour:
     - {fileID: 1463552942}
     - {fileID: 637140080}
     outline: {fileID: 1952165424}
+  - branch: {fileID: 1095062564}
+    towerCells:
+    - {fileID: 1252389489}
+    - {fileID: 1778168175}
+    - {fileID: 1089218013}
+    - {fileID: 1508748791}
+    - {fileID: 2076058587}
+    - {fileID: 1697892553}
+    - {fileID: 1970682764}
+    - {fileID: 1898863954}
+    outline: {fileID: 1095062572}
 --- !u!114 &627726750 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3125396074584604986, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
