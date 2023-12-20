@@ -18,7 +18,7 @@ MonoBehaviour:
     <Attack>k__BackingField: 1
     <AttackCooldown>k__BackingField: 1
     <AttackRange>k__BackingField: 15
-    <Price>k__BackingField: 5
+    <Price>k__BackingField: 10
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
     <Attack>k__BackingField: 2
