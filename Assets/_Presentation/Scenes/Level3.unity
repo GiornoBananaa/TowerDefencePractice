@@ -1701,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -3871,7 +3871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6785850804746840279, guid: 59fb4011327f6964ca0a4b9e3e499f46, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
@@ -6789,6 +6789,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8348853974810157150, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
+      propertyPath: _startCoins
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9453,6 +9457,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 785045645946822567, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       propertyPath: <AvailableTowerTypes>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 785045645946822567, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
+      propertyPath: <AvailableTowerTypes>k__BackingField.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
@@ -9601,13 +9609,13 @@ PrefabInstance:
       addedObject: {fileID: 338333045}
     - targetCorrespondingSourceObject: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 802484997}
+      addedObject: {fileID: 1919610717}
     - targetCorrespondingSourceObject: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       insertIndex: 7
-      addedObject: {fileID: 248406155}
+      addedObject: {fileID: 802484997}
     - targetCorrespondingSourceObject: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       insertIndex: 8
-      addedObject: {fileID: 1919610717}
+      addedObject: {fileID: 248406155}
     - targetCorrespondingSourceObject: {fileID: 1400556210511083990, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       insertIndex: 9
       addedObject: {fileID: 933882036}
