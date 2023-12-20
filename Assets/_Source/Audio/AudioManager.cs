@@ -24,9 +24,31 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ChangeSoundVolume(float volume)
+    {
+        foreach (Sound sound in sounds)
+        {
+            if(sound.isMusic) return;
+            sound.volume = volume;
+            sound.source.volume = volume;
+        }
+    }
+    
+    public void ChangeMusicVolume(float volume)
+    {
+        foreach (Sound sound in sounds)
+        {
+            if(!sound.isMusic) return;
+            sound.volume = volume;
+            sound.source.volume = volume;
+        }
+    }
+    
     private void AddSound(Sound sound)
     {
         sound.source = gameObject.AddComponent<AudioSource>();
+        if (sound.playOnAwake)
+            Play(sound);
     }
 
     public void Play(string name)
