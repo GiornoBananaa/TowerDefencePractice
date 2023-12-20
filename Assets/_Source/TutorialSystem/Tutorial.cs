@@ -29,6 +29,7 @@ namespace TutorialSystem
         [SerializeField] private TowerOptionsUI _towerOptionsUI;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private InputListener _inputListener;
+        [SerializeField] private PausePanel _pausePanel;
         [SerializeField] private TowerInspector _towerInspector;
         [SerializeField] private GameObject _toolCanvas;
         [SerializeField] private int _towerLayer;
@@ -47,12 +48,11 @@ namespace TutorialSystem
             _roadBranch.SetActive(false);
             _endTutorialButton.gameObject.SetActive(false);
             _nextButton.gameObject.SetActive(true);
-            _dialogText.text = _dialogStrings[_dialogWindowNumber];
             _nextButton.onClick.AddListener(NextText);
             _endTutorialButton.onClick.AddListener(EndTutorial);
             _camera = Camera.main;
             _towerOptionsUI.OnUnitSpawn += TowerBuildClick;
-            _inputListener.enabled = false;
+            EnableDialog(true);
             StartCoroutine(TutorialAwake());
         }
 
@@ -130,6 +130,7 @@ namespace TutorialSystem
             _dialogPanel.SetActive(enable);
             _inputListener.enabled = !enable;
             Time.timeScale = enable?0:1;
+            _pausePanel.gameObject.SetActive(!enable);
         }
         
         private void MoveClickHint(Transform targetTransform)
