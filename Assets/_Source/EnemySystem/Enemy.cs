@@ -87,6 +87,11 @@ namespace EnemySystem
             _predictedDamage += damage;
             return true;
         }
+
+        public void Reset()
+        {
+            _predictedDamage = 0;
+        }
         
         public void GoBackToSpawn()
         {

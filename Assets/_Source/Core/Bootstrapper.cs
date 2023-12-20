@@ -66,6 +66,7 @@ namespace Core
             _towerInspector.Construct(_playerInvoker);
             _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable += _objectSelector.UnselectAll;
+            _buildingModeButton.OnBuildModeDisable += _towerOptionsUI.ClosePanel;
             _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable += _buildingModeButton.DisableBuildView;
             _inputListener.Construct(_playerInvoker);
@@ -93,6 +94,7 @@ namespace Core
         {
             _buildingModeButton.OnBuildModeEnable -= _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable -= _objectSelector.UnselectAll;
+            _buildingModeButton.OnBuildModeDisable -= _towerOptionsUI.ClosePanel;
             _objectSelector.OnBuildModeEnable -= _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable -= _buildingModeButton.DisableBuildView;
             _waveSetter.OnWaveChange -= _enemyPool.OnWaveChange;
