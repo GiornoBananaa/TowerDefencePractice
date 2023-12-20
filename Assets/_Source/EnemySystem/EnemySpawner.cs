@@ -54,8 +54,10 @@ namespace EnemySystem
         public void OnWaveChange(LevelData levelData)
         {
             _spawnCooldown = levelData.EnemiesSpawnCooldown;
-            _spawnsActivationTime = levelData.SpawnsActivationTime.ToList();
-            
+            if (levelData.SpawnsActivationTime != null)
+                _spawnsActivationTime = levelData.SpawnsActivationTime.ToList();
+            else
+                _spawnsActivationTime = new List<float>();
         }
         
 
