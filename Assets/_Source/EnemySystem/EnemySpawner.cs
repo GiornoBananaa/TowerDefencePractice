@@ -125,6 +125,7 @@ namespace EnemySystem
         
         public GameObject SpawnEnemy()
         {
+            if (_activatedSpawnPoints.Count == 0) return null;
             Transform spawnpoint = _activatedSpawnPoints[Random.Range(0,_activatedSpawnPoints.Count)];
             Vector3 position = spawnpoint.position;
             position = new Vector3(

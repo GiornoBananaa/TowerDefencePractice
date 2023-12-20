@@ -17,6 +17,8 @@ MonoBehaviour:
   - <LevelDuration>k__BackingField: 25
     <PreparationDuration>k__BackingField: 10
     <EnemiesSpawnCooldown>k__BackingField: 3
+    <SpawnsActivationTime>k__BackingField:
+    - 0
     <EnemySpawnData>k__BackingField:
     - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}
       <EnemyType>k__BackingField: 0

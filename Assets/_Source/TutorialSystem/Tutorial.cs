@@ -107,7 +107,6 @@ namespace TutorialSystem
                 case 5:
                     _toolCanvas.SetActive(true);
                     _firstEnemy = _enemySpawner.SpawnEnemy();
-                    Debug.Log(_firstEnemy==null);
                     EnableDialog(false);
                     break;
                 case 9:
@@ -191,7 +190,6 @@ namespace TutorialSystem
         
         private void FirstEnemyKill()
         {
-            Debug.Log(_actionNumber);
             if (_firstEnemy != null && !_firstEnemy.activeSelf)
             {
                 _actionNumber++;
