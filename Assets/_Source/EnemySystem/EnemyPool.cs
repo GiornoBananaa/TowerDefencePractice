@@ -64,7 +64,7 @@ namespace EnemySystem
                 Enemy enemy = null;
                 while (enemy == null)
                 {
-                    if (_enemies.Length != 0)
+                    if (_enemies[enemyTypeInt].Count != 0)
                         enemy = _enemies[enemyTypeInt].Dequeue();
                     if (_enemies.Length == 0)
                         CreateEnemy(prefab, position, rotation);

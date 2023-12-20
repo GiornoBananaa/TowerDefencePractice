@@ -106,7 +106,7 @@ namespace TutorialSystem
                     break;
                 case 5:
                     _toolCanvas.SetActive(true);
-                    _firstEnemy = _enemySpawner.SpawnRandomEnemy();
+                    _firstEnemy = _enemySpawner.SpawnEnemy();
                     Debug.Log(_firstEnemy==null);
                     EnableDialog(false);
                     break;

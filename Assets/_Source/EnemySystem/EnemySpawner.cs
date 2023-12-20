@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using LevelSystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,7 +7,7 @@ namespace EnemySystem
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private float _spawnRadius;
         private float _spawnCooldown;
         private float _spawnTimeElapsed;
@@ -58,13 +59,28 @@ namespace EnemySystem
             if (_spawnTimeElapsed >= _spawnCooldown)
             {
                 _spawnTimeElapsed = 0;
-                SpawnRandomEnemy();
+                foreach (var spawnPoint in _spawnPoints)
+                {
+                    SpawnRandomEnemy(spawnPoint);
+                }
             }
         }
         
-        public GameObject SpawnRandomEnemy()
+        public GameObject SpawnRandomEnemy(Transform spawnpoint)
         {
-            Transform spawnpoint = _spawnPoints[Random.Range(0,_spawnPoints.Length)];
+            Vector3 position = spawnpoint.position;
+            position = new Vector3(
+                position.x+Random.Range(-_spawnRadius,_spawnRadius),
+                position.y,
+                position.z+Random.Range(-_spawnRadius,_spawnRadius));
+            
+            _enemyPool.GetFromPool(out GameObject enemy, position, spawnpoint.rotation);
+            return enemy;
+        }
+        
+        public GameObject SpawnEnemy()
+        {
+            Transform spawnpoint = _spawnPoints[Random.Range(0,_spawnPoints.Count)];
             Vector3 position = spawnpoint.position;
             position = new Vector3(
                 position.x+Random.Range(-_spawnRadius,_spawnRadius),
