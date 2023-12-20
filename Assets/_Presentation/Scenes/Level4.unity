@@ -1561,9 +1561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7505972625ab59d41bfc510013795f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treeZoom: 0
-  _branchZoom: 0
-  _unselectedZoom: 0
+  _treeZoom: 30
+  _branchZoom: 12
+  _unselectedZoom: 30
   _cameraController: {fileID: 168784229}
   _treeOutline: {fileID: 1660063095}
   _branches:
