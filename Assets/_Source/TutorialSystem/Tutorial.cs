@@ -245,6 +245,7 @@ namespace TutorialSystem
         
         private void EndTutorial()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
         
