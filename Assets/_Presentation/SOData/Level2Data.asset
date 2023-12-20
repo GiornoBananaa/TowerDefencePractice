@@ -10,21 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd6e5f5dee416ee4998c53176fdd1b67, type: 3}
-  m_Name: Level1Data
+  m_Name: Level2Data
   m_EditorClassIdentifier: 
   Level: 0
   <LevelsData>k__BackingField:
-  - <LevelDuration>k__BackingField: 40
-    <PreparationDuration>k__BackingField: 20
-    <EnemiesSpawnCooldown>k__BackingField: 1.2
+  - <LevelDuration>k__BackingField: 50
+    <PreparationDuration>k__BackingField: 18
+    <EnemiesSpawnCooldown>k__BackingField: 1
     <EnemySpawnData>k__BackingField:
     - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}
       <EnemyType>k__BackingField: 0
-      <SpawnChance>k__BackingField: 100
-  - <LevelDuration>k__BackingField: 45
-    <PreparationDuration>k__BackingField: 20
+      <SpawnChance>k__BackingField: 70
+    - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: 47744cd95556a1748822d6cb74fd7cc7, type: 3}
+      <EnemyType>k__BackingField: 0
+      <SpawnChance>k__BackingField: 30
+  - <LevelDuration>k__BackingField: 60
+    <PreparationDuration>k__BackingField: 18
     <EnemiesSpawnCooldown>k__BackingField: 0.8
     <EnemySpawnData>k__BackingField:
+    - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: 47744cd95556a1748822d6cb74fd7cc7, type: 3}
+      <EnemyType>k__BackingField: 1
+      <SpawnChance>k__BackingField: 60
     - <Prefab>k__BackingField: {fileID: 3073385137046030694, guid: dd7aceab45adbad4194f9d2cf2172666, type: 3}
       <EnemyType>k__BackingField: 0
-      <SpawnChance>k__BackingField: 100
+      <SpawnChance>k__BackingField: 60
