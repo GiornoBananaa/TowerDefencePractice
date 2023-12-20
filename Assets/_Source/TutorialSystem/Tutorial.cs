@@ -14,9 +14,9 @@ namespace TutorialSystem
 {
     public class Tutorial : MonoBehaviour
     {
-        [TextArea][SerializeField] private string[] _dialogStrings;
+        [SerializeField] private Sprite[] _dialogSprite;
         [SerializeField] private GameObject _dialogPanel;
-        [SerializeField] private TMP_Text _dialogText;
+        [SerializeField] private Image _dialogImage;
         [SerializeField] private RectTransform _clickHintImage;
         [SerializeField] private RectTransform _clickHintParent;
         [SerializeField] private Button _nextButton;
@@ -86,7 +86,7 @@ namespace TutorialSystem
 
         private void NextText()
         {
-            if(_dialogStrings.Length <= _dialogWindowNumber+1)
+            if(_dialogSprite.Length <= _dialogWindowNumber+1)
             {
                 _dialogPanel.SetActive(false);
                 return;
@@ -121,12 +121,12 @@ namespace TutorialSystem
                     break;
             }
             
-            _dialogText.text = _dialogStrings[_dialogWindowNumber];
+            _dialogImage.sprite = _dialogSprite[_dialogWindowNumber];
         }
         
         private void EnableDialog(bool enable)
         {
-            _dialogText.text = _dialogStrings[_dialogWindowNumber];
+            _dialogImage.sprite = _dialogSprite[_dialogWindowNumber];
             _dialogPanel.SetActive(enable);
             _inputListener.enabled = !enable;
             Time.timeScale = enable?0:1;
@@ -234,7 +234,6 @@ namespace TutorialSystem
         
         private void AllEnemiesKill()
         {
-            Debug.Log(_enemySpawner.KilledEnemies + " " + _enemiesKillForEnd);
             if (_enemySpawner.KilledEnemies >= _enemiesKillForEnd)
             {
                 _actionNumber++;

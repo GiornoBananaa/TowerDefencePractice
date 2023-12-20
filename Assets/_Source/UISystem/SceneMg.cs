@@ -13,7 +13,7 @@ public class SceneMg : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
-
+    
     public void Exit()
     {
         Application.Quit();
