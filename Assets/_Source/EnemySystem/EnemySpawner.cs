@@ -12,6 +12,8 @@ namespace EnemySystem
         private float _spawnTimeElapsed;
         private EnemyPool _enemyPool;
 
+        public int KilledEnemies => _enemyPool.KilledEnemies;
+        
         public void Construct(EnemyPool enemyPool)
         {
             _enemyPool = enemyPool;
@@ -45,6 +47,11 @@ namespace EnemySystem
             }
         }
         
+        public void ReturnAllTosSpawn()
+        {
+            _enemyPool.ReturnToSpawnPoint();
+        }
+        
         private void CheckCooldown()
         {
             _spawnTimeElapsed += Time.deltaTime;
@@ -55,7 +62,7 @@ namespace EnemySystem
             }
         }
         
-        private void SpawnRandomEnemy()
+        public GameObject SpawnRandomEnemy()
         {
             Transform spawnpoint = _spawnPoints[Random.Range(0,_spawnPoints.Length)];
             Vector3 position = spawnpoint.position;
@@ -65,6 +72,7 @@ namespace EnemySystem
                 position.z+Random.Range(-_spawnRadius,_spawnRadius));
             
             _enemyPool.GetFromPool(out GameObject enemy, position, spawnpoint.rotation);
+            return enemy;
         }
     }
 }

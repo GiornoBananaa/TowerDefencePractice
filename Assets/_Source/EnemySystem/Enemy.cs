@@ -68,7 +68,7 @@ namespace EnemySystem
 
         private void OnDestroy()
         {
-            OnEnemyDestroy.Invoke();
+            OnEnemyDestroy?.Invoke();
             OnReturnToPool -= _enemyInvoker.ResetEnemy;
             OnLifeEnd -= DropCoins;
             OnLifeEnd -= OnReturnToPool;

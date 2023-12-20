@@ -31,10 +31,13 @@ namespace PlayerSystem
         
         private bool _buildModeSelected;
         
+        [SerializeField] private float _treeZoom;
+        [SerializeField] private float _branchZoom;
+        [SerializeField] private float _unselectedZoom;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private ObjectOutlineControl _treeOutline;
         [SerializeField] private Branch[] _branches;
-
+        
         public Branch SelectedBranch
         {
             get
@@ -102,7 +105,7 @@ namespace PlayerSystem
             _treeOutline.EnableOutline(false);
             SelectedBranch = null;
             SelectedCell = null;
-            _cameraController.FocusOnObject(_treeOutline.transform, true);
+            _cameraController.FocusOnObject(_treeOutline.transform, true,_treeZoom);
             foreach (var branch in _branches)
             {
                 branch.outline.EnableOutline(true);
@@ -116,7 +119,7 @@ namespace PlayerSystem
             _treeOutline.EnableOutline(true);
             SelectedBranch = null;
             SelectedCell = null;
-            _cameraController.FocusOnObject(null, false);
+            _cameraController.FocusOnObject(null, false, _unselectedZoom);
             foreach (var branch in _branches)
             {
                 branch.outline.EnableOutline(false);
@@ -126,7 +129,8 @@ namespace PlayerSystem
         
         public void SelectBranch(RaycastHit hitInfo)
         {
-            if(!_buildModeSelected) return;
+            if (!_buildModeSelected)
+                SelectTree();
             GameObject selected = hitInfo.collider.gameObject;
             
             foreach (var branch in _branches)
@@ -134,7 +138,7 @@ namespace PlayerSystem
                 if (branch.branch.gameObject == selected)
                 {
                     SelectedBranch = branch;
-                    _cameraController.FocusOnObject(hitInfo.collider.transform, true);
+                    _cameraController.FocusOnObject(hitInfo.collider.transform, true, _branchZoom);
                     return;
                 }
             }

@@ -61,7 +61,6 @@ namespace Core
             _towerSpawner = new TowerSpawner(towersDictionary,towersSpawnDataDictionary);
             _playerInventory = new PlayerInventory();
             _playerInventory.OnCoinsCountChange += _hudUpdater.CoinsCountUpdate;
-            _playerInventory.AddCoins(10);
             _playerItemCollector.Construct(_playerInventory);
             _playerInvoker = new PlayerInvoker(_towerSpawner, _towerInspector, _playerInventory, _objectSelector, _cameraController, towersDictionary);
             _towerInspector.Construct(_playerInvoker);

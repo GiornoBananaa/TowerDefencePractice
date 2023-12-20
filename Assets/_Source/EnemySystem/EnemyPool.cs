@@ -10,7 +10,7 @@ namespace EnemySystem
 {
     public class EnemyPool
     {
-            private int _count;
+            public int KilledEnemies;
             private int _typesCount;
             private int _chancesSum;
             private Queue<Enemy>[] _enemies;
@@ -102,10 +102,8 @@ namespace EnemySystem
                 if (enemyInstance.TryGetComponent(out Enemy enemy))
                 {
                     enemy.Construct(_baseHealth);
-                    enemy.OnReturnToPool += () => ReturnToPool(enemy);
-                    enemy.OnEnemyDestroy += () => _count--;
+                    enemy.OnReturnToPool += () => { ReturnToPool(enemy);KilledEnemies++; };
                     ReturnToPool(enemy);
-                    _count++;
                     OnGoAttackBase += enemy.GoAttackBase;
                     OnReturnToSpawnPoint += enemy.GoBackToSpawn;
                 }

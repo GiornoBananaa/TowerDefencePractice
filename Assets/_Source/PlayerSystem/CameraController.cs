@@ -79,8 +79,9 @@ namespace PlayerSystem
             _target.DOKill();
         }
 
-        public void FocusOnObject(Transform focusTransform, bool follow)
+        public void FocusOnObject(Transform focusTransform, bool follow, float zoom)
         {
+            _cameraDistance = zoom;
             if(_focusedTransform == focusTransform && follow) return;
             
             if (follow)

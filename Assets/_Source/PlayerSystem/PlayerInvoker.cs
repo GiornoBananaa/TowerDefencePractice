@@ -58,7 +58,7 @@ namespace PlayerSystem
         public void InspectUnit(RaycastHit hit)
         {
             Tower tower = hit.transform.GetComponent<Tower>();
-            _cameraController.FocusOnObject(tower.transform, false);
+            _cameraController.FocusOnObject(tower.transform, false, 15);
             _towerInspector.InspectTower(tower);
         }
         
@@ -87,7 +87,6 @@ namespace PlayerSystem
         {
             _towerInspector.StopInspection();
             _objectSelector.UnselectAll();
-            _cameraController.FocusOnObject(null,true);
         }
         
         public void SelectTree()

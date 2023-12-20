@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PlayerSystem;
 using TowerSystem;
@@ -15,6 +16,8 @@ namespace UISystem
         private List<TowerBuildButton> _activeTowerBuildButtons;
         private Queue<TowerBuildButton> _towerBuildButtonPool;
         private Dictionary<TowerType,TowerData[]> _towerDatas;
+
+        public Action OnUnitSpawn;
         
         public void Construct(PlayerInvoker playerInvoker, Dictionary<TowerType,TowerData[]> towerDatas)
         {
@@ -29,6 +32,7 @@ namespace UISystem
         {
             if (_playerInvoker.SpawnUnit(type))
             {
+                OnUnitSpawn?.Invoke();
                 AudioManager.Instance.Play("squirrel_interact");
                 _panel.SetActive(false);
                 TurnOffTowerPreview();

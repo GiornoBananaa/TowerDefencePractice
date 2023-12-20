@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PlayerSystem;
 using TMPro;
@@ -25,6 +26,10 @@ namespace UISystem
         private Queue<TowerStatBlock> _towerStatsPool;
         private Tower _inspectedTower;
         private PlayerInvoker _playerInvoker;
+        
+        public bool IsInspecting => _inspectorPanel.activeSelf;
+        
+        public event Action OnTowerUpgrade;
 
         private void Awake()
         {
@@ -120,6 +125,7 @@ namespace UISystem
         {
             if(_playerInvoker.UpgradeTower(_inspectedTower))
             {
+                OnTowerUpgrade?.Invoke();
                 StopInspection();
                 InspectTower(_inspectedTower);
             }
