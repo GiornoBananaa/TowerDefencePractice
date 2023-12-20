@@ -66,6 +66,7 @@ namespace Core
             _towerInspector.Construct(_playerInvoker);
             _buildingModeButton.OnBuildModeEnable += _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable += _objectSelector.UnselectAll;
+            _buildingModeButton.OnBuildModeDisable += _towerOptionsUI.ClosePanel;
             _objectSelector.OnBuildModeEnable += _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable += _buildingModeButton.DisableBuildView;
             _inputListener.Construct(_playerInvoker);
@@ -75,12 +76,12 @@ namespace Core
             _enemySpawner.Construct(_enemyPool);
             _waveSetter.OnWaveChange += _enemySpawner.OnWaveChange;
             _waveSetter.OnWaveChange += _levelTimer.OnWaveChange;
-            _waveSetter.SetWave();
             _levelTimer.OnAttackEnd += _enemySpawner.StopSpawning;
             _levelTimer.OnAttackEnd += _waveSetter.NextWave;
             _levelTimer.OnAttackEnd += _enemyPool.ReturnToSpawnPoint;
             _levelTimer.OnAttackStart += _enemySpawner.StartSpawning;
             _levelTimer.OnAttackStart += _enemyPool.GoAttackBase;
+            _waveSetter.SetWave();
             /*   DAY AND NIGHT CYCLE MIGHT BE REMOVED
             _dayAndNightCycle.OnNightStarted += _enemySpawner.StopSpawning;
             _dayAndNightCycle.OnDayStarted += _enemySpawner.StartSpawning;
@@ -93,6 +94,7 @@ namespace Core
         {
             _buildingModeButton.OnBuildModeEnable -= _objectSelector.SelectTree;
             _buildingModeButton.OnBuildModeDisable -= _objectSelector.UnselectAll;
+            _buildingModeButton.OnBuildModeDisable -= _towerOptionsUI.ClosePanel;
             _objectSelector.OnBuildModeEnable -= _buildingModeButton.EnableBuildView;
             _objectSelector.OnBuildModeDisable -= _buildingModeButton.DisableBuildView;
             _waveSetter.OnWaveChange -= _enemyPool.OnWaveChange;

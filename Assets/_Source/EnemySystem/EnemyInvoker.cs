@@ -57,6 +57,7 @@ namespace EnemySystem
         public void ResetEnemy()
         {
             _enemyHealth.Heal(100);
+            _enemy.Reset();
         }
         
         public void ReturnToPool()

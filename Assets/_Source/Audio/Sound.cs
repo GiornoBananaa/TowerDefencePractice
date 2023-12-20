@@ -23,6 +23,8 @@ public class Sound
     public float pitch_variation = 0;
 
     public bool loop;
+    public bool isMusic;
+    public bool playOnAwake;
 
     [HideInInspector]
     public AudioSource source;

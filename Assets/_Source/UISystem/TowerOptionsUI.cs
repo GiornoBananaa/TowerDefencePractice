@@ -27,6 +27,11 @@ namespace UISystem
             _towerBuildButtonPool = new Queue<TowerBuildButton>();
             _towerDatas = towerDatas;
         }
+
+        public void ClosePanel()
+        {
+            _panel.SetActive(false);
+        }
         
         private void SpawnUnit(TowerType type)
         {
@@ -71,7 +76,7 @@ namespace UISystem
             }
             _panel.SetActive(true);
         }
-
+        
         private void OnDisable()
         {
             foreach (var towerBuildButton in _activeTowerBuildButtons)

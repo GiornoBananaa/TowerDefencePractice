@@ -16,6 +16,7 @@ namespace PlayerSystem
         private readonly Dictionary<TowerType,TowerData[]> _towers;
 
         public Action<TowerType[]> OnTowerCellSelect;
+        public Action<TowerType[]> OnTowerCellDeselect;
         
         public PlayerInvoker(TowerSpawner towerSpawner,TowerInspector towerInspector,
             PlayerInventory playerInventory,ObjectsSelector objectSelector,CameraController cameraController,Dictionary<TowerType,TowerData[]> towers)

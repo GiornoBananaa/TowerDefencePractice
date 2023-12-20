@@ -16,6 +16,7 @@ namespace EndGameSystem
         
         public void OpenEndGamePanel(EndGameType endType)
         {
+            Time.timeScale = 0;
             switch (endType)
             {
                 case EndGameType.Win:
@@ -29,16 +30,19 @@ namespace EndGameSystem
         
         public void RestartButton()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
         public void NextLevelButton()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
         
         public void MainMenuButton()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
     }
