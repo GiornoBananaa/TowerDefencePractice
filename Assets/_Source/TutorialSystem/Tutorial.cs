@@ -78,7 +78,7 @@ namespace TutorialSystem
                 case 5:
                     TowerUpgradeHint();
                     break;
-                case 7:
+                case 6:
                     AllEnemiesKill();
                     break;
             }
@@ -233,6 +233,7 @@ namespace TutorialSystem
         
         private void AllEnemiesKill()
         {
+            Debug.Log(_enemySpawner.KilledEnemies + " " + _enemiesKillForEnd);
             if (_enemySpawner.KilledEnemies >= _enemiesKillForEnd)
             {
                 _actionNumber++;
