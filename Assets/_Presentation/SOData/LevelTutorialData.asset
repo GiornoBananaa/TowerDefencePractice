@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 0
   <LevelsData>k__BackingField:
-  - <LevelDuration>k__BackingField: 10
+  - <LevelDuration>k__BackingField: 25
     <PreparationDuration>k__BackingField: 10
     <EnemiesSpawnCooldown>k__BackingField: 3
     <EnemySpawnData>k__BackingField:
