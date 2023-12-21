@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class AddButtonClickSounds : ScriptableObject
 {
     [MenuItem("Tools/AddButtonSoundInScene")]

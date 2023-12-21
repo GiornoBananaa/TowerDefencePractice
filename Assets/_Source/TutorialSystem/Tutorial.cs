@@ -52,7 +52,6 @@ namespace TutorialSystem
             _endTutorialButton.onClick.AddListener(EndTutorial);
             _camera = Camera.main;
             _towerOptionsUI.OnUnitSpawn += TowerBuildClick;
-            EnableDialog(true);
             StartCoroutine(TutorialAwake());
         }
 
@@ -86,10 +85,10 @@ namespace TutorialSystem
 
         private void NextText()
         {
-            if(_dialogSprite.Length <= _dialogWindowNumber+1)
+            if(_dialogSprite.Length-1 <= _dialogWindowNumber+1)
             {
-                _dialogPanel.SetActive(false);
-                return;
+                _endTutorialButton.gameObject.SetActive(true);
+                _nextButton.gameObject.SetActive(false);
             }
             
             
@@ -97,27 +96,18 @@ namespace TutorialSystem
             
             switch (_dialogWindowNumber)
             {
-                case 4:
+                case 5:
                     _clickHintImage.gameObject.SetActive(true);
                     _branchOutline.EnableOutline(true);
                     _branchOutline.ChangeColor(Color.yellow);
                     _branchOutline.AlwaysShowMode(true);
                     EnableDialog(false);
                     break;
-                case 5:
-                    _toolCanvas.SetActive(true);
-                    _firstEnemy = _enemySpawner.SpawnEnemy();
-                    EnableDialog(false);
-                    break;
-                case 9:
+                case 8:
                     _towerInspector.OnTowerUpgrade += UpgradeClick;
                     _roadBranch.SetActive(true);
                     _clickHintImage.gameObject.SetActive(true);
                     EnableDialog(false);
-                    break;
-                case 10:
-                    _endTutorialButton.gameObject.SetActive(true);
-                    _nextButton.gameObject.SetActive(false);
                     break;
             }
             
@@ -184,9 +174,10 @@ namespace TutorialSystem
         {
             _clickHintImage.gameObject.SetActive(false);
             _actionNumber++;
-            EnableDialog(true);
             _towerOptionsUI.OnUnitSpawn -= TowerBuildClick;
             _firstTower = FindObjectOfType<Tower>().transform;
+            _toolCanvas.SetActive(true);
+            _firstEnemy = _enemySpawner.SpawnEnemy();
         }
         
         private void FirstEnemyKill()
@@ -254,6 +245,7 @@ namespace TutorialSystem
             yield return new WaitForSeconds(0.1f);
             _treeOutline.EnableOutline(false);
             _branchOutline.EnableOutline(false);
+            EnableDialog(true);
             Time.timeScale = 0;
         }
         private IEnumerator EnemiesKilled()
