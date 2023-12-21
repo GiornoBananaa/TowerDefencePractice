@@ -8924,6 +8924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2736406331618032851, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.44189453
+      objectReference: {fileID: 0}
     - target: {fileID: 3267668850049095103, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9121,6 +9125,10 @@ PrefabInstance:
     - target: {fileID: 3299153949841345299, guid: 24cd43df3fc5cd34e92dabc960050e38, type: 3}
       propertyPath: m_Name
       value: TowerInspectionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566033361555589000, guid: 24cd43df3fc5cd34e92dabc960050e38, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -23.50293
       objectReference: {fileID: 0}
     - target: {fileID: 8440439866613899806, guid: 24cd43df3fc5cd34e92dabc960050e38, type: 3}
       propertyPath: m_Pivot.x

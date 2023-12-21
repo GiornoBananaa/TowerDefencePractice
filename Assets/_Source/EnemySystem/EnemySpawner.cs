@@ -36,6 +36,7 @@ namespace EnemySystem
                 {
                     _activatedSpawnPoints.Add(_deactivatedSpawnPoints[i]);
                     _deactivatedSpawnPoints.Remove(_deactivatedSpawnPoints[i]);
+                    i--;
                 }
             }
         }
@@ -89,7 +90,6 @@ namespace EnemySystem
             _activationTimeElapsed += Time.deltaTime;
             for (int i = 0; i < _spawnsActivationTime.Count; i ++)
             {
-                
                 if (_activationTimeElapsed >= _spawnsActivationTime[i] && _deactivatedSpawnPoints.Count > i)
                 {
                     _activatedSpawnPoints.Add(_deactivatedSpawnPoints[i]);

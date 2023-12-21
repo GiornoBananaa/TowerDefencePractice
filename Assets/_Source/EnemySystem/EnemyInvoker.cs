@@ -8,11 +8,15 @@ namespace EnemySystem
 {
     public class EnemyInvoker
     {
+        private static readonly int _deathAnimationHash = Animator.StringToHash("Death");
+        private static readonly int _attackAnimationHash = Animator.StringToHash("Attack");
+        
         private readonly Enemy _enemy;
         private readonly EnemyMovement _enemyMovement;
         private readonly EnemyCombat _enemyCombat;
         private readonly EnemyHealth _enemyHealth;
         
+
         public EnemyInvoker(Enemy enemy,EnemyMovement enemyMovement,EnemyCombat enemyCombat,EnemyHealth enemyHealth)
         {
             _enemy = enemy;
@@ -60,6 +64,8 @@ namespace EnemySystem
         {
             _enemyHealth.Heal(100);
             _enemy.Reset();
+            _enemy.Animator.Rebind();
+            _enemy.Animator.Update(0f);
         }
         
         public void ReturnToPool()
@@ -74,13 +80,13 @@ namespace EnemySystem
 
         public void PlayDeathAnimation()
         {
-            _enemy.Animator.SetTrigger("Death");
+            _enemy.Animator.SetTrigger(_deathAnimationHash);
             _enemyMovement.SetNewTargetPosition(_enemy.transform.position);
         }
         
         public void PlayAttackAnimation(bool attack)
         {
-            _enemy.Animator.SetBool("Attack",attack);
+            _enemy.Animator.SetBool(_attackAnimationHash,attack);
         }
         
         private void Death(string animationName)
