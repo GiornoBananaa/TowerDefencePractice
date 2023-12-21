@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace TowerSystem
 {
@@ -21,7 +22,7 @@ namespace TowerSystem
             if(!_towersData.ContainsKey(type))
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
             
-            Object.Instantiate(_towersSpawnData[type],towerCell.SpawnPoint.position,towerCell.SpawnPoint.localRotation)
+            Object.Instantiate(_towersSpawnData[type],towerCell.SpawnPoint.position+_towersSpawnData[type].transform.position,Quaternion.Euler(0, Random.Range(0,360), 0))
                 .GetComponent<Tower>().Construct(towerCell,_towersData[type]);
         }
     }

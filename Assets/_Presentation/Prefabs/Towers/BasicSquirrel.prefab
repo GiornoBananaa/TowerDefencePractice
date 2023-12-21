@@ -79,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 3128080323717870265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9, y: 2.4, z: -20.72}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d8e262cf14e8c4eb816c9861418755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 1731654863219745349}
+  <AnimationEventDispatcher>k__BackingField: {fileID: 0}
   _enemyTrigger: {fileID: 764649429808528001}
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
@@ -185,15 +187,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0204b7fd1e2ce684c9b51398e4bc2857, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0204b7fd1e2ce684c9b51398e4bc2857, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0204b7fd1e2ce684c9b51398e4bc2857, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0204b7fd1e2ce684c9b51398e4bc2857, type: 3}
       propertyPath: m_LocalPosition.x
@@ -277,7 +279,7 @@ Animator:
   m_GameObject: {fileID: 5270931106590340344}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f43524c0e903004284aaea195183b16, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

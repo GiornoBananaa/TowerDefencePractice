@@ -62,6 +62,11 @@ namespace EnemySystem
         {
             _towersInRange.Remove(tower);
         }
+
+        public void Reset()
+        {
+            _towersInRange.Clear();
+        }
         
         private void AttackBase()
         {

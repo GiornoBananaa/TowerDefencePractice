@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core;
 using EnemySystem;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace TowerSystem
         public virtual TowerData TowerData => TowerLevelDatas[Level];
         public int Level { get; protected set; }
         public TowerCell TowerCell { get; private set; }
+        
+        [field: SerializeField] public Animator Animator{ get; private set; }
+        [field: SerializeField] public AnimationEventDispatcher AnimationEventDispatcher{ get; private set; }
         
         [SerializeField] protected SphereCollider _enemyTrigger;
         protected List<Enemy> _enemiesInRange;

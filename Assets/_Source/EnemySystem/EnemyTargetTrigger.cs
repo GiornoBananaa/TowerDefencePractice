@@ -1,3 +1,4 @@
+using System;
 using Core;
 using TowerSystem;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace EnemySystem
             _baseLayer = baseLayer;
             _towerLayer = towerLayer;
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == _baseLayer)
@@ -30,8 +31,10 @@ namespace EnemySystem
             {
                 Tower tower = other.gameObject.GetComponent<Tower>();
                 if(tower is IKillable)
+                {
                     _enemyInvoker.AttackTower(tower);
-                _targetsInRange++;
+                    _targetsInRange++;
+                }
             }
 
             if (_targetsInRange > 0)
@@ -49,11 +52,21 @@ namespace EnemySystem
             {
                 Tower tower = other.gameObject.GetComponent<Tower>();
                 if(tower is IKillable)
+                {
                     _enemyInvoker.StopTowerAttack(tower);
-                _targetsInRange--;
+                    _targetsInRange--;
+                }
+                
             }
             if (_targetsInRange == 0)
                 _enemyInvoker.PlayAttackAnimation(false);
+        }
+
+        private void OnDisable()
+        {
+            _targetsInRange = 0;
+            _enemyInvoker.StopBaseAttack();
+            _enemyInvoker.PlayAttackAnimation(false);
         }
     }
 }

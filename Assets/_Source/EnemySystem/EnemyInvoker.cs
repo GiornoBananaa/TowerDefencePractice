@@ -24,8 +24,6 @@ namespace EnemySystem
             _enemyCombat = enemyCombat;
             _enemyHealth = enemyHealth;
             _enemyHealth.OnLifeEnd += PlayDeathAnimation;
-            Debug.Log(_enemy.AnimationEventDispatcher == null);
-            Debug.Log(_enemy.AnimationEventDispatcher.OnAnimationComplete == null);
             _enemy.AnimationEventDispatcher.OnAnimationComplete.AddListener(Death);
         }
         
@@ -63,6 +61,7 @@ namespace EnemySystem
         public void ResetEnemy()
         {
             _enemyHealth.Heal(100);
+            _enemyMovement.Reset();
             _enemy.Reset();
             _enemy.Animator.Rebind();
             _enemy.Animator.Update(0f);

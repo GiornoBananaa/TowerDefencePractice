@@ -79,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 3128080323717870265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9, y: 2.4, z: -20.72}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0f3ec66d62491180de94cf98cb72f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 0}
+  <AnimationEventDispatcher>k__BackingField: {fileID: 0}
   _enemyTrigger: {fileID: 764649429808528001}
   _healthView: {fileID: 268894380043941680}
 --- !u!135 &764649429808528001

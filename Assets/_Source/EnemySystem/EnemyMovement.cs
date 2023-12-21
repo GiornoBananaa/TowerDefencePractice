@@ -23,7 +23,7 @@ namespace EnemySystem
 
         public void AddTarget(Tower target)
         {
-            if (!_additionalTargeting) return;
+            if (!_additionalTargeting || _additionalTargets.Contains(target)) return;
             _additionalTargets.Add(target);
             _navMeshAgent.SetDestination(_additionalTargets.First().transform.position);
             ((IKillable)target).OnLifeEnd+= () => RemoveTarget(target);
@@ -50,6 +50,11 @@ namespace EnemySystem
             _mainTarget = target;
         }
 
+        public void Reset()
+        {
+            _additionalTargets.Clear();
+        }
+        
         public void EnableAdditionalMoveTargeting(bool enable) => _additionalTargeting = enable;
     }
 }
