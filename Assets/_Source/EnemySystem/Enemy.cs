@@ -46,7 +46,6 @@ namespace EnemySystem
             _enemyTargetTrigger.Construct(_enemyInvoker,_baseLayer,_towerLayer);
             _enemyCollisionDetector.Construct(_enemyInvoker,_deadlyForEnemyLayer);
             _spawnPoint = transform.position;
-            
             OnReturnToPool += _enemyInvoker.ResetEnemy;
             OnLifeEnd += DropCoins;
             OnLifeEnd += _enemyInvoker.ReturnToPool;

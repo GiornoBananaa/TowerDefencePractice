@@ -9,8 +9,8 @@ namespace Core
     [RequireComponent(typeof(Animator))]
     public class AnimationEventDispatcher : MonoBehaviour
     {
-        [NonSerialized]public UnityAnimationEvent OnAnimationStart;
-        [NonSerialized]public UnityAnimationEvent OnAnimationComplete;
+        public UnityAnimationEvent OnAnimationStart;
+        public UnityAnimationEvent OnAnimationComplete;
     
         [SerializeField] private Animator animator;
     

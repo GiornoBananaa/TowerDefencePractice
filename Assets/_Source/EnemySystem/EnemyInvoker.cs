@@ -13,14 +13,16 @@ namespace EnemySystem
         private readonly EnemyCombat _enemyCombat;
         private readonly EnemyHealth _enemyHealth;
         
-        
         public EnemyInvoker(Enemy enemy,EnemyMovement enemyMovement,EnemyCombat enemyCombat,EnemyHealth enemyHealth)
         {
             _enemy = enemy;
             _enemyMovement = enemyMovement;
             _enemyCombat = enemyCombat;
             _enemyHealth = enemyHealth;
-            _enemyHealth.OnLifeEnd += PlayDeath;
+            _enemyHealth.OnLifeEnd += PlayDeathAnimation;
+            Debug.Log(_enemy.AnimationEventDispatcher == null);
+            Debug.Log(_enemy.AnimationEventDispatcher.OnAnimationComplete == null);
+            _enemy.AnimationEventDispatcher.OnAnimationComplete.AddListener(Death);
         }
         
         public void TakeDamage(int damage) => _enemyHealth.TakeDamage(damage);
@@ -70,9 +72,20 @@ namespace EnemySystem
             _enemyMovement.EnableAdditionalMoveTargeting(enable);
         }
 
-        public void PlayDeath()
+        public void PlayDeathAnimation()
         {
-            _enemy.Animator.Play("Run");
+            _enemy.Animator.SetTrigger("Death");
+            _enemyMovement.SetNewTargetPosition(_enemy.transform.position);
+        }
+        
+        public void PlayAttackAnimation(bool attack)
+        {
+            _enemy.Animator.SetBool("Attack",attack);
+        }
+        
+        private void Death(string animationName)
+        {
+            if (animationName.Substring(animationName.Length-5, 5) != "Death") return;
             ResetEnemy();
             _enemy.DropCoins();
             ReturnToPool();

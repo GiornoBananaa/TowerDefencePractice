@@ -63,6 +63,8 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 1
   <Hp>k__BackingField: 1
   <Coins>k__BackingField: 2
+  <Animator>k__BackingField: {fileID: 0}
+  <AnimationEventDispatcher>k__BackingField: {fileID: 0}
 --- !u!195 &6118019879962970533
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.5
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5978372344592823484
 GameObject:
