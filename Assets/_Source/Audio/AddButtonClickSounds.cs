@@ -9,7 +9,8 @@ public class AddButtonClickSounds : ScriptableObject
     {
         DeleteSoundForButton();
         GameObject[] go;
-        go = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        go = FindObjectsOfType(typeof(GameObject),true) as GameObject[];
+        
         foreach (GameObject child in go)
         {
             if (child.TryGetComponent<Button>(out Button bt))
@@ -24,7 +25,7 @@ public class AddButtonClickSounds : ScriptableObject
     static void DeleteSoundForButton()
     {
         GameObject[] go;
-        go = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        go = FindObjectsOfType(typeof(GameObject),true) as GameObject[];
         foreach (GameObject child in go)
         {
             if (child.GetComponent<ButtonSound>() != null)
