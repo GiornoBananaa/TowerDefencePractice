@@ -3831,6 +3831,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: battle_music
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].isMusic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b1b8097b2c8c64343aa99ea83f0ed2e8, type: 3}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40be7751401136d478d4e46ebd0e773a, type: 3}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 341a0f994bcb0484ab93d92e394b9123, type: 3}
+    - target: {fileID: 6772496554552637461, guid: 9ea4e9bf17c59dc429f8c900b35d8ca7, type: 3}
+      propertyPath: sounds.Array.data[2].clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 341a0f994bcb0484ab93d92e394b9123, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5087,7 +5135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8348853974810157150, guid: aa3bb7edcf686cb4aa53e98eb0fdff09, type: 3}
       propertyPath: _startCoins
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
