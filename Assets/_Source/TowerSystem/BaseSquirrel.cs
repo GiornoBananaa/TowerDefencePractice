@@ -10,16 +10,29 @@ namespace TowerSystem
         private static readonly int _attackSpeedAnimationFloatHash = Animator.StringToHash("AttackSpeed");
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _firePoint;
+        [SerializeField] private AnimationClip _attackClip;
+        [SerializeField] private float _attackTime;
         protected BulletPool _bulletPool;
 
         public override void Construct(TowerCell towerCell, TowerData[] towerData)
         {
             base.Construct(towerCell,towerData);
             _bulletPool = new BulletPool(_bulletPrefab,10);
+            AnimationEventDispatcher.OnAnimationCustomEvent.AddListener(Attack);
         }
-
+        
         protected override void AttackEnemy()
         {
+            Animator.SetTrigger(_attackAnimationTriggerHash);
+            Debug.Log(_attackClip.length + " " + TowerData.AttackCooldown + " " + _attackClip.length/TowerData.AttackCooldown);
+            Animator.SetFloat(_attackSpeedAnimationFloatHash, _attackClip.length/TowerData.AttackCooldown);
+        }
+        
+        private void Attack(string animationName)
+        {
+            
+            if(_enemiesInRange.Count == 0) return;
+            
             if (_bulletPool.TryGetFromPool(out Bullet bullet))
             {
                 while (!_enemiesInRange[0].gameObject.activeSelf
@@ -34,8 +47,6 @@ namespace TowerSystem
                 {
                     if (_enemiesInRange[0].AddPredictedDamage(bullet.Damage))
                     {
-                        Animator.SetTrigger(_attackAnimationTriggerHash);
-                        Animator.SetFloat(_attackSpeedAnimationFloatHash, Animator.GetCurrentAnimatorStateInfo(0).length/TowerData.AttackCooldown);
                         transform.DOLookAt(_enemiesInRange[0].transform.position, 0.2f,AxisConstraint.Y);
                         bullet.SetTarget(_enemiesInRange[0], TowerData.Attack);
                         bullet.transform.position = _firePoint.position;

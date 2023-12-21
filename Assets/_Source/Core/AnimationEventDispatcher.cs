@@ -11,6 +11,7 @@ namespace Core
     {
         public UnityAnimationEvent OnAnimationStart;
         public UnityAnimationEvent OnAnimationComplete;
+        public UnityAnimationEvent OnAnimationCustomEvent;
     
         [SerializeField] private Animator animator;
     
@@ -36,10 +37,16 @@ namespace Core
             }
         }
 
+        public void AnimationCustomHandler(string name)
+        {
+            OnAnimationCustomEvent?.Invoke(name);
+        }
+        
         public void AnimationStartHandler(string name)
         {
             OnAnimationStart?.Invoke(name);
         }
+        
         public void AnimationCompleteHandler(string name)
         {
             OnAnimationComplete?.Invoke(name);

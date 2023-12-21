@@ -104,6 +104,8 @@ MonoBehaviour:
   _enemyTrigger: {fileID: 764649429808528001}
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
+  _attackClip: {fileID: 7400000, guid: a4cdcea2b4d1a3d4bb3b736a5610d8a3, type: 2}
+  _attackTime: 1.4
 --- !u!135 &764649429808528001
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -307,6 +309,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAnimationComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimationCustomEvent:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 5279632367325013151}

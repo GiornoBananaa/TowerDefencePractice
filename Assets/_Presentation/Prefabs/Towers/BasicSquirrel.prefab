@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 1731654863219745349}
-  <AnimationEventDispatcher>k__BackingField: {fileID: 0}
+  <AnimationEventDispatcher>k__BackingField: {fileID: 2628220972139666505}
   _enemyTrigger: {fileID: 764649429808528001}
   _bulletPrefab: {fileID: 4923382054786673487, guid: 28e36e65c8f1e0247b7eebc0bad416fe, type: 3}
   _firePoint: {fileID: 5079291469756288532}
+  _attackClip: {fileID: 7400000, guid: abdde966be494014dad7d01000144494, type: 2}
+  _attackTime: 0.35
 --- !u!135 &764649429808528001
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -306,6 +308,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAnimationComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimationCustomEvent:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 1731654863219745349}
