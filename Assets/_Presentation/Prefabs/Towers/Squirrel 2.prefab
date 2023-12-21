@@ -84,7 +84,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8186055764971800835}
-  - {fileID: 5079291469756288532}
   - {fileID: 2569173798669783468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,12 +170,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6871873259791264499}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.946547, z: 0}
-  m_LocalScale: {x: 2.6264, y: 5.027448, z: 2.6264}
+  m_LocalRotation: {x: 0.12825532, y: -0.31531268, z: -0.04076908, w: 0.93939686}
+  m_LocalPosition: {x: -3.78, y: -0.38, z: -0.13}
+  m_LocalScale: {x: 9.135371, y: 17.486904, z: 9.135371}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6848100722056227305}
+  m_Father: {fileID: 4321137026200344853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8507316350913588968
 PrefabInstance:
@@ -244,7 +243,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -3609692143328282627, guid: 1bf6e96eb5eaa4f4da68a3ebbfbf5294, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5079291469756288532}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1bf6e96eb5eaa4f4da68a3ebbfbf5294, type: 3}
       insertIndex: -1
@@ -253,6 +255,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2952597345813335834}
   m_SourcePrefab: {fileID: 100100000, guid: 1bf6e96eb5eaa4f4da68a3ebbfbf5294, type: 3}
+--- !u!4 &4321137026200344853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3609692143328282627, guid: 1bf6e96eb5eaa4f4da68a3ebbfbf5294, type: 3}
+  m_PrefabInstance: {fileID: 8507316350913588968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8186055764971800835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1bf6e96eb5eaa4f4da68a3ebbfbf5294, type: 3}

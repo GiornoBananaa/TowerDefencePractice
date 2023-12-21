@@ -23,6 +23,8 @@ namespace TowerSystem
             base.Construct(towerCell,towerData);
             _currentHp = BerserkTowerData.HP;
             _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
+            AnimationEventDispatcher.OnAnimationComplete.AddListener(Death);
+            transform.rotation = Quaternion.LookRotation(transform.position);
         }
         
         protected override void AttackEnemy()
@@ -41,24 +43,31 @@ namespace TowerSystem
         
         public void TakeDamage(int damage)
         {
+            Animator.SetTrigger("Damage");
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                TowerCell.EnableCell();
-                Destroy(gameObject);
-                OnLifeEnd?.Invoke();
+                Animator.SetTrigger("Death");
             }
 
             if (_currentHp < 0)
                 _currentHp = 0;
             _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
         }
-
+        
         public void Heal(int hp)
         {
             _currentHp = _currentHp + hp > BerserkTowerData.HP ?
                 BerserkTowerData.HP : _currentHp + hp;
             _healthView.ChangeHeath((float)_currentHp/BerserkTowerData.HP);
+        }
+        
+        private void Death(string animationName)
+        {
+            if (animationName.Substring(animationName.Length-5, 5).ToLower() != "death") return;
+            TowerCell.EnableCell();
+            Destroy(gameObject);
+            OnLifeEnd?.Invoke();
         }
     }
 }
