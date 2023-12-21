@@ -6085,10 +6085,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1016114634111117028, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1396375246251438685, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6168,10 +6164,6 @@ PrefabInstance:
     - target: {fileID: 1396375246251438685, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4659708422371674647, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5203975543530817052, guid: 3a6ebb666b416d74e8fc73ce2b991dea, type: 3}
       propertyPath: m_Name
@@ -6523,10 +6515,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3330059493590712469, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.25267792
-      objectReference: {fileID: 0}
     - target: {fileID: 6260193875302089583, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6611,17 +6599,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 9118787842054026902, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9118787842054026902, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3765242334155088896, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2e46ff339a4bf4895dad64bb66dc26, type: 3}
