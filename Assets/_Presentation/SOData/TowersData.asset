@@ -19,18 +19,21 @@ MonoBehaviour:
     <AttackCooldown>k__BackingField: 1
     <AttackRange>k__BackingField: 15
     <Price>k__BackingField: 10
+    <BuildButtonSprite>k__BackingField: {fileID: 21300000, guid: f43d1fe67df0465448292f52ae7de66b, type: 3}
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
     <Attack>k__BackingField: 2
     <AttackCooldown>k__BackingField: 0.7
     <AttackRange>k__BackingField: 15
     <Price>k__BackingField: 15
+    <BuildButtonSprite>k__BackingField: {fileID: 0}
   - <TowerType>k__BackingField: 0
     <Name>k__BackingField: Basic Squirrel
     <Attack>k__BackingField: 2
     <AttackCooldown>k__BackingField: 0.5
     <AttackRange>k__BackingField: 20
     <Price>k__BackingField: 25
+    <BuildButtonSprite>k__BackingField: {fileID: 0}
   <Squirrel2DataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 1
     <Name>k__BackingField: Basic Squirrel 2
@@ -38,18 +41,21 @@ MonoBehaviour:
     <AttackCooldown>k__BackingField: 2
     <AttackRange>k__BackingField: 30
     <Price>k__BackingField: 10
+    <BuildButtonSprite>k__BackingField: {fileID: 21300000, guid: d22258fbb4394124caac9437a9972d8e, type: 3}
   - <TowerType>k__BackingField: 1
     <Name>k__BackingField: Basic Squirrel 2
     <Attack>k__BackingField: 5
     <AttackCooldown>k__BackingField: 1.7
     <AttackRange>k__BackingField: 35
     <Price>k__BackingField: 25
+    <BuildButtonSprite>k__BackingField: {fileID: 0}
   - <TowerType>k__BackingField: 1
     <Name>k__BackingField: Basic Squirrel 2
     <Attack>k__BackingField: 5
     <AttackCooldown>k__BackingField: 1.5
     <AttackRange>k__BackingField: 45
     <Price>k__BackingField: 35
+    <BuildButtonSprite>k__BackingField: {fileID: 0}
   <BerserkSquirrelDataByLevels>k__BackingField:
   - <TowerType>k__BackingField: 2
     <Name>k__BackingField: Berserk squirrel
@@ -57,6 +63,7 @@ MonoBehaviour:
     <AttackCooldown>k__BackingField: 0.5
     <AttackRange>k__BackingField: 2
     <Price>k__BackingField: 10
+    <BuildButtonSprite>k__BackingField: {fileID: 21300000, guid: 6c1e1b997335c3d4d9728c44cdd1828b, type: 3}
     <HP>k__BackingField: 15
   - <TowerType>k__BackingField: 2
     <Name>k__BackingField: Berserk squirrel
@@ -64,4 +71,5 @@ MonoBehaviour:
     <AttackCooldown>k__BackingField: 0.5
     <AttackRange>k__BackingField: 2
     <Price>k__BackingField: 15
+    <BuildButtonSprite>k__BackingField: {fileID: 0}
     <HP>k__BackingField: 20

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace LevelSystem
@@ -11,13 +12,10 @@ namespace LevelSystem
         public Action OnAttackEnd;
         public Action OnAttackStart;
         
-        [SerializeField] private TMP_Text _timeText;
+        [SerializeField] private Slider _timeSlider;
         [SerializeField] private TMP_Text _descriptionText;
-        [SerializeField] private Image _panel;
         [SerializeField] private string _preparationText;
         [SerializeField] private string _attackText;
-        [SerializeField] private Color _preparationColor;
-        [SerializeField] private Color _attackColor;
         
         private float _preparationTime;
         private float _attackTime;
@@ -49,13 +47,13 @@ namespace LevelSystem
                     _timeElapsed = _attackTime;
                     _isPreparation = false;
                     _descriptionText.text = _attackText;
-                    _panel.color = _attackColor;
                 }
             }
         }
         private void ViewTime()
         {
-            _timeText.text = ((int)_timeElapsed).ToString();
+            float maxTime = _isPreparation ? _preparationTime:_attackTime;
+            _timeSlider.value = _timeElapsed/maxTime;
         }
         
         public void OnWaveChange(LevelData levelData)
@@ -65,14 +63,12 @@ namespace LevelSystem
             _isPreparation = true;
             _timeElapsed = _preparationTime;
             _descriptionText.text = _preparationText;
-            _panel.color = _preparationColor;
             EnableTimer(true);
         }
         
         public void EnableTimer(bool isEnabled)
         {
             _isEnabled = isEnabled;
-            _panel.gameObject.SetActive(isEnabled);
             if(isEnabled && !_isPreparation)
             {
                 OnAttackStart?.Invoke();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BaseSystem;
+using Core;
 using TowerSystem;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,6 +29,8 @@ namespace EnemySystem
         [field: SerializeField] public float AttackCooldown{ get; private set; }
         [field: SerializeField] public int Hp{ get; private set; }
         [field: SerializeField] public int Coins{ get; private set; }
+        [field: SerializeField] public Animator Animator{ get; private set; }
+        [field: SerializeField] public AnimationEventDispatcher AnimationEventDispatcher{ get; private set; }
         
         public Action OnLifeEnd;
         public Action OnReturnToPool;

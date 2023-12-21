@@ -12,6 +12,6 @@ namespace TowerSystem
         [field:SerializeField] public float AttackCooldown { get; private set; }
         [field:SerializeField] public int AttackRange { get; private set; }
         [field:SerializeField] public int Price { get; private set; }
-        //[field:SerializeField] public GameObject Prefab { get; private set; }
+        [field:SerializeField] public Sprite BuildButtonSprite { get; private set; }
     }
 }

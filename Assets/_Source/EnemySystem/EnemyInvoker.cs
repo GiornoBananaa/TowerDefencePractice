@@ -72,6 +72,7 @@ namespace EnemySystem
 
         public void PlayDeath()
         {
+            _enemy.Animator.Play("Run");
             ResetEnemy();
             _enemy.DropCoins();
             ReturnToPool();

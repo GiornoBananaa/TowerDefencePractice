@@ -3,6 +3,7 @@ using TMPro;
 using TowerSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UISystem
 {
@@ -11,8 +12,8 @@ namespace UISystem
     {
         [SerializeField] private float _sizeOverMouseModifer;
         [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private TMP_Text _towerCost;
-        [SerializeField] private TMP_Text _towerName;
+        [SerializeField] private Image _image;
+        [SerializeField] private TMP_Text _costText;
         
         private TowerType _towerType;
         
@@ -29,8 +30,8 @@ namespace UISystem
         public void SetTowerType(TowerData towerData)
         {
             _towerType = towerData.TowerType;
-            _towerCost.text = towerData.Price.ToString();
-            _towerName.text = towerData.Name;
+            _image.sprite = towerData.BuildButtonSprite;
+            _costText.text = towerData.Price.ToString();
         }
         
         public void OnPointerEnter(PointerEventData eventData)
