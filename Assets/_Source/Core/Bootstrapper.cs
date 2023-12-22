@@ -26,7 +26,6 @@ namespace Core
         [SerializeField] private TowerOptionsUI _towerOptionsUI;
         [SerializeField] private BaseHealth _baseHealth;
         [SerializeField] private PlayerItemCollector _playerItemCollector;
-        [SerializeField] private DayAndNightCycle _dayAndNightCycle;
         [SerializeField] private ObjectsSelector _objectSelector;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private BuildingModeButton _buildingModeButton; //TODO: build mod view script
@@ -82,12 +81,6 @@ namespace Core
             _levelTimer.OnAttackStart += _enemySpawner.StartSpawning;
             _levelTimer.OnAttackStart += _enemyPool.GoAttackBase;
             _waveSetter.SetWave();
-            /*   DAY AND NIGHT CYCLE MIGHT BE REMOVED
-            _dayAndNightCycle.OnNightStarted += _enemySpawner.StopSpawning;
-            _dayAndNightCycle.OnDayStarted += _enemySpawner.StartSpawning;
-            _dayAndNightCycle.OnDayStarted += _enemyPool.GoAttackBase;
-            _dayAndNightCycle.OnNightStarted += _enemyPool.ReturnToSpawnPoint;
-            */
         }
 
         private void OnDestroy()

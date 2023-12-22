@@ -336,7 +336,7 @@ MonoBehaviour:
   _towerOptionsUI: {fileID: 1574880351}
   _baseHealth: {fileID: 7569963002981641221}
   _playerItemCollector: {fileID: 84991118}
-  _dayAndNightCycle: {fileID: 1190367381}
+  _dayAndNightCycle: {fileID: 0}
   _objectSelector: {fileID: 564970494}
   _cameraController: {fileID: 168784229}
   _buildingModeButton: {fileID: 285422734}
@@ -2072,53 +2072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1190367380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1190367382}
-  - component: {fileID: 1190367381}
-  m_Layer: 0
-  m_Name: DayAndNightCircle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1190367381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190367380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d780a3c9def82f64faeaf3a51c4e305a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dayDuration: 60
-  _nightDuration: 20
-  _light: {fileID: 705507994}
---- !u!4 &1190367382
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190367380}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1199036183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6687,7 +6640,6 @@ SceneRoots:
   - {fileID: 210187499}
   - {fileID: 564970493}
   - {fileID: 2147245924}
-  - {fileID: 1190367382}
   - {fileID: 1484806846}
   - {fileID: 6332394778354346826}
   - {fileID: 1347074843}

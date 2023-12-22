@@ -38,7 +38,7 @@ namespace InputSystem
             ReadSelectTowerCell(_raycastHit,hitLayerBite);
             ReadSelectBranch(_raycastHit,hitLayerBite);
             ReadInspectTower(_raycastHit,hitLayerBite);
-            //ReadSelectFreeView(_raycastHit,hitLayerBite);
+            ReadSelectFreeView(_raycastHit,hitLayerBite);
             ReadSelectTree(hitLayerBite);
         }
 
