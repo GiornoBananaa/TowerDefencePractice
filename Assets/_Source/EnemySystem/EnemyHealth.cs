@@ -22,6 +22,7 @@ namespace EnemySystem
 
         public void TakeDamage(int damage)
         {
+            AudioManager.Instance.Play("hit_beaver");
             _currentHp -= damage;
             if (_currentHp <= 0)
             {

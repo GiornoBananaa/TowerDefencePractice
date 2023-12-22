@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [Serializable]
@@ -17,6 +18,8 @@ public class Sound
 
     [Range(0f, 1f)]
     public float volume = 1;
+    [Range(0f, 1f)]
+    public float generalVolume = 1;
     [Range(0.1f, 3f)]
     public float pitch = 1;
     [Range(0f, 1f)]
@@ -32,7 +35,7 @@ public class Sound
     public void Play()
     {
         source.clip = clip;
-        source.volume = volume;
+        source.volume = volume*generalVolume;
         source.loop = loop;
         source.pitch = Mathf.Clamp( pitch + UnityEngine.Random.Range(-pitch_variation, pitch_variation), 0.1f, 3f);
         source.Play();

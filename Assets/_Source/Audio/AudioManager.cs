@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
     public float MusicVolume { get; private set; }
 
     [SerializeField] private Sound[] sounds;
+
+    private Sound _currentMusic;
+    private AudioSource _musicSource;
     
     private void Awake()
     {
@@ -21,6 +24,7 @@ public class AudioManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+        _musicSource = gameObject.AddComponent<AudioSource>();
         foreach (Sound sound in sounds)
         {
             AddSound(sound);
@@ -37,9 +41,9 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            if(sound.isMusic) return;
-            sound.volume = volume;
-            sound.source.volume = volume;
+            if(sound.isMusic) continue;
+            sound.generalVolume = volume;
+            sound.source.volume = sound.volume*sound.generalVolume;
         }
     }
     
@@ -47,9 +51,10 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            if(!sound.isMusic) return;
-            sound.volume = volume;
-            sound.source.volume = volume;
+            if(!sound.isMusic) continue;
+            sound.generalVolume = volume;
+            if(sound.source!= null)
+                sound.source.volume = sound.volume*sound.generalVolume;
         }
     }
     
@@ -57,7 +62,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            if(sound.isMusic) return;
+            if(sound.isMusic) continue;
             sound.source.mute = !enable;
         }
     }
@@ -66,29 +71,40 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            if(!sound.isMusic) return;
+            if(!sound.isMusic) continue;
             sound.source.mute = !enable;
         }
     }
     
     private void AddSound(Sound sound)
     {
-        sound.source = gameObject.AddComponent<AudioSource>();
+        sound.source = sound.isMusic ? _musicSource : gameObject.AddComponent<AudioSource>();
         if (sound.playOnAwake)
+        {
             Play(sound);
+        }
     }
     
     public void Play(string name)
     {
         Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound != null)
+        {
             Play(sound);
+        }
         else
             Debug.LogWarning("Sound " + name + " not found");
     }
     
     public void Play(Sound sound)
     {
+        if (sound.isMusic)
+        {
+            if(sound.clip == _musicSource.clip)
+                return;
+            sound.source = _musicSource;
+            sound.source.volume = sound.volume*sound.generalVolume;
+        }
         sound.Play();
     }
 
