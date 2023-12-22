@@ -25,7 +25,6 @@ namespace TutorialSystem
         [SerializeField] private ObjectOutlineControl _branchOutline;
         [SerializeField] private ObjectOutlineControl _treeOutline;
         [SerializeField] private Transform _towerCell;
-        [SerializeField] private GameObject _roadBranch;
         [SerializeField] private TowerOptionsUI _towerOptionsUI;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private InputListener _inputListener;
@@ -45,7 +44,6 @@ namespace TutorialSystem
         {
             _toolCanvas.SetActive(false);
             _clickHintImage.gameObject.SetActive(false);
-            _roadBranch.SetActive(false);
             _endTutorialButton.gameObject.SetActive(false);
             _nextButton.gameObject.SetActive(true);
             _nextButton.onClick.AddListener(NextText);
@@ -105,7 +103,6 @@ namespace TutorialSystem
                     break;
                 case 8:
                     _towerInspector.OnTowerUpgrade += UpgradeClick;
-                    _roadBranch.SetActive(true);
                     _clickHintImage.gameObject.SetActive(true);
                     EnableDialog(false);
                     break;
