@@ -45,12 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: MainTheme
+    clips:
+    - {fileID: 8300000, guid: 3f1370b5cde702d41a070253d25010f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    pitch_variation: 0.112
+    loop: 1
+    isMusic: 1
+    playOnAwake: 1
+    source: {fileID: 0}
   - name: button_click
     clips:
     - {fileID: 8300000, guid: a40194ac3c2275a46a829741b2c13bb3, type: 3}
     volume: 1
     pitch: 1
+    pitch_variation: 0
     loop: 0
+    isMusic: 0
+    playOnAwake: 0
     source: {fileID: 0}
   - name: squirrel_interact
     clips:
@@ -60,5 +73,38 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 341a0f994bcb0484ab93d92e394b9123, type: 3}
     volume: 1
     pitch: 1
+    pitch_variation: 0
     loop: 0
+    isMusic: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: hit_beaver
+    clips:
+    - {fileID: 8300000, guid: 7aa4e552d3911ca4598cd287e04153ac, type: 3}
+    volume: 1
+    pitch: 1
+    pitch_variation: 0
+    loop: 0
+    isMusic: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: beaver_step
+    clips:
+    - {fileID: 8300000, guid: e870f0fbcc6258347aa5917a78086aca, type: 3}
+    volume: 0.526
+    pitch: 1
+    pitch_variation: 0
+    loop: 0
+    isMusic: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: battle_music
+    clips:
+    - {fileID: 8300000, guid: b1b8097b2c8c64343aa99ea83f0ed2e8, type: 3}
+    volume: 1
+    pitch: 1
+    pitch_variation: 0
+    loop: 1
+    isMusic: 1
+    playOnAwake: 1
     source: {fileID: 0}

@@ -551,6 +551,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458527320}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &462907982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462907984}
+  - component: {fileID: 462907983}
+  m_Layer: 0
+  m_Name: MusicSetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &462907983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462907982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95dd2bca47c0f243aa08d52056815ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundName: battle_music
+--- !u!4 &462907984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462907982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.329964, y: 11.114372, z: -42.106823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &545441843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1332,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1229536701 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3905437732130880438, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
+  m_PrefabInstance: {fileID: 7569963002981641220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253860971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,7 +2352,7 @@ PrefabInstance:
     - target: {fileID: 3735579470041095320, guid: f17cf69deae8ece4fbb7be3d8289339c, type: 3}
       propertyPath: _towerCell
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1229536701}
     - target: {fileID: 3735579470041095320, guid: f17cf69deae8ece4fbb7be3d8289339c, type: 3}
       propertyPath: _pausePanel
       value: 
@@ -3220,6 +3270,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5741514469684431243, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6152142232057782261, guid: 3cb1469b169ee0a43894ada820d8852c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3427,3 +3481,4 @@ SceneRoots:
   - {fileID: 6332394778354346826}
   - {fileID: 1347074843}
   - {fileID: 65762391}
+  - {fileID: 462907984}
