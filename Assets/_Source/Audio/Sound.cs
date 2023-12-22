@@ -19,6 +19,7 @@ public class Sound
     [Range(0f, 1f)]
     public float volume = 1;
     [Range(0f, 1f)]
+    [NonSerialized]
     public float generalVolume = 1;
     [Range(0.1f, 3f)]
     public float pitch = 1;

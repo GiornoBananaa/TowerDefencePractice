@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
         {
             if(!sound.isMusic) continue;
             sound.generalVolume = volume;
-            if(sound.source!= null)
+            if(sound.source!= null && sound.source.clip == sound.clip)
                 sound.source.volume = sound.volume*sound.generalVolume;
         }
     }

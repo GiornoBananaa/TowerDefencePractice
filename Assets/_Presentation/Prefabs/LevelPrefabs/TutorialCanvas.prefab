@@ -406,7 +406,6 @@ MonoBehaviour:
   _branchOutline: {fileID: 0}
   _treeOutline: {fileID: 0}
   _towerCell: {fileID: 0}
-  _roadBranch: {fileID: 0}
   _towerOptionsUI: {fileID: 0}
   _enemySpawner: {fileID: 0}
   _inputListener: {fileID: 0}
