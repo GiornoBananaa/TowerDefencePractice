@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume",0.5f);
         
         ChangeSoundVolume(SoundVolume);
-        ChangeSoundVolume(MusicVolume);
+        ChangeMusicVolume(MusicVolume);
     }
     
     public void ChangeSoundVolume(float volume)
@@ -85,7 +85,6 @@ public class AudioManager : MonoBehaviour
             Play(sound);
         else
             Debug.LogWarning("Sound " + name + " not found");
-
     }
     
     public void Play(Sound sound)

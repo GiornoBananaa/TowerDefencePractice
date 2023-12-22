@@ -11,7 +11,6 @@ namespace TowerSystem
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private AnimationClip _attackClip;
-        [SerializeField] private float _attackTime;
         protected BulletPool _bulletPool;
 
         public override void Construct(TowerCell towerCell, TowerData[] towerData)
@@ -24,7 +23,6 @@ namespace TowerSystem
         protected override void AttackEnemy()
         {
             Animator.SetTrigger(_attackAnimationTriggerHash);
-            Debug.Log(_attackClip.length + " " + TowerData.AttackCooldown + " " + _attackClip.length/TowerData.AttackCooldown);
             Animator.SetFloat(_attackSpeedAnimationFloatHash, _attackClip.length/TowerData.AttackCooldown);
         }
         

@@ -12,13 +12,13 @@ namespace UISystem
 
         private void Awake()
         {
+            _musicVolumeSlider.value = AudioManager.Instance.MusicVolume;
+            _soundVolumeSlider.value = AudioManager.Instance.SoundVolume;
+            
             _musicVolumeSlider.onValueChanged.AddListener(MusicChange);
             _soundVolumeSlider.onValueChanged.AddListener(SoundChange);
             _musicMuteToggle.onValueChanged.AddListener(EnableMusic);
             _soundMuteToggle.onValueChanged.AddListener(EnableSound);
-
-            _musicVolumeSlider.value = AudioManager.Instance.MusicVolume;
-            _soundVolumeSlider.value = AudioManager.Instance.SoundVolume;
         }
 
         private void SoundChange(float volume)
