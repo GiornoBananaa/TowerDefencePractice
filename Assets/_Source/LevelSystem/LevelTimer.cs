@@ -62,8 +62,11 @@ namespace LevelSystem
             _preparationTime = levelData.PreparationDuration;
             _isPreparation = true;
             _timeElapsed = _preparationTime;
-            _descriptionText.text = _preparationText;
-            EnableTimer(true);
+            if(_descriptionText!=null)
+            {
+                _descriptionText.text = _preparationText;
+                EnableTimer(true);
+            }
         }
         
         public void EnableTimer(bool isEnabled)

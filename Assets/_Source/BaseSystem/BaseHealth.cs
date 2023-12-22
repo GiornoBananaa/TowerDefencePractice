@@ -8,7 +8,7 @@ namespace BaseSystem
         [SerializeField] private int _maxHp;
         private int _currentHp = 100;
 
-        public Action<int> OnBaseHealthChange;
+        public Action<int,float> OnBaseHealthChange;
         public Action OnBaseDestroy;
         
         private void Awake()
@@ -27,14 +27,14 @@ namespace BaseSystem
             if (_currentHp < 0)
                 _currentHp = 0;
             
-            OnBaseHealthChange(_currentHp);
+            OnBaseHealthChange?.Invoke(_currentHp, _maxHp);
         }
         
         public void Heal(int hp)
         {
             _currentHp = _currentHp + hp > _maxHp ?
                 _maxHp : _currentHp + hp;
-            OnBaseHealthChange(_currentHp);
+            OnBaseHealthChange(_currentHp,_maxHp);
         }
     }
 }
