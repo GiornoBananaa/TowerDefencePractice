@@ -18,6 +18,7 @@ namespace InputSystem
         private void Awake()
         {
             _isBuildMode = false;
+            _image.sprite = _buildSprite;
             _button.onClick.AddListener(ButtonClick);
         }
 
