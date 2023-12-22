@@ -1221,7 +1221,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -3419,6 +3419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 354615614701805451, guid: 8d9b2846810486543801b4b969dd69c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 378769522431222558, guid: 8d9b2846810486543801b4b969dd69c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5265,6 +5269,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3267668850049095103, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632634605768766869, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8113477173065406216, guid: 9087a38321d9dfe4a909c8bd48bec103, type: 3}
